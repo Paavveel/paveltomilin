@@ -7,7 +7,15 @@ const Path = (props) => (
 
 function ThemeToggle() {
   return (
-    <motion.button className='header__theme-toggle'>
+    <motion.button
+      className='header__theme-toggle'
+      whileHover={{
+        rotate: 360,
+      }}
+      transition={{
+        type: 'spring',
+      }}
+    >
       <svg
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 511.998 511.998'

@@ -9,36 +9,34 @@ const menuItems = [
   { id: 4, title: 'contacts' },
 ];
 
-const ulVariants = {
-  open: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      type: 'spring',
-      stiffness: 70,
-      damping: 10,
-      staggerChildren: 0.07,
-      delayChildren: 0.2,
-    },
+const navVariants = {
+  initial: { width: 0 },
+  animate: {
+    width: 'auto',
   },
-
-  closed: {
-    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+  exit: {
+    width: 0,
+    opacity: 0,
   },
 };
 
-function Navigation() {
+function Navigation({ isOpen }) {
   return (
-    <motion.ul
-      key='navigation'
-      className='header__nav-list-item'
-      variants={ulVariants}
-      initial={{ x: '100vw', opacity: 0 }}
-    >
-      {menuItems.map((item) => (
-        <NavigationItem key={item.id} {...item} />
-      ))}
-    </motion.ul>
+    <AnimatePresence>
+      {isOpen && (
+        <motion.ul
+          className='header__nav-list-item'
+          variants={navVariants}
+          initial='initial'
+          animate='animate'
+          exit='exit'
+        >
+          {menuItems.map((item) => (
+            <NavigationItem key={item.id} {...item} />
+          ))}
+        </motion.ul>
+      )}
+    </AnimatePresence>
   );
 }
 

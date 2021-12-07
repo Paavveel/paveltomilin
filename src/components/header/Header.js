@@ -1,5 +1,3 @@
-import React, { useRef, useEffect } from 'react';
-import { useDimensions } from '../../hooks/useDimensions';
 import { motion, useCycle } from 'framer-motion';
 import MenuToggle from './MenuToggle';
 import Logo from './Logo';
@@ -8,11 +6,6 @@ import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [isOpen, toggleOpen] = useCycle(true, false);
-  // const containerRef = useRef(null);
-
-  useEffect(() => {
-    console.log('effect');
-  });
 
   return (
     <motion.div
@@ -24,6 +17,7 @@ const Header = () => {
         duration: 1,
         delay: 0.6,
       }}
+      onAnimationComplete={toggleOpen}
     >
       <div className='header__inner'>
         <Logo />
@@ -32,7 +26,7 @@ const Header = () => {
           animate={isOpen ? 'open' : 'closed'}
         >
           <ThemeToggle />
-          {isOpen && <Navigation />}
+          <Navigation isOpen={isOpen} />
           <MenuToggle toggle={toggleOpen} />
         </motion.nav>
       </div>
