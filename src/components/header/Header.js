@@ -1,10 +1,11 @@
+import React from 'react';
 import { motion, useCycle } from 'framer-motion';
 import MenuToggle from './MenuToggle';
 import Logo from './Logo';
 import Navigation from './Navigation';
 import ThemeToggle from './ThemeToggle';
 
-const Header = () => {
+const Header = ({ setCursorHovered }) => {
   const [isOpen, toggleOpen] = useCycle(true, false);
 
   return (
@@ -24,6 +25,8 @@ const Header = () => {
         <motion.nav
           className='header__nav'
           animate={isOpen ? 'open' : 'closed'}
+          onMouseEnter={() => setCursorHovered(true)}
+          onMouseLeave={() => setCursorHovered(false)}
         >
           <ThemeToggle />
           <Navigation isOpen={isOpen} />

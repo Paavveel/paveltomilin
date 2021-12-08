@@ -1,10 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
-function NavigationItem({ title }) {
+function NavigationItem({ title, emoji }) {
   return (
     <motion.li>
-      <a href={`/${title}`}>{title}</a>
+      <Link to={`${title}`}>
+        <span>{emoji}</span>
+        <span>{title}</span>
+      </Link>
     </motion.li>
   );
 }

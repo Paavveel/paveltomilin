@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import NavigationItem from './NavigationItem';
 
 const menuItems = [
-  { id: 1, title: 'home' },
-  { id: 2, title: 'works' },
-  { id: 3, title: 'about me' },
-  { id: 4, title: 'contacts' },
+  { id: 1, title: 'home', emoji: '📍' },
+  { id: 2, title: 'work', emoji: '💻' },
+  { id: 3, title: 'about', emoji: '🙋🏽‍♂️' },
+  { id: 4, title: 'contact', emoji: '📩' },
 ];
 
 const navVariants = {
@@ -17,6 +17,10 @@ const navVariants = {
   exit: {
     width: 0,
     opacity: 0,
+    transition: {
+      delay: 0.2,
+      ease: 'easeInOut',
+    },
   },
 };
 
@@ -25,6 +29,7 @@ function Navigation({ isOpen }) {
     <AnimatePresence>
       {isOpen && (
         <motion.ul
+          key='navigation'
           className='header__nav-list-item'
           variants={navVariants}
           initial='initial'

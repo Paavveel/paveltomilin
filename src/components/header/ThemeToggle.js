@@ -14,6 +14,10 @@ function ThemeToggle() {
       }}
       transition={{
         type: 'spring',
+        stiffness: 83,
+        damping: 12,
+        ease: 'easeInOut',
+        delay: 0.15,
       }}
     >
       <svg
