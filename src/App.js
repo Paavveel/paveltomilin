@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import './sass/main.scss';
@@ -11,9 +12,19 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 
 function App() {
+  const [cursorHovered, setCursorHovered] = useState(false);
+
   return (
     <Routes>
-      <Route path='/' element={<Layout />}>
+      <Route
+        path='/'
+        element={
+          <Layout
+            cursorHovered={cursorHovered}
+            setCursorHovered={setCursorHovered}
+          />
+        }
+      >
         <Route index element={<Home />} />
         <Route path='work' element={<Work />} />
         <Route path='about' element={<About />} />

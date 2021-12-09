@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import useMousePosition from '../hooks/useMousePosition';
 import Header from '../components/header/Header';
 import Loader from '../components/Loader';
+import Cursor from '../components/Cursor';
 
-function Layout() {
+function Layout({ cursorHovered, setCursorHovered }) {
   const [loading, setLoading] = useState(true);
-  const [cursorHovered, setCursorHovered] = useState(false);
 
-  const { x, y } = useMousePosition();
   return (
     <>
       <AnimatePresence>
@@ -33,18 +31,7 @@ function Layout() {
           </>
         )}
       </AnimatePresence>
-
-      <motion.div
-        className='cursor'
-        key='cursor'
-        animate={{
-          x: x - 18,
-          y: y - 18,
-          scale: cursorHovered ? 1.2 : 1,
-          opacity: cursorHovered ? 0.5 : 0,
-        }}
-        transition={{ ease: 'linear', duration: 0.2 }}
-      ></motion.div>
+      <Cursor cursorHovered={cursorHovered} />
     </>
   );
 }
