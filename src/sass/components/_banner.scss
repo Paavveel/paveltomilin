@@ -1,10 +1,7 @@
 .banner {
   z-index: 100;
   position: relative;
-  padding-top: 156px;
-  @media (max-width: $layout-breakpoint-xsmall) {
-    padding-top: 72px;
-  }
+
   .banner-row {
     overflow: hidden;
     display: flex;
@@ -64,7 +61,7 @@
       height: 160px;
       width: 160px;
       border-radius: 100%;
-      background: $white;
+      background: #e7dede;
       position: absolute;
       display: flex;
       align-items: center;

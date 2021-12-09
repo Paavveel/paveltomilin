@@ -18,7 +18,7 @@ const spreadVariant = {
     transition: {
       delay: 3.9,
       duration: 0.5,
-      ease: 'easeIn',
+      ease: [0.6, -0.05, 0.01, 0.9],
     },
   },
 };
@@ -44,7 +44,10 @@ const Loader = ({ setLoading }) => {
         className='loader__spread'
         variants={spreadVariant}
         animate='animate'
-        onAnimationComplete={() => setLoading(false)}
+        onAnimationComplete={() => {
+          // localStorage.setItem('loaded', true);
+          setLoading(false);
+        }}
       ></motion.div>
       <motion.div
         className='loader__progress-bar'

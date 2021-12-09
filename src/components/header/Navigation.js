@@ -18,7 +18,7 @@ const navVariants = {
     width: 0,
     opacity: 0,
     transition: {
-      delay: 0.2,
+      delay: 1,
       ease: 'easeInOut',
     },
   },

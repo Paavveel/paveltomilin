@@ -6,6 +6,13 @@ body {
   background: $background;
 }
 
+.page-section {
+  padding-top: 156px;
+  @media (max-width: $layout-breakpoint-xsmall) {
+    padding-top: 72px;
+  }
+}
+
 .cursor {
   cursor: pointer;
   height: 3.5rem;
@@ -13,6 +20,7 @@ body {
   position: absolute;
   z-index: 999;
   top: 0;
+  opacity: 0;
   background: #e7dede;
   border-radius: 100%;
   pointer-events: none;
