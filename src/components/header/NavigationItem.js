@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const MenuTitle = styled.span`
+const NavTitle = styled.span`
   color: ${(props) => props.theme.text};
 `;
 
@@ -13,7 +13,7 @@ function NavigationItem({ title, emoji }) {
     <motion.li>
       <Link to={isHome ? '/' : `${title}`}>
         <span>{emoji}</span>
-        <MenuTitle>{title}</MenuTitle>
+        <NavTitle>{title}</NavTitle>
       </Link>
     </motion.li>
   );

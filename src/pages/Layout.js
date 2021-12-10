@@ -9,10 +9,11 @@ import { useGlobalStateContext } from '../context/globalContext';
 
 const GlobalStyle = createGlobalStyle`
 
+
 body {
   background: ${(props) => props.theme.background};
   overflow-x: hidden;
-  color: #121212
+  color: #121212;
 }
 `;
 

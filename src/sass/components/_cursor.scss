@@ -1,12 +1,17 @@
 .cursor {
-  cursor: pointer;
-  height: 3.5rem;
-  width: 3.5rem;
   position: absolute;
-  z-index: 999;
+  height: 32px;
+  width: 32px;
   top: 0;
-  opacity: 0;
-  background: #e7dede;
+  left: 0;
+  background: peachpuff;
+  // background: transparent;
+  // border: 2px solid peachpuff;
   border-radius: 100%;
+  transform: translate(-50%, -50%);
+  transition: all 0.1s ease-in-out;
+  transition-property: width, height, border;
+  will-change: width, height, transform, border;
   pointer-events: none;
+  z-index: 999;
 }
