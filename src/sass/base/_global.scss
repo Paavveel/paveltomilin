@@ -1,11 +1,3 @@
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: $background;
-}
-
 .page-section {
   padding-top: 156px;
   @media (max-width: $layout-breakpoint-xsmall) {

@@ -2,8 +2,6 @@
 *:before,
 *:after {
   box-sizing: border-box;
-  user-select: none;
-  outline: none;
 }
 
 html,
@@ -78,6 +76,9 @@ main {
 
 body {
   line-height: 1;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+  user-select: none;
 }
 
 ol,

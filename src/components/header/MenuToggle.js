@@ -1,15 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import styled from 'styled-components';
 
-const Path = (props) => (
-  <motion.path
-    fill='transparent'
-    strokeWidth='3'
-    stroke='hsl(0, 0%, 18%)'
-    strokeLinecap='round'
-    {...props}
-  />
-);
+const Path = styled(motion.path)`
+  stroke: ${(props) => props.theme.text};
+  stroke-linecap: round;
+  stroke-width: 3px;
+`;
 
 function MenuToggle({ toggle }) {
   return (
