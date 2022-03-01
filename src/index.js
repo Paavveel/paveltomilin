@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { GlobalProvider } from './context/globalContext';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalProvider>
+    <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </GlobalProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

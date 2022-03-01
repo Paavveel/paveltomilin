@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ThemeIcon } from '../../assets/svg/icons';
-import {
-  useGlobalDispatchContext,
-  useGlobalStateContext,
-} from '../../context/globalContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeTheme } from '../../store/globalSlice';
 
 function ThemeToggle() {
-  const { currentTheme } = useGlobalStateContext();
-  const dispatch = useGlobalDispatchContext();
+  const { currentTheme } = useSelector(state => state.global);
+  const dispatch = useDispatch();
 
   const toggleTheme = () => {
     if (currentTheme === 'light') {
-      dispatch({ type: 'TOGGLE_THEME', theme: 'dark' });
+      dispatch(changeTheme('dark'));
     } else {
-      dispatch({ type: 'TOGGLE_THEME', theme: 'light' });
+      dispatch(changeTheme('light'));
     }
   };
 
