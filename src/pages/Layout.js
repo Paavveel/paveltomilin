@@ -6,8 +6,13 @@ import Header from '../components/header/Header';
 import Loader from '../components/Loader';
 import Cursor from '../components/Cursor';
 import { useSelector } from 'react-redux';
-import GlobalStyle from '../GlobalStyles';
-import { darkTheme, lightTheme } from '../themes';
+import GlobalStyle from '../styles/GlobalStyles';
+import { darkTheme, lightTheme } from '../styles/themes';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  padding: 2rem;
+`;
 
 function Layout({ cursorHovered, setCursorHovered }) {
   const [loading, setLoading] = useState(true);
@@ -33,7 +38,9 @@ function Layout({ cursorHovered, setCursorHovered }) {
         ) : (
           <>
             <Header setCursorHovered={setCursorHovered} />
-            <Outlet />
+            <Container>
+              <Outlet />
+            </Container>
           </>
         )}
       </AnimatePresence>
