@@ -1,9 +1,9 @@
 export const darkTheme = {
-  background: '#000',
+  background: '#121212',
   text: '#fff',
 };
 
 export const lightTheme = {
   background: '#fff',
-  text: '#000',
+  text: '#121212',
 };
