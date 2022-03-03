@@ -10,9 +10,7 @@ import GlobalStyle from '../styles/GlobalStyles';
 import { darkTheme, lightTheme } from '../styles/themes';
 import styled from 'styled-components';
 
-const Container = styled.div`
-  padding: 2rem;
-`;
+const Main = styled.main``;
 
 function Layout({ cursorHovered, setCursorHovered }) {
   const [loading, setLoading] = useState(true);
@@ -23,24 +21,13 @@ function Layout({ cursorHovered, setCursorHovered }) {
       <GlobalStyle />
       <AnimatePresence>
         {loading ? (
-          <motion.div
-            key='loader'
-            exit={{
-              x: '100vw',
-              transition: {
-                duration: 0.5,
-                ease: [0.6, -0.05, 0.01, 0.9],
-              },
-            }}
-          >
-            <Loader setLoading={setLoading} />
-          </motion.div>
+          <Loader key='loader' setLoading={setLoading} />
         ) : (
           <>
             <Header setCursorHovered={setCursorHovered} />
-            <Container>
+            <Main>
               <Outlet />
-            </Container>
+            </Main>
           </>
         )}
       </AnimatePresence>

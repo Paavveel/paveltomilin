@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import styled from 'styled-components';
 
 const followVariant = {
   animate: {
@@ -32,29 +33,60 @@ const progressVariant = {
   },
 };
 
+const LoaderContainer = styled(motion.div)`
+  height: 100vh;
+  width: 100%;
+  background-color: #121212;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+`;
+const LoaderFollow = styled(motion.div)`
+  position: absolute;
+  background-color: peachpuff;
+  height: 2px;
+  left: 0;
+  z-index: 2;
+`;
+const LoaderSpread = styled(motion.div)`
+  position: absolute;
+  background-color: peachpuff;
+  width: 100%;
+  left: 0;
+  z-index: 2;
+`;
+const LoaderProgress = styled(motion.div)`
+  position: absolute;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.575);
+  height: 2px;
+`;
+
 const Loader = ({ setLoading }) => {
   return (
-    <motion.div className='loader'>
-      <motion.div
-        className='loader__follow'
-        variants={followVariant}
-        animate='animate'
-      ></motion.div>
-      <motion.div
-        className='loader__spread'
+    <LoaderContainer
+      exit={{
+        x: '100vw',
+        transition: {
+          duration: 0.5,
+          ease: [0.6, -0.05, 0.01, 0.9],
+        },
+      }}
+    >
+      <LoaderFollow variants={followVariant} animate='animate'></LoaderFollow>
+      <LoaderSpread
         variants={spreadVariant}
         animate='animate'
         onAnimationComplete={() => {
-          // localStorage.setItem('loaded', true);
           setLoading(false);
         }}
-      ></motion.div>
-      <motion.div
-        className='loader__progress-bar'
+      ></LoaderSpread>
+      <LoaderProgress
         variants={progressVariant}
         animate='animate'
-      ></motion.div>
-    </motion.div>
+      ></LoaderProgress>
+    </LoaderContainer>
   );
 };
 
