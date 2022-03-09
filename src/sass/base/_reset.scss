@@ -66,6 +66,11 @@ video {
   text-size-adjust: none;
 }
 
+img {
+  display: block;
+  width: 100%;
+}
+
 footer,
 header,
 nav,
@@ -77,6 +82,7 @@ main {
 body {
   overscroll-behavior: none;
   user-select: none;
+  overflow-x: hidden;
 }
 
 html {

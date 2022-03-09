@@ -26,8 +26,9 @@ function App() {
         }
       >
         <Route index element={<Home />} />
-        <Route path='work' element={<Work />} />
         <Route path='about' element={<About />} />
+        <Route path='work' element={<Work />} />
+        <Route path='services' element={<Work />} />
         <Route path='contact' element={<Contact />} />
       </Route>
       <Route path='*' element={<NotFound />} />

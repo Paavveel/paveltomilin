@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from 'styled-components';
 import Header from '../components/header/Header';
 import Loader from '../components/Loader';
@@ -13,7 +13,7 @@ import styled from 'styled-components';
 const Main = styled.main``;
 
 function Layout({ cursorHovered, setCursorHovered }) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const { currentTheme } = useSelector(state => state.global);
 
   return (
