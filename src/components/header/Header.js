@@ -1,20 +1,17 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import Navigation from './Navigation';
 import ThemeToggle from './ThemeToggle';
 import styled from 'styled-components';
 
-const HeaderContainer = styled.header`
-  position: relative;
-`;
+const HeaderContainer = styled.header``;
 
-const Header = ({ setCursorHovered }) => {
+const Header = ({ toggleTheme, setCursorHovered }) => {
   return (
     <HeaderContainer
       onMouseEnter={() => setCursorHovered(true)}
       onMouseLeave={() => setCursorHovered(false)}
     >
-      <ThemeToggle />
+      <ThemeToggle toggleTheme={toggleTheme} />
       <Navigation />
     </HeaderContainer>
   );

@@ -2,18 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const globalReducer = createSlice({
   name: 'global',
-  initialState: {
-    currentTheme:
-      localStorage.getItem('theme') === null
-        ? 'light'
-        : localStorage.getItem('theme'),
-  },
-  reducers: {
-    changeTheme(state, action) {
-      state.currentTheme = action.payload;
-    },
-  },
+  initialState: {},
+  reducers: {},
 });
 
-export const { changeTheme } = globalReducer.actions;
+export const {} = globalReducer.actions;
 export default globalReducer.reducer;

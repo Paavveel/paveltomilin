@@ -6,30 +6,13 @@ import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai';
 import { BiBook, BiMessageSquareDetail } from 'react-icons/bi';
 import { RiServiceLine } from 'react-icons/ri';
 
-const navVariants = {
-  initial: { width: 0 },
-  animate: {
-    width: 'auto',
-  },
-  exit: {
-    width: 0,
-    opacity: 0,
-    transition: {
-      delay: 1,
-      ease: 'easeInOut',
-    },
-  },
-};
-
 const Nav = styled(motion.nav)`
   background: rgba(119, 44, 232, 0.5);
   width: max-content;
-  display: block;
   padding: 0.7rem 1.7rem;
   z-index: 9999;
   position: fixed;
   left: 50%;
-  transform: translateX(-50%);
   bottom: 2rem;
   display: flex;
   gap: 0.8rem;
@@ -57,7 +40,7 @@ const Nav = styled(motion.nav)`
 function Navigation() {
   return (
     <Nav
-      initial={{ opacity: 0, y: 180 }}
+      initial={{ opacity: 0, y: 180, x: '-50%' }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
         ease: 'easeInOut',

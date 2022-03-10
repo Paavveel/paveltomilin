@@ -5,28 +5,35 @@ import { ThemeProvider } from 'styled-components';
 import Header from '../components/header/Header';
 import Loader from '../components/Loader';
 import Cursor from '../components/Cursor';
-import { useSelector } from 'react-redux';
-import GlobalStyle from '../styles/GlobalStyles';
-import { darkTheme, lightTheme } from '../styles/themes';
+import { GlobalStyle, darkTheme, lightTheme } from '../styles/GlobalStyles';
 import styled from 'styled-components';
+import { useDarkMode } from '../hooks/useDarkMode';
+import Container from '../components/Container';
 
-const Main = styled.main``;
+const Main = styled.main`
+  position: relative;
+`;
 
 function Layout({ cursorHovered, setCursorHovered }) {
-  const [loading, setLoading] = useState(false);
-  const { currentTheme } = useSelector(state => state.global);
+  const [loading, setLoading] = useState(true);
+  const [theme, toggleTheme] = useDarkMode();
 
   return (
-    <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
       <AnimatePresence>
         {loading ? (
           <Loader key='loader' setLoading={setLoading} />
         ) : (
           <>
-            <Header setCursorHovered={setCursorHovered} />
+            <Header
+              toggleTheme={toggleTheme}
+              setCursorHovered={setCursorHovered}
+            />
             <Main>
-              <Outlet />
+              <Container>
+                <Outlet />
+              </Container>
             </Main>
           </>
         )}

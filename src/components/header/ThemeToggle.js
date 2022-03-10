@@ -1,42 +1,50 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import styled from 'styled-components';
 import { ThemeIcon } from '../../assets/svg/icons';
-import { useSelector, useDispatch } from 'react-redux';
-import { changeTheme } from '../../store/globalSlice';
+import { AiFillThunderbolt } from 'react-icons/ai';
+import { IconContext } from 'react-icons';
 
-function ThemeToggle() {
-  const { currentTheme } = useSelector(state => state.global);
-  const dispatch = useDispatch();
+const ThemeButton = styled(motion.button)`
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 9999;
+`;
+const Thunderbolt = styled(AiFillThunderbolt)`
+  color: ${props => props.theme.text};
+`;
 
-  const toggleTheme = () => {
-    if (currentTheme === 'light') {
-      dispatch(changeTheme('dark'));
-    } else {
-      dispatch(changeTheme('light'));
-    }
-  };
-
-  useEffect(() => {
-    localStorage.setItem('theme', currentTheme);
-  }, [currentTheme]);
-
+function ThemeToggle({ toggleTheme }) {
   return (
-    <motion.button
-      className='header__theme-toggle'
+    <ThemeButton
       onClick={toggleTheme}
+      initial={{ opacity: 0, y: -180 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        transition: {
+          ease: 'easeInOut',
+          duration: 1,
+          delay: 0.6,
+        },
+      }}
       whileHover={{
         rotate: 360,
-      }}
-      transition={{
-        type: 'spring',
-        stiffness: 83,
-        damping: 12,
-        ease: 'easeInOut',
-        delay: 0.15,
+        transition: {
+          type: 'spring',
+          damping: 12,
+          ease: 'easeInOut',
+        },
       }}
     >
-      <ThemeIcon />
-    </motion.button>
+      <IconContext.Provider value={{ size: '35px' }}>
+        <Thunderbolt />
+      </IconContext.Provider>
+    </ThemeButton>
   );
 }
 
