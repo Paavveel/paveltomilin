@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { ThemeIcon } from '../../assets/svg/icons';
 import { AiFillThunderbolt } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 
@@ -18,7 +17,7 @@ const Thunderbolt = styled(AiFillThunderbolt)`
   color: ${props => props.theme.text};
 `;
 
-function ThemeToggle({ toggleTheme }) {
+function ThemeToggle({ toggleTheme, setCursorHovered }) {
   return (
     <ThemeButton
       onClick={toggleTheme}
@@ -40,6 +39,8 @@ function ThemeToggle({ toggleTheme }) {
           ease: 'easeInOut',
         },
       }}
+      onMouseEnter={() => setCursorHovered(true)}
+      onMouseLeave={() => setCursorHovered(false)}
     >
       <IconContext.Provider value={{ size: '35px' }}>
         <Thunderbolt />

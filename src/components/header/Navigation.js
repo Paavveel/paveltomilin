@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai';
 import { BiBook, BiMessageSquareDetail } from 'react-icons/bi';
 import { RiServiceLine } from 'react-icons/ri';
+import { color } from '../../styles/GlobalStyles';
 
 const Nav = styled(motion.nav)`
   background: rgba(119, 44, 232, 0.5);
@@ -24,7 +25,7 @@ const Nav = styled(motion.nav)`
     padding: 0.9rem;
     border-radius: 50%;
     display: flex;
-    color: #fff;
+    color: ${color.white};
     font-size: 1.1rem;
   }
 

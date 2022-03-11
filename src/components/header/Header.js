@@ -7,11 +7,11 @@ const HeaderContainer = styled.header``;
 
 const Header = ({ toggleTheme, setCursorHovered }) => {
   return (
-    <HeaderContainer
-      onMouseEnter={() => setCursorHovered(true)}
-      onMouseLeave={() => setCursorHovered(false)}
-    >
-      <ThemeToggle toggleTheme={toggleTheme} />
+    <HeaderContainer>
+      <ThemeToggle
+        toggleTheme={toggleTheme}
+        setCursorHovered={setCursorHovered}
+      />
       <Navigation />
     </HeaderContainer>
   );

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function useMousePosition() {
+export const useMousePosition = () => {
   let [mousePosition, setMousePosition] = useState({ x: null, y: null });
 
   useEffect(() => {
@@ -13,4 +13,4 @@ export default function useMousePosition() {
   }, []);
 
   return mousePosition;
-}
+};

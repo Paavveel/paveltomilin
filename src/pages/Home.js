@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import styled from 'styled-components';
+import { media } from '../styles/GlobalStyles';
 
 const banner = {
   animate: {
@@ -21,6 +23,40 @@ const letterAni = {
   },
 };
 
+const StyledHome = styled(motion.div)`
+  z-index: 100;
+  position: relative;
+`;
+
+const BannerRow = styled.div`
+  overflow: hidden;
+`;
+
+const StyledH1 = styled.h1`
+  padding: 1rem;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: 0 auto;
+`;
+
+const StyledSpan = styled.span`
+  font-weight: 500;
+  font-size: 3rem;
+`;
+
+const StyledSpanName = styled.span`
+  font-weight: 800;
+  font-size: 6rem;
+  line-height: 1;
+  letter-spacing: 3px;
+  background: linear-gradient(-45deg, #23d5ab, #e73c7e, #23a6d5, #ee7752);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
 const Home = () => {
   const [playMarquee, setPlayMarquee] = useState(false);
 
@@ -30,38 +66,27 @@ const Home = () => {
     }, 2000);
   }, []);
   return (
-    <motion.div className='banner page-section' variants={banner}>
-      <BannerRowTop title={'brand'} />
+    <StyledHome variants={banner}>
+      <BannerRowTop title={'<Hello/>'} />
       <BannerRowCenter title={'experience'} playMarquee={playMarquee} />
       <BannerRowBottom title={'studio'} />
-    </motion.div>
+    </StyledHome>
   );
 };
 
-const AnimatedLetters = ({ title, disabled }) => (
-  <motion.span
-    className='row-title'
-    variants={disabled ? null : banner}
-    initial='initial'
-    animate='animate'
-  >
-    {[...title].map((letter) => (
-      <motion.span
-        className='row-letter'
-        variants={disabled ? null : letterAni}
-      >
-        {letter}
-      </motion.span>
-    ))}
-  </motion.span>
-);
-
 const BannerRowTop = ({ title }) => {
   return (
-    <div className={'banner-row'}>
-      <div className='row-col'>
+    <BannerRow>
+      <BannerRow>
         <AnimatedLetters title={title} />
-      </div>
+      </BannerRow>
+
+      <StyledH1>
+        <StyledSpan>I am </StyledSpan>
+        <StyledSpanName>Pavel Tomilin</StyledSpanName>
+        <StyledSpan>front-end developer</StyledSpan>
+      </StyledH1>
+
       <motion.div
         initial={{ opacity: 0, y: 80 }}
         animate={{ opacity: 1, y: 0 }}
@@ -70,14 +95,10 @@ const BannerRowTop = ({ title }) => {
           duration: 1,
           delay: 0.4,
         }}
-        className='row-col'
       >
-        <span className='row-message'>
-          We are specialised in setting up the foundation of your brand and
-          setting you up for success.
-        </span>
+        <span className='row-message'>focuses on the user.</span>
       </motion.div>
-    </div>
+    </BannerRow>
   );
 };
 
@@ -135,5 +156,27 @@ const BannerRowCenter = ({ title, playMarquee }) => {
     </div>
   );
 };
+
+const RowTitle = styled(motion.span)`
+  font-size: 4rem;
+  font-weight: 400;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  @media ${media.xsmall} {
+    font-size: 2rem;
+  }
+`;
+const AnimatedLetters = ({ title, disabled }) => (
+  <RowTitle
+    variants={disabled ? null : banner}
+    initial='initial'
+    animate='animate'
+  >
+    {[...title].map(letter => (
+      <RowTitle variants={disabled ? null : letterAni}>{letter}</RowTitle>
+    ))}
+  </RowTitle>
+);
 
 export default Home;

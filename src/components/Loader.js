@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import { color } from '../styles/GlobalStyles';
 
 const followVariant = {
   animate: {
@@ -36,7 +37,7 @@ const progressVariant = {
 const LoaderContainer = styled(motion.div)`
   height: 100vh;
   width: 100%;
-  background-color: #121212;
+  background-color: ${color.black};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,14 +45,14 @@ const LoaderContainer = styled(motion.div)`
 `;
 const LoaderFollow = styled(motion.div)`
   position: absolute;
-  background-color: peachpuff;
+  background-color: ${color.peachpuff};
   height: 2px;
   left: 0;
   z-index: 2;
 `;
 const LoaderSpread = styled(motion.div)`
   position: absolute;
-  background-color: peachpuff;
+  background-color: ${color.peachpuff};
   width: 100%;
   left: 0;
   z-index: 2;
