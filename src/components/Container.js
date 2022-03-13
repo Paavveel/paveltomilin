@@ -5,14 +5,13 @@ import styled from 'styled-components';
 const StyledContainer = styled.div`
   width: ${container.largeWidth};
   margin: 0 auto;
-  padding-top: 156px;
+  padding-top: 100px;
 
   @media ${media.medium} {
     width: ${container.mediumWidth};
   }
   @media ${media.small} {
     width: ${container.smallWidth};
-    padding-top: 72px;
   }
 `;
 

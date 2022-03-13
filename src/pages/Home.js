@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { media } from '../styles/GlobalStyles';
+import { media, container, color } from '../styles/GlobalStyles';
 
 const banner = {
   animate: {
@@ -24,7 +24,6 @@ const letterAni = {
 };
 
 const StyledHome = styled(motion.div)`
-  z-index: 100;
   position: relative;
 `;
 
@@ -39,11 +38,23 @@ const StyledH1 = styled.h1`
   flex-direction: column;
   width: 75%;
   margin: 0 auto;
+
+  :last-child {
+    color: ${color.peachpuff};
+  }
+
+  @media ${media.small} {
+    width: auto;
+  }
 `;
 
 const StyledSpan = styled.span`
   font-weight: 500;
   font-size: 3rem;
+
+  @media ${media.small} {
+    font-size: 2rem;
+  }
 `;
 
 const StyledSpanName = styled.span`
@@ -96,7 +107,7 @@ const BannerRowTop = ({ title }) => {
           delay: 0.4,
         }}
       >
-        <span className='row-message'>focuses on the user.</span>
+        <span className='row-message'>focused on the user & code.</span>
       </motion.div>
     </BannerRow>
   );
@@ -163,8 +174,9 @@ const RowTitle = styled(motion.span)`
   position: relative;
   display: inline-block;
   white-space: nowrap;
-  @media ${media.xsmall} {
-    font-size: 2rem;
+
+  @media ${media.small} {
+    font-size: 2.5rem;
   }
 `;
 const AnimatedLetters = ({ title, disabled }) => (
