@@ -13,10 +13,11 @@ import { useDarkMode } from '../hooks/useDarkMode';
 const Main = styled.main`
   position: relative;
   overflow: hidden;
+  height: 100vh;
 `;
 
-function Layout({ cursorHovered, setCursorHovered }) {
-  const [loading, setLoading] = useState(false);
+function Layout({ cursorHovered }) {
+  const [loading, setLoading] = useState(true);
   const [theme, toggleTheme] = useDarkMode();
 
   return (
@@ -27,13 +28,12 @@ function Layout({ cursorHovered, setCursorHovered }) {
           <Loader key='loader' setLoading={setLoading} />
         ) : (
           <>
-            <Header
-              toggleTheme={toggleTheme}
-              setCursorHovered={setCursorHovered}
-            />
+            <Header toggleTheme={toggleTheme} />
             <Main>
               <Container>
-                <Outlet />
+                <AnimatePresence exitBeforeEnter>
+                  <Outlet />
+                </AnimatePresence>
               </Container>
             </Main>
           </>

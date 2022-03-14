@@ -17,7 +17,7 @@ const Thunderbolt = styled(AiFillThunderbolt)`
   color: ${props => props.theme.text};
 `;
 
-function ThemeToggle({ toggleTheme, setCursorHovered }) {
+function ThemeToggle({ toggleTheme }) {
   return (
     <ThemeButton
       onClick={toggleTheme}
@@ -28,7 +28,7 @@ function ThemeToggle({ toggleTheme, setCursorHovered }) {
         transition: {
           ease: 'easeInOut',
           duration: 1,
-          delay: 0.6,
+          delay: 3,
         },
       }}
       whileHover={{
@@ -39,8 +39,6 @@ function ThemeToggle({ toggleTheme, setCursorHovered }) {
           ease: 'easeInOut',
         },
       }}
-      onMouseEnter={() => setCursorHovered(true)}
-      onMouseLeave={() => setCursorHovered(false)}
     >
       <IconContext.Provider value={{ size: '35px' }}>
         <Thunderbolt />

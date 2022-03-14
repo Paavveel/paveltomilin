@@ -5,13 +5,10 @@ import styled from 'styled-components';
 
 const HeaderContainer = styled.header``;
 
-const Header = ({ toggleTheme, setCursorHovered }) => {
+const Header = ({ toggleTheme }) => {
   return (
     <HeaderContainer>
-      <ThemeToggle
-        toggleTheme={toggleTheme}
-        setCursorHovered={setCursorHovered}
-      />
+      <ThemeToggle toggleTheme={toggleTheme} />
       <Navigation />
     </HeaderContainer>
   );

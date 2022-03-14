@@ -68,9 +68,9 @@ const Loader = ({ setLoading }) => {
   return (
     <LoaderContainer
       exit={{
-        opacity: 0,
+        x: '100vw',
         transition: {
-          // duration: 0.5,
+          duration: 0.5,
           ease: [0.6, -0.05, 0.01, 0.9],
         },
       }}
