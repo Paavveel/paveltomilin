@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { media, container, color } from '../styles/GlobalStyles';
-import { AnimatePresence } from 'framer-motion';
 
 const banner = {
   animate: {
@@ -30,6 +29,7 @@ const hello = {
       staggerChildren: 0.1,
     },
   },
+  transition: { delay: 2.4 },
 };
 const helloAni = {
   initial: { opacity: 0 },
@@ -49,11 +49,8 @@ const BannerRow = styled.div`
 `;
 
 const StyledH1 = styled(motion.h1)`
-  padding: 1rem;
-  padding-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  color: #c98371;
   position: absolute;
   left: -16%;
   top: 7rem;
@@ -65,10 +62,10 @@ const StyledSpanName = styled.span`
   font-size: 7rem;
   line-height: 1;
   letter-spacing: 3px;
-  background: linear-gradient(-45deg, #23d5ab, #e73c7e, #23a6d5, #ee7752);
+  /* background: linear-gradient(-45deg, #23d5ab, #e73c7e, #23a6d5, #ee7752);
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
 `;
 
 const StyledSpan = styled.span`
@@ -93,35 +90,50 @@ const BlinkedSpan = styled(motion.span)`
 
 const SquareDiv = styled(motion.div)`
   position: absolute;
-  background: ${props => props.theme.text};
+  background: linear-gradient(230deg, #ba39f7, #4992f8, #64c0d3);
   z-index: 9;
 `;
 
 const SquareVariant = {
-  initial: { width: 0, height: 0, right: 0, bottom: 0 },
+  initial: { width: '100%', height: '100%', left: 0, top: 0 },
   enter: {
     width: '60%',
     height: '55%',
-    right: 'unset',
-    bottom: 'unset',
-    left: '20%',
+    left: '30%',
     top: '20%',
-    scale: 0.8,
+
+    transition: {
+      ease: [0.6, 0.01, -0.05, 0.95],
+      duration: 1.2,
+      delay: 1,
+    },
   },
   exit: {
-    width: 0,
-    height: 0,
-    right: 0,
-    bottom: 0,
-    scale: 1.1,
-    // transition: {
-    //   ease: [0.6, 0.01, -0.05, 0.95],
-    //   duration: 1.2,
-    // },
+    x: '-150%',
+    transition: {
+      ease: [0.6, 0.01, -0.05, 0.95],
+      duration: 1,
+      delay: 0.6,
+    },
+  },
+};
+const H1Variant = {
+  initial: { opacity: 0 },
+  enter: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 0.5,
+      delay: 2.3,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: { ease: 'easeInOut', duration: 0.5 },
   },
 };
 
-const Home = ({ setCursorHovered }) => {
+const Home = () => {
   const [playMarquee, setPlayMarquee] = useState(false);
 
   useEffect(() => {
@@ -130,54 +142,32 @@ const Home = ({ setCursorHovered }) => {
     }, 2000);
   }, []);
   return (
-    <AnimatePresence>
-      <StyledHome key='home'>
-        <BannerRowTop title={'<Hello/>'} setCursorHovered={setCursorHovered} />
-        {/* <BannerRowCenter title={'experience'} playMarquee={playMarquee} /> */}
-        {/* <BannerRowBottom title={'studio'} /> */}
-        <SquareDiv
-          variants={SquareVariant}
+    <StyledHome>
+      <BannerRowTop title={'<Hello/>'} />
+      {/* <BannerRowCenter title={'experience'} playMarquee={playMarquee} /> */}
+      {/* <BannerRowBottom title={'studio'} /> */}
+      <SquareDiv
+        variants={SquareVariant}
+        initial='initial'
+        animate='enter'
+        exit='exit'
+      >
+        <StyledH1
+          variants={H1Variant}
           initial='initial'
           animate='enter'
           exit='exit'
-          // initial={{ width: 0, height: 0, right: 0, bottom: 0 }}
-          // animate={{
-          //   width: '60%',
-          //   height: '55%',
-          //   right: 'unset',
-          //   bottom: 'unset',
-          //   left: '20%',
-          //   top: '20%',
-          //   scale: 0.8,
-          // }}
-          transition={{
-            ease: [0.6, 0.01, -0.05, 0.95],
-            duration: 1.2,
-            delay: 1.1,
-          }}
-          onMouseEnter={() => setCursorHovered(true)}
-          onMouseLeave={() => setCursorHovered(false)}
         >
-          <StyledH1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              ease: 'easeInOut',
-              duration: 0.5,
-              delay: 2.2,
-            }}
-          >
-            <StyledSpan>I am </StyledSpan>
-            <StyledSpanName>Pavel Tomilin</StyledSpanName>
-            <StyledSpan>front-end developer</StyledSpan>
-          </StyledH1>
-        </SquareDiv>
-      </StyledHome>
-    </AnimatePresence>
+          <StyledSpan>I am </StyledSpan>
+          <StyledSpanName>Pavel Tomilin</StyledSpanName>
+          <StyledSpan>front-end developer</StyledSpan>
+        </StyledH1>
+      </SquareDiv>
+    </StyledHome>
   );
 };
 
-const BannerRowTop = ({ title, setCursorHovered }) => {
+const BannerRowTop = ({ title }) => {
   return (
     <BannerRow>
       <BannerRow>

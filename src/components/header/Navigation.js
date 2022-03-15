@@ -8,7 +8,7 @@ import { RiServiceLine } from 'react-icons/ri';
 import { color } from '../../styles/GlobalStyles';
 
 const Nav = styled(motion.nav)`
-  background: rgba(119, 44, 232, 0.5);
+  background: rgba(123, 47, 247, 0.5);
   width: max-content;
   padding: 0.7rem 1.7rem;
   z-index: 9999;
