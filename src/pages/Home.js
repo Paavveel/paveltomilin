@@ -114,10 +114,10 @@ const SquareVariant = {
     right: 0,
     bottom: 0,
     scale: 1.1,
-    transition: {
-      ease: [0.6, 0.01, -0.05, 0.95],
-      duration: 1.2,
-    },
+    // transition: {
+    //   ease: [0.6, 0.01, -0.05, 0.95],
+    //   duration: 1.2,
+    // },
   },
 };
 
@@ -130,48 +130,50 @@ const Home = ({ setCursorHovered }) => {
     }, 2000);
   }, []);
   return (
-    <StyledHome variants={banner}>
-      <BannerRowTop title={'<Hello/>'} setCursorHovered={setCursorHovered} />
-      {/* <BannerRowCenter title={'experience'} playMarquee={playMarquee} /> */}
-      {/* <BannerRowBottom title={'studio'} /> */}
-      <SquareDiv
-        // variants={SquareVariant}
-        // initial='initial'
-        // animate='enter'
-        // exit='exit'
-        initial={{ width: 0, height: 0, right: 0, bottom: 0 }}
-        animate={{
-          width: '60%',
-          height: '55%',
-          right: 'unset',
-          bottom: 'unset',
-          left: '20%',
-          top: '20%',
-          scale: 0.8,
-        }}
-        transition={{
-          ease: [0.6, 0.01, -0.05, 0.95],
-          duration: 1.2,
-          delay: 1.1,
-        }}
-        onMouseEnter={() => setCursorHovered(true)}
-        onMouseLeave={() => setCursorHovered(false)}
-      >
-        <StyledH1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+    <AnimatePresence>
+      <StyledHome key='home'>
+        <BannerRowTop title={'<Hello/>'} setCursorHovered={setCursorHovered} />
+        {/* <BannerRowCenter title={'experience'} playMarquee={playMarquee} /> */}
+        {/* <BannerRowBottom title={'studio'} /> */}
+        <SquareDiv
+          variants={SquareVariant}
+          initial='initial'
+          animate='enter'
+          exit='exit'
+          // initial={{ width: 0, height: 0, right: 0, bottom: 0 }}
+          // animate={{
+          //   width: '60%',
+          //   height: '55%',
+          //   right: 'unset',
+          //   bottom: 'unset',
+          //   left: '20%',
+          //   top: '20%',
+          //   scale: 0.8,
+          // }}
           transition={{
-            ease: 'easeInOut',
-            duration: 0.5,
-            delay: 2.2,
+            ease: [0.6, 0.01, -0.05, 0.95],
+            duration: 1.2,
+            delay: 1.1,
           }}
+          onMouseEnter={() => setCursorHovered(true)}
+          onMouseLeave={() => setCursorHovered(false)}
         >
-          <StyledSpan>I am </StyledSpan>
-          <StyledSpanName>Pavel Tomilin</StyledSpanName>
-          <StyledSpan>front-end developer</StyledSpan>
-        </StyledH1>
-      </SquareDiv>
-    </StyledHome>
+          <StyledH1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              ease: 'easeInOut',
+              duration: 0.5,
+              delay: 2.2,
+            }}
+          >
+            <StyledSpan>I am </StyledSpan>
+            <StyledSpanName>Pavel Tomilin</StyledSpanName>
+            <StyledSpan>front-end developer</StyledSpan>
+          </StyledH1>
+        </SquareDiv>
+      </StyledHome>
+    </AnimatePresence>
   );
 };
 

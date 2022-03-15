@@ -17,7 +17,7 @@ const Main = styled.main`
 `;
 
 function Layout({ cursorHovered }) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [theme, toggleTheme] = useDarkMode();
 
   return (
@@ -31,9 +31,7 @@ function Layout({ cursorHovered }) {
             <Header toggleTheme={toggleTheme} />
             <Main>
               <Container>
-                <AnimatePresence exitBeforeEnter>
-                  <Outlet />
-                </AnimatePresence>
+                <Outlet />
               </Container>
             </Main>
           </>

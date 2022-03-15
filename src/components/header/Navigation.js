@@ -46,7 +46,7 @@ function Navigation() {
       transition={{
         ease: 'easeInOut',
         duration: 1,
-        delay: 3,
+        delay: 2,
       }}
     >
       <NavLink to='/'>

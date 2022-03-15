@@ -28,7 +28,7 @@ function ThemeToggle({ toggleTheme }) {
         transition: {
           ease: 'easeInOut',
           duration: 1,
-          delay: 3,
+          delay: 2,
         },
       }}
       whileHover={{

@@ -25,11 +25,8 @@ function App() {
           />
         }
       >
-        <Route
-          index
-          element={<Home key='home' setCursorHovered={setCursorHovered} />}
-        />
-        <Route path='about' element={<About key='about' />} />
+        <Route index element={<Home setCursorHovered={setCursorHovered} />} />
+        <Route path='about' element={<About />} />
         <Route path='work' element={<Work />} />
         <Route path='services' element={<Work />} />
         <Route path='contact' element={<Contact />} />
