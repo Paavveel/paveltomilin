@@ -2,7 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 export const color = {
   white: '#fff',
-  black: '#121212',
+  black: '#000',
+  // black: '#121212',
   grey: '#f7f7f8',
   peachpuff: '#ffdab9',
 };

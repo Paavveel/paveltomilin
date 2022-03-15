@@ -12,6 +12,7 @@ const StyledContainer = styled.div`
   }
   @media ${media.small} {
     width: ${container.smallWidth};
+    padding-top: 85px;
   }
 `;
 

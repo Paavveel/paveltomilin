@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { media, container, color } from '../styles/GlobalStyles';
+import Social from '../components/Social';
 
 const banner = {
   animate: {
@@ -29,7 +30,6 @@ const hello = {
       staggerChildren: 0.1,
     },
   },
-  transition: { delay: 2.4 },
 };
 const helloAni = {
   initial: { opacity: 0 },
@@ -49,31 +49,31 @@ const BannerRow = styled.div`
 `;
 
 const StyledH1 = styled(motion.h1)`
+  font-weight: 800;
+  line-height: 0.9;
+  text-transform: uppercase;
   display: flex;
   flex-direction: column;
   position: absolute;
   left: -16%;
-  top: 7rem;
+  top: 50%;
   z-index: 10;
 `;
 
 const StyledSpanName = styled.span`
-  font-weight: 800;
-  font-size: 7rem;
-  line-height: 1;
-  letter-spacing: 3px;
-  /* background: linear-gradient(-45deg, #23d5ab, #e73c7e, #23a6d5, #ee7752);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
+  font-size: 4rem;
+  letter-spacing: 7px;
+
+  @media ${media.xsmall} {
+    font-size: 3rem;
+  }
 `;
 
 const StyledSpan = styled.span`
-  font-weight: 500;
-  font-size: 4rem;
+  font-size: 2rem;
 
-  @media ${media.small} {
-    font-size: 3rem;
+  @media ${media.xsmall} {
+    font-size: 1.5rem;
   }
 `;
 
@@ -105,7 +105,7 @@ const SquareVariant = {
     transition: {
       ease: [0.6, 0.01, -0.05, 0.95],
       duration: 1.2,
-      delay: 1,
+      delay: 0.5,
     },
   },
   exit: {
@@ -118,13 +118,13 @@ const SquareVariant = {
   },
 };
 const H1Variant = {
-  initial: { opacity: 0 },
+  initial: { opacity: 0, y: '-50%' },
   enter: {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
       duration: 0.5,
-      delay: 2.3,
+      delay: 2,
     },
   },
   exit: {
@@ -143,7 +143,7 @@ const Home = () => {
   }, []);
   return (
     <StyledHome>
-      <BannerRowTop title={'<Hello/>'} />
+      {/* <BannerRowTop title={'<Hello/>'} /> */}
       {/* <BannerRowCenter title={'experience'} playMarquee={playMarquee} /> */}
       {/* <BannerRowBottom title={'studio'} /> */}
       <SquareDiv
@@ -158,11 +158,13 @@ const Home = () => {
           animate='enter'
           exit='exit'
         >
-          <StyledSpan>I am </StyledSpan>
-          <StyledSpanName>Pavel Tomilin</StyledSpanName>
-          <StyledSpan>front-end developer</StyledSpan>
+          <StyledSpanName>Pavel</StyledSpanName>
+          <StyledSpanName>Tomilin</StyledSpanName>
+          <StyledSpan>frontend</StyledSpan>
+          <StyledSpan>developer</StyledSpan>
         </StyledH1>
       </SquareDiv>
+      <Social />
     </StyledHome>
   );
 };
@@ -170,36 +172,22 @@ const Home = () => {
 const BannerRowTop = ({ title }) => {
   return (
     <BannerRow>
-      <BannerRow>
-        <HelloLetters title={title} />
-        <BlinkedSpan
-          initial={{
-            opacity: 0,
-          }}
-          animate={{ opacity: 1 }}
-          transition={{
-            repeat: Infinity,
-            repeatType: 'mirror',
-            repeatDelay: 0.5,
-            ease: [0.6, 0.01, -0.05, 0.95],
-            delay: 1.2,
-          }}
-        >
-          |
-        </BlinkedSpan>
-      </BannerRow>
-
-      {/* <motion.div
-        initial={{ opacity: 0, y: 80 }}
-        animate={{ opacity: 1, y: 0 }}
+      <HelloLetters title={title} />
+      <BlinkedSpan
+        initial={{
+          opacity: 0,
+        }}
+        animate={{ opacity: 1 }}
         transition={{
-          ease: 'easeInOut',
-          duration: 1,
-          delay: 0.4,
+          repeat: Infinity,
+          repeatType: 'mirror',
+          repeatDelay: 0.5,
+          ease: [0.6, 0.01, -0.05, 0.95],
+          delay: 1.2,
         }}
       >
-        <span className='row-message'>focused on the user & code.</span>
-      </motion.div> */}
+        |
+      </BlinkedSpan>
     </BannerRow>
   );
 };
@@ -276,8 +264,10 @@ const HelloLetters = ({ title, disabled }) => (
     initial='initial'
     animate='animate'
   >
-    {[...title].map(letter => (
-      <RowTitle variants={disabled ? null : helloAni}>{letter}</RowTitle>
+    {[...title].map((letter, i) => (
+      <RowTitle key={i} variants={disabled ? null : helloAni}>
+        {letter}
+      </RowTitle>
     ))}
   </RowTitle>
 );
@@ -288,8 +278,10 @@ const AnimatedLetters = ({ title, disabled }) => (
     initial='initial'
     animate='animate'
   >
-    {[...title].map(letter => (
-      <RowTitle variants={disabled ? null : letterAni}>{letter}</RowTitle>
+    {[...title].map((letter, i) => (
+      <RowTitle key={i} variants={disabled ? null : letterAni}>
+        {letter}
+      </RowTitle>
     ))}
   </RowTitle>
 );
