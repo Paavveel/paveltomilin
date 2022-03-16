@@ -1,17 +1,17 @@
 import React from 'react';
-import { media, container } from '../styles/GlobalStyles';
+import { media } from '../styles/GlobalStyles';
 import styled from 'styled-components';
 
 const StyledContainer = styled.div`
-  width: ${container.largeWidth};
+  width: 75%;
   margin: 0 auto;
   padding-top: 100px;
 
   @media ${media.medium} {
-    width: ${container.mediumWidth};
+    width: 86%;
   }
   @media ${media.small} {
-    width: ${container.smallWidth};
+    width: 90%;
     padding-top: 85px;
   }
 `;

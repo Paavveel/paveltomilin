@@ -5,7 +5,6 @@ import './sass/main.scss';
 
 // Components
 import Header from './components/header/Header';
-import Cursor from './components/Cursor';
 import Work from './pages/Work';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -39,7 +38,6 @@ function App() {
             <Route path='*' element={<NotFound />} />
           </Routes>
         </AnimatePresence>
-        {/* <Cursor cursorHovered={cursorHovered} /> */}
       </ThemeProvider>
     </>
   );

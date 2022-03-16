@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useMousePosition } from '../hooks/useMousePosition';
 import styled from 'styled-components';
-import { color } from '../styles/GlobalStyles';
 
 const StyledCursor = styled(motion.div)`
   position: absolute;
@@ -10,7 +9,7 @@ const StyledCursor = styled(motion.div)`
   width: 32px;
   top: 0;
   left: 0;
-  background: ${color.peachpuff};
+  background: var(--grey);
   border-radius: 100%;
   pointer-events: none;
   z-index: 999;

@@ -6,14 +6,12 @@ import { IconContext } from 'react-icons';
 
 const ThemeButton = styled(motion.button)`
   position: absolute;
-  display: flex;
-  padding: 0.2rem;
   right: 2rem;
   top: 2rem;
   border: none;
   background: transparent;
   cursor: pointer;
-  z-index: 10;
+  z-index: 9999;
 `;
 const Thunderbolt = styled(AiFillThunderbolt)`
   color: ${props => props.theme.text};

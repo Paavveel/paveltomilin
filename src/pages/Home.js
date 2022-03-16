@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { media, container, color } from '../styles/GlobalStyles';
+import { media } from '../styles/GlobalStyles';
 import Social from '../components/Social';
+import Type from '../components/Type';
 
 const banner = {
   animate: {
@@ -26,7 +27,7 @@ const letterAni = {
 const hello = {
   animate: {
     transition: {
-      delayChildren: 0.2,
+      delayChildren: 3.5,
       staggerChildren: 0.1,
     },
   },
@@ -61,17 +62,29 @@ const StyledH1 = styled(motion.h1)`
 `;
 
 const StyledSpanName = styled.span`
-  font-size: 4rem;
-  letter-spacing: 7px;
+  font-size: 5.5rem;
+  letter-spacing: 3px;
 
+  @media ${media.medium} {
+    font-size: 5rem;
+  }
+  @media ${media.small} {
+    font-size: 4rem;
+  }
   @media ${media.xsmall} {
     font-size: 3rem;
   }
 `;
 
 const StyledSpan = styled.span`
-  font-size: 2rem;
+  font-size: 3rem;
 
+  @media ${media.medium} {
+    font-size: 2.5rem;
+  }
+  @media ${media.small} {
+    font-size: 2rem;
+  }
   @media ${media.xsmall} {
     font-size: 1.5rem;
   }
@@ -97,10 +110,10 @@ const SquareDiv = styled(motion.div)`
 const SquareVariant = {
   initial: { width: '100%', height: '100%', left: 0, top: 0 },
   enter: {
-    width: '60%',
-    height: '55%',
+    width: '55%',
+    height: '52%',
     left: '30%',
-    top: '20%',
+    top: '18%',
 
     transition: {
       ease: [0.6, 0.01, -0.05, 0.95],
@@ -109,7 +122,7 @@ const SquareVariant = {
     },
   },
   exit: {
-    x: '-150%',
+    x: '-160%',
     transition: {
       ease: [0.6, 0.01, -0.05, 0.95],
       duration: 1,
@@ -143,7 +156,7 @@ const Home = () => {
   }, []);
   return (
     <StyledHome>
-      {/* <BannerRowTop title={'<Hello/>'} /> */}
+      <Type />
       {/* <BannerRowCenter title={'experience'} playMarquee={playMarquee} /> */}
       {/* <BannerRowBottom title={'studio'} /> */}
       <SquareDiv
@@ -152,12 +165,7 @@ const Home = () => {
         animate='enter'
         exit='exit'
       >
-        <StyledH1
-          variants={H1Variant}
-          initial='initial'
-          animate='enter'
-          exit='exit'
-        >
+        <StyledH1 variants={H1Variant}>
           <StyledSpanName>Pavel</StyledSpanName>
           <StyledSpanName>Tomilin</StyledSpanName>
           <StyledSpan>frontend</StyledSpan>
@@ -183,7 +191,7 @@ const BannerRowTop = ({ title }) => {
           repeatType: 'mirror',
           repeatDelay: 0.5,
           ease: [0.6, 0.01, -0.05, 0.95],
-          delay: 1.2,
+          delay: 5,
         }}
       >
         |

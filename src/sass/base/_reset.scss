@@ -66,53 +66,10 @@ video {
   text-size-adjust: none;
 }
 
-img {
-  display: block;
-  width: 100%;
-}
-
 footer,
 header,
 nav,
 section,
 main {
   display: block;
-}
-
-body {
-  overscroll-behavior: none;
-  user-select: none;
-  overflow-x: hidden;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-ol,
-ul {
-  list-style: none;
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-input {
-  -webkit-appearance: none;
-  border-radius: 0;
 }
