@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { media } from '../styles/GlobalStyles';
 import Social from '../components/Social';
 import Type from '../components/Type';
+import Tilt from 'react-parallax-tilt';
 
 const banner = {
   animate: {
@@ -57,47 +58,37 @@ const StyledH1 = styled(motion.h1)`
   flex-direction: column;
   position: absolute;
   left: -16%;
-  top: 50%;
+  top: 25%;
   z-index: 10;
+  transform: translateZ(60px);
 `;
 
 const StyledSpanName = styled.span`
-  font-size: 5.5rem;
+  font-size: 5rem;
   letter-spacing: 3px;
 
   @media ${media.medium} {
-    font-size: 5rem;
+    font-size: 4.5rem;
   }
   @media ${media.small} {
-    font-size: 4rem;
+    font-size: 3rem;
   }
   @media ${media.xsmall} {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 `;
 
 const StyledSpan = styled.span`
-  font-size: 3rem;
+  font-size: 2.5rem;
 
   @media ${media.medium} {
-    font-size: 2.5rem;
-  }
-  @media ${media.small} {
     font-size: 2rem;
   }
-  @media ${media.xsmall} {
+  @media ${media.small} {
     font-size: 1.5rem;
   }
-`;
-
-const BlinkedSpan = styled(motion.span)`
-  font-size: 4rem;
-  font-weight: 400;
-  display: inline-block;
-  white-space: nowrap;
-
-  @media ${media.small} {
-    font-size: 2.5rem;
+  @media ${media.xsmall} {
+    font-size: 1rem;
   }
 `;
 
@@ -105,6 +96,15 @@ const SquareDiv = styled(motion.div)`
   position: absolute;
   background: linear-gradient(230deg, #ba39f7, #4992f8, #64c0d3);
   z-index: 9;
+  transform-style: preserve-3d;
+`;
+const StyledTilt = styled(Tilt)`
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  transform-style: preserve-3d;
 `;
 
 const SquareVariant = {
@@ -131,7 +131,7 @@ const SquareVariant = {
   },
 };
 const H1Variant = {
-  initial: { opacity: 0, y: '-50%' },
+  initial: { opacity: 0 },
   enter: {
     opacity: 1,
     transition: {
@@ -148,6 +148,7 @@ const H1Variant = {
 
 const Home = () => {
   const [playMarquee, setPlayMarquee] = useState(false);
+  const [playTilt, setPlayTilt] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -156,22 +157,33 @@ const Home = () => {
   }, []);
   return (
     <StyledHome>
-      <Type />
+      {/* <Type /> */}
       {/* <BannerRowCenter title={'experience'} playMarquee={playMarquee} /> */}
       {/* <BannerRowBottom title={'studio'} /> */}
-      <SquareDiv
-        variants={SquareVariant}
-        initial='initial'
-        animate='enter'
-        exit='exit'
+      <StyledTilt
+        tiltEnable={playTilt}
+        trackOnWindow
+        tiltReverse
+        tiltMaxAngleX={11}
+        tiltMaxAngleY={11}
+        perspective={800}
       >
-        <StyledH1 variants={H1Variant}>
-          <StyledSpanName>Pavel</StyledSpanName>
-          <StyledSpanName>Tomilin</StyledSpanName>
-          <StyledSpan>frontend</StyledSpan>
-          <StyledSpan>developer</StyledSpan>
-        </StyledH1>
-      </SquareDiv>
+        <SquareDiv
+          variants={SquareVariant}
+          initial='initial'
+          animate='enter'
+          exit='exit'
+          onAnimationComplete={() => setPlayTilt(true)}
+        >
+          <StyledH1 variants={H1Variant}>
+            <StyledSpanName>Pavel</StyledSpanName>
+            <StyledSpanName>Tomilin</StyledSpanName>
+            <StyledSpan>frontend</StyledSpan>
+            <StyledSpan>developer</StyledSpan>
+          </StyledH1>
+        </SquareDiv>
+      </StyledTilt>
+
       <Social />
     </StyledHome>
   );
@@ -181,21 +193,6 @@ const BannerRowTop = ({ title }) => {
   return (
     <BannerRow>
       <HelloLetters title={title} />
-      <BlinkedSpan
-        initial={{
-          opacity: 0,
-        }}
-        animate={{ opacity: 1 }}
-        transition={{
-          repeat: Infinity,
-          repeatType: 'mirror',
-          repeatDelay: 0.5,
-          ease: [0.6, 0.01, -0.05, 0.95],
-          delay: 5,
-        }}
-      >
-        |
-      </BlinkedSpan>
     </BannerRow>
   );
 };

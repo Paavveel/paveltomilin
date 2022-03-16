@@ -13,9 +13,7 @@ function Layout() {
   return (
     <>
       <Main>
-        <Container>
-          <Outlet />
-        </Container>
+        <Outlet />
       </Main>
     </>
   );

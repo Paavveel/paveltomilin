@@ -5,7 +5,7 @@ const Type = () => {
   return (
     <Typewriter
       options={{
-        strings: ['Front End Web Developer', 'Engineer', 'Quick Learner'],
+        strings: ['<Hello/>', 'Engineer', 'Quick Learner'],
         autoStart: true,
         loop: true,
         deleteSpeed: 50,
