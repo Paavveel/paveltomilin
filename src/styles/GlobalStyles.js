@@ -25,9 +25,23 @@ export const GlobalStyle = createGlobalStyle`
   --gray: #f7f7f8;
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 html {
-   line-height: 1.7;
-   scroll-behavior: smooth;
+  font-size: 16px;
+  line-height: 1.7;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-rendering: optimizeLegibility;
+   -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+  user-select: none;
 }
 
 body {
@@ -36,9 +50,17 @@ body {
       sans-serif;
   color: ${props => props.theme.text};
   background: ${props => props.theme.background};
-  overscroll-behavior: none;
-  user-select: none;
-  overflow-x: hidden;
+
+}
+
+body, html {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+body::-webkit-scrollbar, html::-webkit-scrollbar {
+    display: none;
 }
 
 h1,

@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { media } from '../styles/GlobalStyles';
 import Social from '../components/Social';
-import Type from '../components/Type';
 import Tilt from 'react-parallax-tilt';
+import video from '../assets/video.mp4';
 
 const banner = {
   animate: {
@@ -57,38 +57,38 @@ const StyledH1 = styled(motion.h1)`
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: -16%;
+  left: -12%;
   top: 25%;
   z-index: 10;
-  transform: translateZ(60px);
+  transform: translateZ(100px);
 `;
 
 const StyledSpanName = styled.span`
-  font-size: 5rem;
+  font-size: 4.5rem;
   letter-spacing: 3px;
 
   @media ${media.medium} {
-    font-size: 4.5rem;
+    font-size: 4rem;
   }
   @media ${media.small} {
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
   @media ${media.xsmall} {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 `;
 
 const StyledSpan = styled.span`
-  font-size: 2.5rem;
+  font-size: 3rem;
 
   @media ${media.medium} {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   @media ${media.small} {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
   @media ${media.xsmall} {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -99,11 +99,8 @@ const SquareDiv = styled(motion.div)`
   transform-style: preserve-3d;
 `;
 const StyledTilt = styled(Tilt)`
-  position: absolute;
   height: 100vh;
   width: 100vw;
-  left: 0;
-  top: 0;
   transform-style: preserve-3d;
 `;
 
@@ -164,15 +161,15 @@ const Home = () => {
         tiltEnable={playTilt}
         trackOnWindow
         tiltReverse
-        tiltMaxAngleX={11}
-        tiltMaxAngleY={11}
-        perspective={800}
+        tiltMaxAngleX={7}
+        tiltMaxAngleY={7}
+        perspective={700}
       >
         <SquareDiv
           variants={SquareVariant}
           initial='initial'
           animate='enter'
-          exit='exit'
+          // exit='exit'
           onAnimationComplete={() => setPlayTilt(true)}
         >
           <StyledH1 variants={H1Variant}>
@@ -181,6 +178,9 @@ const Home = () => {
             <StyledSpan>frontend</StyledSpan>
             <StyledSpan>developer</StyledSpan>
           </StyledH1>
+          <video autoPlay loop muted style={{ width: '100%', height: '100%' }}>
+            <source src={video} type='video/mp4' />
+          </video>
         </SquareDiv>
       </StyledTilt>
 
