@@ -1,56 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import styled from 'styled-components';
 import { media } from '../styles/GlobalStyles';
 import Social from '../components/Social';
 import Tilt from 'react-parallax-tilt';
 import video from '../assets/video.mp4';
-
-const banner = {
-  animate: {
-    transition: {
-      delayChildren: 0.4,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const letterAni = {
-  initial: { y: 400 },
-  animate: {
-    y: 0,
-    transition: {
-      ease: [0.6, 0.01, -0.05, 0.95],
-      duration: 1,
-    },
-  },
-};
-const hello = {
-  animate: {
-    transition: {
-      delayChildren: 3.5,
-      staggerChildren: 0.1,
-    },
-  },
-};
-const helloAni = {
-  initial: { opacity: 0 },
-  animate: {
-    opacity: 1,
-    transition: {
-      ease: [0.6, 0.01, -0.05, 0.95],
-    },
-  },
-};
+import video2 from '../assets/pexels.mp4';
 
 const StyledHome = styled(motion.div)``;
 
-const BannerRow = styled.div`
-  overflow: hidden;
-  z-index: 10;
+const StyledSection = styled(motion.section)`
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
 `;
 
-const StyledH1 = styled(motion.h1)`
+const StyledTilt = styled(Tilt)`
+  height: 100vh;
+  width: 100vw;
+  transform-style: preserve-3d;
+`;
+
+const StyledSquare = styled(motion.div)`
+  position: absolute;
+  background: linear-gradient(230deg, #ba39f7, #4992f8, #64c0d3);
+  z-index: 9;
+  transform-style: preserve-3d;
+`;
+
+const StyledTitle = styled(motion.h1)`
   font-weight: 800;
   line-height: 0.9;
   text-transform: uppercase;
@@ -63,7 +41,7 @@ const StyledH1 = styled(motion.h1)`
   transform: translateZ(100px);
 `;
 
-const StyledSpanName = styled.span`
+const StyledName = styled.span`
   font-size: 4.5rem;
   letter-spacing: 3px;
 
@@ -91,26 +69,19 @@ const StyledSpan = styled.span`
     font-size: 1.5rem;
   }
 `;
-
-const SquareDiv = styled(motion.div)`
-  position: absolute;
-  background: linear-gradient(230deg, #ba39f7, #4992f8, #64c0d3);
-  z-index: 9;
-  transform-style: preserve-3d;
-`;
-const StyledTilt = styled(Tilt)`
-  height: 100vh;
-  width: 100vw;
-  transform-style: preserve-3d;
+const StyledVideo = styled(motion.video)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
-const SquareVariant = {
+const squareVariants = {
   initial: { width: '100%', height: '100%', left: 0, top: 0 },
   enter: {
     width: '55%',
     height: '52%',
-    left: '30%',
-    top: '18%',
+    left: '26%',
+    top: '21%',
 
     transition: {
       ease: [0.6, 0.01, -0.05, 0.95],
@@ -127,7 +98,7 @@ const SquareVariant = {
     },
   },
 };
-const H1Variant = {
+const titleVariants = {
   initial: { opacity: 0 },
   enter: {
     opacity: 1,
@@ -142,10 +113,22 @@ const H1Variant = {
     transition: { ease: 'easeInOut', duration: 0.5 },
   },
 };
+const videoVariats = {
+  initial: { opacity: 0 },
+  enter: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1,
+      delay: 0.3,
+    },
+  },
+};
 
 const Home = () => {
   const [playMarquee, setPlayMarquee] = useState(false);
   const [playTilt, setPlayTilt] = useState(false);
+  const controls = useAnimation();
 
   useEffect(() => {
     setTimeout(() => {
@@ -154,46 +137,98 @@ const Home = () => {
   }, []);
   return (
     <StyledHome>
-      {/* <Type /> */}
+      <StyledSection>
+        <StyledTilt
+          tiltEnable={playTilt}
+          trackOnWindow
+          tiltReverse
+          tiltMaxAngleX={7}
+          tiltMaxAngleY={7}
+          perspective={700}
+        >
+          <StyledSquare
+            variants={squareVariants}
+            initial='initial'
+            animate='enter'
+            onAnimationComplete={() => {
+              setPlayTilt(true);
+              controls.start('enter');
+            }}
+          >
+            <StyledTitle variants={titleVariants}>
+              <StyledName>Pavel</StyledName>
+              <StyledName>Tomilin</StyledName>
+              <StyledSpan>frontend</StyledSpan>
+              <StyledSpan>developer</StyledSpan>
+            </StyledTitle>
+            <StyledVideo
+              autoPlay
+              loop
+              muted
+              variants={videoVariats}
+              initial='initial'
+              animate={controls}
+            >
+              <source src={video} type='video/mp4' />
+            </StyledVideo>
+          </StyledSquare>
+        </StyledTilt>
+
+        <Social />
+      </StyledSection>
+      <StyledSection>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam aperiam
+        similique soluta aspernatur non corporis, quae odit! Tempora
+        necessitatibus quos, expedita rerum quidem tempore harum ducimus
+        architecto. Aliquam officiis suscipit nisi, accusantium exercitationem,
+        veritatis voluptatum assumenda saepe et animi ex impedit eveniet
+        repellendus neque totam sapiente non. Tenetur iusto harum mollitia
+        consectetur, inventore a et eligendi ab aut necessitatibus asperiores ea
+        incidunt, sapiente minus quis autem atque dolorem at laboriosam?
+        Nesciunt ipsum atque vel deserunt nihil doloribus eum molestiae, sit
+        commodi facilis laboriosam expedita voluptatum error qui inventore
+        adipisci perferendis. Natus eum culpa quo ut error veritatis quos est.
+        Deserunt magni, quidem accusantium esse dignissimos voluptates sit saepe
+        eligendi, molestiae nesciunt fuga odio at nemo ipsam eveniet blanditiis
+        ea. Quidem nesciunt tenetur hic excepturi maxime nulla corrupti iure.
+        Molestiae at fugit quasi incidunt commodi nihil culpa voluptas eos,
+        consequatur placeat magni inventore corporis dolores nemo? Quos veniam
+        necessitatibus autem iste mollitia repellendus architecto impedit fugiat
+        saepe error asperiores enim, consequuntur molestiae voluptates! Eveniet
+        minus incidunt ad, voluptatem commodi architecto odit ipsum possimus
+        adipisci soluta neque esse corrupti alias laboriosam, praesentium earum
+        nobis voluptate natus suscipit deserunt voluptas ullam. Illum nostrum
+        eligendi error sed quidem, ipsam eveniet ducimus accusamus minima
+        cupiditate.
+      </StyledSection>
+      <StyledSection>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam aperiam
+        similique soluta aspernatur non corporis, quae odit! Tempora
+        necessitatibus quos, expedita rerum quidem tempore harum ducimus
+        architecto. Aliquam officiis suscipit nisi, accusantium exercitationem,
+        veritatis voluptatum assumenda saepe et animi ex impedit eveniet
+        repellendus neque totam sapiente non. Tenetur iusto harum mollitia
+        consectetur, inventore a et eligendi ab aut necessitatibus asperiores ea
+        incidunt, sapiente minus quis autem atque dolorem at laboriosam?
+        Nesciunt ipsum atque vel deserunt nihil doloribus eum molestiae, sit
+        commodi facilis laboriosam expedita voluptatum error qui inventore
+        adipisci perferendis. Natus eum culpa quo ut error veritatis quos est.
+        Deserunt magni, quidem accusantium esse dignissimos voluptates sit saepe
+        eligendi, molestiae nesciunt fuga odio at nemo ipsam eveniet blanditiis
+        ea. Quidem nesciunt tenetur hic excepturi maxime nulla corrupti iure.
+        Molestiae at fugit quasi incidunt commodi nihil culpa voluptas eos,
+        consequatur placeat magni inventore corporis dolores nemo? Quos veniam
+        necessitatibus autem iste mollitia repellendus architecto impedit fugiat
+        saepe error asperiores enim, consequuntur molestiae voluptates! Eveniet
+        minus incidunt ad, voluptatem commodi architecto odit ipsum possimus
+        adipisci soluta neque esse corrupti alias laboriosam, praesentium earum
+        nobis voluptate natus suscipit deserunt voluptas ullam. Illum nostrum
+        eligendi error sed quidem, ipsam eveniet ducimus accusamus minima
+        cupiditate.
+      </StyledSection>
       {/* <BannerRowCenter title={'experience'} playMarquee={playMarquee} /> */}
       {/* <BannerRowBottom title={'studio'} /> */}
-      <StyledTilt
-        tiltEnable={playTilt}
-        trackOnWindow
-        tiltReverse
-        tiltMaxAngleX={7}
-        tiltMaxAngleY={7}
-        perspective={700}
-      >
-        <SquareDiv
-          variants={SquareVariant}
-          initial='initial'
-          animate='enter'
-          // exit='exit'
-          onAnimationComplete={() => setPlayTilt(true)}
-        >
-          <StyledH1 variants={H1Variant}>
-            <StyledSpanName>Pavel</StyledSpanName>
-            <StyledSpanName>Tomilin</StyledSpanName>
-            <StyledSpan>frontend</StyledSpan>
-            <StyledSpan>developer</StyledSpan>
-          </StyledH1>
-          <video autoPlay loop muted style={{ width: '100%', height: '100%' }}>
-            <source src={video} type='video/mp4' />
-          </video>
-        </SquareDiv>
-      </StyledTilt>
-
-      <Social />
     </StyledHome>
-  );
-};
-
-const BannerRowTop = ({ title }) => {
-  return (
-    <BannerRow>
-      <HelloLetters title={title} />
-    </BannerRow>
   );
 };
 
@@ -252,6 +287,26 @@ const BannerRowCenter = ({ title, playMarquee }) => {
   );
 };
 
+const banner = {
+  animate: {
+    transition: {
+      delayChildren: 0.4,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const letterAni = {
+  initial: { y: 400 },
+  animate: {
+    y: 0,
+    transition: {
+      ease: [0.6, 0.01, -0.05, 0.95],
+      duration: 1,
+    },
+  },
+};
+
 const RowTitle = styled(motion.span)`
   font-size: 4rem;
   font-weight: 400;
@@ -263,19 +318,6 @@ const RowTitle = styled(motion.span)`
     font-size: 2.5rem;
   }
 `;
-const HelloLetters = ({ title, disabled }) => (
-  <RowTitle
-    variants={disabled ? null : hello}
-    initial='initial'
-    animate='animate'
-  >
-    {[...title].map((letter, i) => (
-      <RowTitle key={i} variants={disabled ? null : helloAni}>
-        {letter}
-      </RowTitle>
-    ))}
-  </RowTitle>
-);
 
 const AnimatedLetters = ({ title, disabled }) => (
   <RowTitle

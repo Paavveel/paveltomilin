@@ -5,7 +5,6 @@ import styled from 'styled-components';
 const Main = styled.main`
   position: relative;
   overflow: hidden;
-  height: 100vh;
 `;
 
 function Layout() {

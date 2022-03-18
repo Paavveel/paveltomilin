@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { media } from '../../styles/GlobalStyles';
 import styled from 'styled-components';
 import { AiFillThunderbolt } from 'react-icons/ai';
-import { IconContext } from 'react-icons';
 
 const ThemeButton = styled(motion.button)`
   position: absolute;
@@ -14,19 +14,22 @@ const ThemeButton = styled(motion.button)`
   background: transparent;
   cursor: pointer;
   z-index: 10;
-`;
-const Thunderbolt = styled(AiFillThunderbolt)`
+  font-size: 2.3rem;
   color: ${props => props.theme.text};
+
+  @media ${media.small} {
+    font-size: 2rem;
+  }
 `;
 
 function ThemeToggle({ toggleTheme }) {
   return (
     <ThemeButton
       onClick={toggleTheme}
-      initial={{ opacity: 0, y: -180 }}
+      initial={{ opacity: 0, x: 180 }}
       animate={{
         opacity: 1,
-        y: 0,
+        x: 0,
         transition: {
           ease: 'easeInOut',
           duration: 1,
@@ -34,6 +37,7 @@ function ThemeToggle({ toggleTheme }) {
         },
       }}
       whileHover={{
+        scale: 1.1,
         rotate: 360,
         transition: {
           type: 'spring',
@@ -41,10 +45,9 @@ function ThemeToggle({ toggleTheme }) {
           ease: 'easeInOut',
         },
       }}
+      whileTap={{ scale: 0.9 }}
     >
-      <IconContext.Provider value={{ size: '35px' }}>
-        <Thunderbolt />
-      </IconContext.Provider>
+      <AiFillThunderbolt />
     </ThemeButton>
   );
 }

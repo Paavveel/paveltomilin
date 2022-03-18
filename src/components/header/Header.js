@@ -8,8 +8,8 @@ const HeaderContainer = styled.header``;
 const Header = ({ toggleTheme }) => {
   return (
     <HeaderContainer>
-      <ThemeToggle toggleTheme={toggleTheme} />
       <Navigation />
+      <ThemeToggle toggleTheme={toggleTheme} />
     </HeaderContainer>
   );
 };

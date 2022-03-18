@@ -1,47 +1,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import { media } from '../../styles/GlobalStyles';
 import { NavLink } from 'react-router-dom';
-import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai';
-import { BiBook, BiMessageSquareDetail } from 'react-icons/bi';
-import { RiServiceLine } from 'react-icons/ri';
 
 const Nav = styled(motion.nav)`
-  background: rgba(123, 47, 247, 0.5);
-  width: max-content;
-  padding: 0.7rem 1.7rem;
-  z-index: 9999;
   position: fixed;
-  left: 50%;
-  bottom: 2rem;
+  top: 2.4rem;
+  right: 6.4rem;
   display: flex;
-  gap: 0.8rem;
-  border-radius: 3rem;
-  backdrop-filter: blur(15px);
+  gap: 2.5rem;
+  z-index: 99;
 
-  a {
-    background: transparent;
-    padding: 0.9rem;
-    border-radius: 50%;
-    display: flex;
-    color: var(--white);
-    font-size: 1.1rem;
-    transition: all 400ms ease;
+  @media ${media.small} {
+    font-size: 0.8rem;
   }
+`;
+const StyledNavLink = styled(motion(NavLink))`
+  color: var(--gray);
+  text-transform: uppercase;
 
-  a:hover {
-    background: rgba(0, 0, 0, 0.3);
-  }
-
-  a.active {
-    background: rgba(0, 0, 0, 0.3);
+  &.active {
+    color: ${props => props.theme.text};
   }
 `;
 
 function Navigation() {
   return (
     <Nav
-      initial={{ opacity: 0, y: 180, x: '-50%' }}
+      initial={{ opacity: 0, y: -180 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
         ease: 'easeInOut',
@@ -49,21 +36,30 @@ function Navigation() {
         delay: 2,
       }}
     >
-      <NavLink to='/'>
-        <AiOutlineHome />
-      </NavLink>
-      <NavLink to='about'>
-        <AiOutlineUser />
-      </NavLink>
-      <NavLink to='work'>
-        <BiBook />
-      </NavLink>
-      <NavLink to='services'>
-        <RiServiceLine />
-      </NavLink>
-      <NavLink to='contact'>
-        <BiMessageSquareDetail />
-      </NavLink>
+      <StyledNavLink
+        to='/'
+        whileHover={{
+          scale: 1.1,
+        }}
+      >
+        Home
+      </StyledNavLink>
+      <StyledNavLink
+        to='work'
+        whileHover={{
+          scale: 1.1,
+        }}
+      >
+        Works
+      </StyledNavLink>
+      <StyledNavLink
+        to='about'
+        whileHover={{
+          scale: 1.1,
+        }}
+      >
+        About me
+      </StyledNavLink>
     </Nav>
   );
 }

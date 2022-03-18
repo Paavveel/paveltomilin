@@ -6,7 +6,7 @@ export const darkTheme = {
 };
 
 export const lightTheme = {
-  background: 'var(--gray)',
+  background: 'var(--bg-gray)',
   text: 'var(--black)',
 };
 
@@ -22,7 +22,8 @@ export const GlobalStyle = createGlobalStyle`
 :root {
   --white: #fff;
   --black: #000;
-  --gray: #f7f7f8;
+  --gray: #adadb8;
+  --bg-gray: #f7f7f8;
 }
 
 *,
