@@ -6,7 +6,7 @@ import { BsTelegram, BsGithub, BsLinkedin } from 'react-icons/bs';
 const StyledSocial = styled(motion.div)`
   position: absolute;
   left: 5%;
-  bottom: 15%;
+  bottom: 8%;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;

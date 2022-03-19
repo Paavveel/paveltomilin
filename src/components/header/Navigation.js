@@ -5,12 +5,13 @@ import { media } from '../../styles/GlobalStyles';
 import { NavLink } from 'react-router-dom';
 
 const Nav = styled(motion.nav)`
-  position: fixed;
+  position: absolute;
   top: 2.4rem;
   right: 6.4rem;
   display: flex;
-  gap: 2.5rem;
-  z-index: 99;
+  gap: 2rem;
+  z-index: 999;
+  font-size: 0.9rem;
 
   @media ${media.small} {
     font-size: 0.8rem;

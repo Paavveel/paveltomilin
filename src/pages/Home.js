@@ -4,10 +4,7 @@ import styled from 'styled-components';
 import { media } from '../styles/GlobalStyles';
 import Social from '../components/Social';
 import Tilt from 'react-parallax-tilt';
-import video from '../assets/video.mp4';
-import video2 from '../assets/pexels.mp4';
-
-const StyledHome = styled(motion.div)``;
+import keyboard from '../assets/keyboard.mp4';
 
 const StyledSection = styled(motion.section)`
   width: 100vw;
@@ -24,20 +21,19 @@ const StyledTilt = styled(Tilt)`
 const StyledSquare = styled(motion.div)`
   position: absolute;
   background: linear-gradient(230deg, #ba39f7, #4992f8, #64c0d3);
-  z-index: 9;
   transform-style: preserve-3d;
+  z-index: 100;
 `;
 
 const StyledTitle = styled(motion.h1)`
-  font-weight: 800;
-  line-height: 0.9;
-  text-transform: uppercase;
-  display: flex;
-  flex-direction: column;
   position: absolute;
   left: -12%;
   top: 25%;
-  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  font-weight: 800;
+  line-height: 0.9;
+  text-transform: uppercase;
   transform: translateZ(100px);
 `;
 
@@ -73,6 +69,7 @@ const StyledVideo = styled(motion.video)`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1.003);
 `;
 
 const squareVariants = {
@@ -86,15 +83,18 @@ const squareVariants = {
     transition: {
       ease: [0.6, 0.01, -0.05, 0.95],
       duration: 1.2,
-      delay: 0.5,
+      delay: 0.7,
     },
   },
+};
+const squareExitVariants = {
+  initial: { width: '100%', height: 0, bottom: 0 },
   exit: {
-    x: '-160%',
+    height: '100%',
     transition: {
       ease: [0.6, 0.01, -0.05, 0.95],
       duration: 1,
-      delay: 0.6,
+      delay: 0.5,
     },
   },
 };
@@ -120,7 +120,6 @@ const videoVariats = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 0.3,
     },
   },
 };
@@ -136,7 +135,7 @@ const Home = () => {
     }, 2000);
   }, []);
   return (
-    <StyledHome>
+    <>
       <StyledSection>
         <StyledTilt
           tiltEnable={playTilt}
@@ -150,6 +149,7 @@ const Home = () => {
             variants={squareVariants}
             initial='initial'
             animate='enter'
+            exit='exit'
             onAnimationComplete={() => {
               setPlayTilt(true);
               controls.start('enter');
@@ -169,12 +169,18 @@ const Home = () => {
               initial='initial'
               animate={controls}
             >
-              <source src={video} type='video/mp4' />
+              <source src={keyboard} type='video/mp4' />
             </StyledVideo>
           </StyledSquare>
         </StyledTilt>
 
         <Social />
+
+        <StyledSquare
+          variants={squareExitVariants}
+          initial='initial'
+          exit='exit'
+        />
       </StyledSection>
       <StyledSection>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam aperiam
@@ -228,7 +234,7 @@ const Home = () => {
       </StyledSection>
       {/* <BannerRowCenter title={'experience'} playMarquee={playMarquee} /> */}
       {/* <BannerRowBottom title={'studio'} /> */}
-    </StyledHome>
+    </>
   );
 };
 

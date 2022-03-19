@@ -13,7 +13,7 @@ const ThemeButton = styled(motion.button)`
   border: none;
   background: transparent;
   cursor: pointer;
-  z-index: 10;
+  z-index: 999;
   font-size: 2.3rem;
   color: ${props => props.theme.text};
 

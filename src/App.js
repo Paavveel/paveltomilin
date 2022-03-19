@@ -5,9 +5,8 @@ import './sass/main.scss';
 
 // Components
 import Header from './components/header/Header';
-import Work from './pages/Work';
+import Works from './pages/Works';
 import About from './pages/About';
-import Contact from './pages/Contact';
 import Layout from './pages/Layout';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
@@ -30,10 +29,8 @@ function App() {
           <Routes key={location.pathname} location={location}>
             <Route path='/' element={<Layout />}>
               <Route index element={<Home />} />
+              <Route path='work' element={<Works />} />
               <Route path='about' element={<About />} />
-              <Route path='work' element={<Work />} />
-              <Route path='services' element={<Work />} />
-              <Route path='contact' element={<Contact />} />
             </Route>
             <Route path='*' element={<NotFound />} />
           </Routes>
