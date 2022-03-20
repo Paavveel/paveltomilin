@@ -95,7 +95,7 @@ const squareExitVariants = {
     transition: {
       ease: [0.6, 0.01, -0.05, 0.95],
       duration: 1,
-      delay: 0.5,
+      delay: 0.7,
     },
   },
 };
@@ -157,7 +157,12 @@ const Home = () => {
               toggleNoScroll();
             }}
           >
-            <StyledTitle variants={titleVariants} exit='exit'>
+            <StyledTitle
+              variants={titleVariants}
+              initial='initial'
+              animate='enter'
+              exit='exit'
+            >
               <StyledName>Pavel</StyledName>
               <StyledName>Tomilin</StyledName>
               <StyledSpan>frontend</StyledSpan>

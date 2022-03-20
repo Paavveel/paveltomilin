@@ -21,7 +21,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <>
+    <div className='App'>
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <GlobalStyle />
         <Header toggleTheme={toggleTheme} />
@@ -36,7 +36,7 @@ function App() {
           </Routes>
         </AnimatePresence>
       </ThemeProvider>
-    </>
+    </div>
   );
 }
 
