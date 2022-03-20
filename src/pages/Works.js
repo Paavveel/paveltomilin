@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion, useAnimation } from 'framer-motion';
 import { media } from '../styles/GlobalStyles';
+import { toggleNoScroll } from '../utils/utils';
 
 const StyledSection = styled(motion.section)`
   width: 100vw;
@@ -62,6 +63,8 @@ function Works() {
           initial='initial'
           animate='enter'
           exit='exit'
+          onAnimationStart={toggleNoScroll}
+          onAnimationComplete={toggleNoScroll}
         ></StyledSquare>
       </StyledSection>
     </>

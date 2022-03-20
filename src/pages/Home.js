@@ -5,6 +5,7 @@ import { media } from '../styles/GlobalStyles';
 import Social from '../components/Social';
 import Tilt from 'react-parallax-tilt';
 import keyboard from '../assets/keyboard.mp4';
+import { toggleNoScroll } from '../utils/utils';
 
 const StyledSection = styled(motion.section)`
   width: 100vw;
@@ -149,13 +150,14 @@ const Home = () => {
             variants={squareVariants}
             initial='initial'
             animate='enter'
-            exit='exit'
+            onAnimationStart={toggleNoScroll}
             onAnimationComplete={() => {
               setPlayTilt(true);
               controls.start('enter');
+              toggleNoScroll();
             }}
           >
-            <StyledTitle variants={titleVariants}>
+            <StyledTitle variants={titleVariants} exit='exit'>
               <StyledName>Pavel</StyledName>
               <StyledName>Tomilin</StyledName>
               <StyledSpan>frontend</StyledSpan>
@@ -180,6 +182,8 @@ const Home = () => {
           variants={squareExitVariants}
           initial='initial'
           exit='exit'
+          onAnimationStart={toggleNoScroll}
+          onAnimationComplete={toggleNoScroll}
         />
       </StyledSection>
       <StyledSection>

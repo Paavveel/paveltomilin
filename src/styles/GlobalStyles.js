@@ -95,4 +95,8 @@ input {
   -webkit-appearance: none;
   border-radius: 0;
 }
+
+.no-scroll {
+  overflow: hidden;
+}
 `;
