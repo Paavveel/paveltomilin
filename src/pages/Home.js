@@ -25,6 +25,11 @@ const StyledSquare = styled(motion.div)`
   transform-style: preserve-3d;
   z-index: 100;
 `;
+const StyledExitSquare = styled(motion.div)`
+  position: fixed;
+  background: linear-gradient(230deg, #ba39f7, #4992f8, #64c0d3);
+  z-index: 500;
+`;
 
 const StyledTitle = styled(motion.h1)`
   position: absolute;
@@ -182,14 +187,6 @@ const Home = () => {
         </StyledTilt>
 
         <Social />
-
-        <StyledSquare
-          variants={squareExitVariants}
-          initial='initial'
-          exit='exit'
-          onAnimationStart={toggleNoScroll}
-          onAnimationComplete={toggleNoScroll}
-        />
       </StyledSection>
       <StyledSection>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam aperiam
@@ -241,6 +238,13 @@ const Home = () => {
         eligendi error sed quidem, ipsam eveniet ducimus accusamus minima
         cupiditate.
       </StyledSection>
+      <StyledExitSquare
+        variants={squareExitVariants}
+        initial='initial'
+        exit='exit'
+        onAnimationStart={toggleNoScroll}
+        onAnimationComplete={toggleNoScroll}
+      />
       {/* <BannerRowCenter title={'experience'} playMarquee={playMarquee} /> */}
       {/* <BannerRowBottom title={'studio'} /> */}
     </>

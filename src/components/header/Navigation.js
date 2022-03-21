@@ -5,7 +5,7 @@ import { media } from '../../styles/GlobalStyles';
 import { NavLink } from 'react-router-dom';
 
 const Nav = styled(motion.nav)`
-  position: absolute;
+  position: fixed;
   top: 2.4rem;
   right: 6.4rem;
   display: flex;

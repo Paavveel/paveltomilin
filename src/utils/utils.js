@@ -1,9 +1,9 @@
 export const toggleNoScroll = () => {
-  const body = document.body;
+  const html = document.documentElement;
 
-  if (body.classList.contains('no-scroll')) {
-    body.classList.remove('no-scroll');
+  if (html.classList.contains('no-scroll')) {
+    html.classList.remove('no-scroll');
   } else {
-    body.classList.add('no-scroll');
+    html.classList.add('no-scroll');
   }
 };

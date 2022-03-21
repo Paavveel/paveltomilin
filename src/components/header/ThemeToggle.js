@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { AiFillThunderbolt } from 'react-icons/ai';
 
 const ThemeButton = styled(motion.button)`
-  position: absolute;
+  position: fixed;
   display: flex;
   padding: 0.2rem;
   right: 2rem;

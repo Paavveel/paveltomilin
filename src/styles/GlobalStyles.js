@@ -55,9 +55,7 @@ body {
 }
 
 body, html {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
+  position: relative;
 }
 
 body::-webkit-scrollbar, html::-webkit-scrollbar {

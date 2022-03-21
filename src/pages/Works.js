@@ -16,6 +16,13 @@ const StyledSquare = styled(motion.div)`
   transform-style: preserve-3d;
   z-index: 100;
 `;
+
+const StyledExitSquare = styled(motion.div)`
+  position: fixed;
+  background: linear-gradient(230deg, #ba39f7, #4992f8, #64c0d3);
+  z-index: 500;
+`;
+
 const squareVariants = {
   initial: { width: '100%', height: '100%', left: 0, top: 0 },
   enter: {
@@ -29,22 +36,12 @@ const squareVariants = {
       delay: 0.5,
     },
   },
+};
+
+const squareExitVariants = {
+  initial: { width: 0, height: '100%', bottom: 0 },
   exit: {
     width: '100%',
-    height: '100%',
-    left: 0,
-    top: 0,
-    transition: {
-      ease: [0.6, 0.01, -0.05, 0.95],
-      duration: 1,
-      delay: 0.5,
-    },
-  },
-};
-const squareExitVariants = {
-  initial: { width: '100%', height: 0, bottom: 0 },
-  exit: {
-    height: '100%',
     transition: {
       ease: [0.6, 0.01, -0.05, 0.95],
       duration: 1,
@@ -62,11 +59,17 @@ function Works() {
           variants={squareVariants}
           initial='initial'
           animate='enter'
-          exit='exit'
           onAnimationStart={toggleNoScroll}
           onAnimationComplete={toggleNoScroll}
         ></StyledSquare>
       </StyledSection>
+      <StyledExitSquare
+        variants={squareExitVariants}
+        initial='initial'
+        exit='exit'
+        onAnimationStart={toggleNoScroll}
+        onAnimationComplete={toggleNoScroll}
+      />
     </>
   );
 }
