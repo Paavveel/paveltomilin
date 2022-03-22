@@ -9,7 +9,7 @@ import Loader from './components/Loader';
 import Works from './pages/Works';
 import About from './pages/About';
 import Layout from './pages/Layout';
-import Home from './pages/Home';
+import Home from './pages/home/Home';
 import NotFound from './pages/NotFound';
 import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from 'styled-components';
@@ -17,8 +17,8 @@ import { useDarkMode } from './hooks/useDarkMode';
 import { GlobalStyle, darkTheme, lightTheme } from './styles/GlobalStyles';
 
 function App() {
-  const [cursorHovered, setCursorHovered] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [cursorHovered, setCursorHovered] = useState(false);
   const [theme, toggleTheme] = useDarkMode();
   const location = useLocation();
 
