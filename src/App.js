@@ -5,6 +5,7 @@ import './sass/main.scss';
 
 // Components
 import Header from './components/header/Header';
+import Loader from './components/Loader';
 import Works from './pages/Works';
 import About from './pages/About';
 import Layout from './pages/Layout';
@@ -17,8 +18,16 @@ import { GlobalStyle, darkTheme, lightTheme } from './styles/GlobalStyles';
 
 function App() {
   const [cursorHovered, setCursorHovered] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [theme, toggleTheme] = useDarkMode();
   const location = useLocation();
+
+  if (loading)
+    return (
+      <AnimatePresence exitBeforeEnter>
+        <Loader key='loader' setLoading={setLoading} />
+      </AnimatePresence>
+    );
 
   return (
     <div className='App'>

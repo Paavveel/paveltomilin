@@ -23,7 +23,7 @@ const StyledLink = styled(motion.a)`
 const socialVariants = {
   animate: {
     transition: {
-      delayChildren: 2,
+      delayChildren: 2.7,
       staggerChildren: 0.4,
       type: 'spring',
     },
