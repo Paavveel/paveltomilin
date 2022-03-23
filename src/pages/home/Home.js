@@ -46,31 +46,7 @@ const Home = () => {
       <StyledSection>
         <Web />
       </StyledSection>
-      <StyledSection>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam aperiam
-        similique soluta aspernatur non corporis, quae odit! Tempora
-        necessitatibus quos, expedita rerum quidem tempore harum ducimus
-        architecto. Aliquam officiis suscipit nisi, accusantium exercitationem,
-        veritatis voluptatum assumenda saepe et animi ex impedit eveniet
-        repellendus neque totam sapiente non. Tenetur iusto harum mollitia
-        consectetur, inventore a et eligendi ab aut necessitatibus asperiores ea
-        incidunt, sapiente minus quis autem atque dolorem at laboriosam?
-        Nesciunt ipsum atque vel deserunt nihil doloribus eum molestiae, sit
-        commodi facilis laboriosam expedita voluptatum error qui inventore
-        adipisci perferendis. Natus eum culpa quo ut error veritatis quos est.
-        Deserunt magni, quidem accusantium esse dignissimos voluptates sit saepe
-        eligendi, molestiae nesciunt fuga odio at nemo ipsam eveniet blanditiis
-        ea. Quidem nesciunt tenetur hic excepturi maxime nulla corrupti iure.
-        Molestiae at fugit quasi incidunt commodi nihil culpa voluptas eos,
-        consequatur placeat magni inventore corporis dolores nemo? Quos veniam
-        necessitatibus autem iste mollitia repellendus architecto impedit fugiat
-        saepe error asperiores enim, consequuntur molestiae voluptates! Eveniet
-        minus incidunt ad, voluptatem commodi architecto odit ipsum possimus
-        adipisci soluta neque esse corrupti alias laboriosam, praesentium earum
-        nobis voluptate natus suscipit deserunt voluptas ullam. Illum nostrum
-        eligendi error sed quidem, ipsam eveniet ducimus accusamus minima
-        cupiditate.
-      </StyledSection>
+      <StyledSection></StyledSection>
       <StyledExitSquare
         variants={squareExitVariants}
         initial='initial'

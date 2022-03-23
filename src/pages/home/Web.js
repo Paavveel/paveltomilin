@@ -24,7 +24,7 @@ const StyledTitleDiv = styled(motion.div)`
   text-transform: uppercase;
 
   span:first-child {
-    color: var(--gray);
+    color: var(--yellow);
     font-style: italic;
   }
 
@@ -40,6 +40,7 @@ const StyledSubTitle = styled(motion.div)`
   align-items: center;
   padding-top: 5vh;
   font-size: 2.5vw;
+  font-weight: 500;
   text-align: center;
   z-index: 3;
 
@@ -85,10 +86,10 @@ const StyledJsLogo = styled.div`
   position: absolute;
   bottom: 13%;
   left: 41%;
-  width: 200px;
-  height: 200px;
+  width: 230px;
+  height: 230px;
   border-radius: 200px;
-  background: #f4e15c;
+  background: var(--yellow);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,17 +98,17 @@ const StyledJsLogo = styled.div`
   transform: rotate(325deg);
 
   @media ${media.medium} {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
   @media ${media.small} {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     bottom: 8%;
   }
   @media ${media.xsmall} {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     bottom: 8%;
   }
 `;
