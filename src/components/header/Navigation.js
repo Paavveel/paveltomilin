@@ -46,7 +46,7 @@ function Navigation() {
         Home
       </StyledNavLink>
       <StyledNavLink
-        to='work'
+        to='works'
         whileHover={{
           scale: 1.1,
         }}

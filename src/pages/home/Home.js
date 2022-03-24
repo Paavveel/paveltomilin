@@ -5,6 +5,7 @@ import { media } from '../../styles/GlobalStyles';
 import { toggleNoScroll } from '../../utils/utils';
 import Hero from './Hero';
 import Web from './Web';
+import { Link } from 'react-router-dom';
 
 const StyledSection = styled(motion.section)`
   width: 100vw;
@@ -30,6 +31,116 @@ const squareExitVariants = {
   },
 };
 
+const Work = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 1rem 14rem;
+  color: var(--white);
+
+  @media ${media.small} {
+    padding: 8rem 1rem 8rem;
+  }
+`;
+const WorkCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 1100px;
+  width: 900px;
+  padding: 5rem 10rem;
+  margin-right: 20vw;
+  background: linear-gradient(185deg, #ba39f7, #4992f8, #64c0d3);
+  border-radius: 10px;
+
+  @media ${media.medium} {
+    min-height: 1000px;
+    width: 700px;
+    padding: 5rem 8rem;
+    margin-right: 4rem;
+  }
+  @media ${media.small} {
+    min-height: 800px;
+    width: 400px;
+    padding: 4rem 5rem;
+    margin-right: 1rem;
+  }
+  @media ${media.xsmall} {
+    min-height: 700px;
+    width: 300px;
+    padding: 3rem 2rem;
+  }
+`;
+const WorkCardTitle = styled.div`
+  position: relative;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+
+  @media ${media.medium} {
+    font-size: 2.5rem;
+  }
+  @media ${media.small} {
+    font-size: 1.8rem;
+  }
+  @media ${media.xsmall} {
+    font-size: 1.5rem;
+  }
+
+  span {
+    position: absolute;
+    font-size: 6rem;
+    top: -50px;
+    left: -80px;
+
+    @media ${media.small} {
+      font-size: 4rem;
+      top: -30px;
+      left: -60px;
+    }
+  }
+`;
+const WorkCardSubTitle = styled.div`
+  font-size: 1.7rem;
+  font-weight: normal;
+  line-height: 1.5;
+
+  b {
+    font-weight: bold;
+  }
+
+  @media ${media.medium} {
+    font-size: 1.5rem;
+  }
+  @media ${media.small} {
+    font-size: 1rem;
+  }
+  @media ${media.small} {
+    font-size: 1rem;
+  }
+`;
+
+const WorkCardLink = styled(motion(Link))`
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--white);
+  width: fit-content;
+
+  span {
+  }
+
+  @media ${media.medium} {
+    font-size: 2rem;
+  }
+  @media ${media.small} {
+    font-size: 1.5rem;
+  }
+  @media ${media.small} {
+    font-size: 1.2rem;
+  }
+`;
+
 const Home = () => {
   const [playMarquee, setPlayMarquee] = useState(false);
 
@@ -46,7 +157,39 @@ const Home = () => {
       <StyledSection>
         <Web />
       </StyledSection>
-      <StyledSection></StyledSection>
+      <StyledSection>
+        <Work>
+          <WorkCard>
+            <WorkCardTitle>
+              <p>
+                Welcome! I'm Pavel Tomilin. I am passionate about everything
+                related to a web technologies.
+              </p>
+              <span>🚀</span>
+            </WorkCardTitle>
+            <WorkCardSubTitle>
+              <p>
+                I am a Junior Frontend developer and i have currently learn. One
+                of my aim when i create aplications is coding clean and
+                effective. I also like to learn modern technologies to keep
+                myself up to date. I rely on the most outstanding open source
+                libraries <b>React</b> & <b>Redux</b> being these my tools to be
+                able to solve any challenge.
+              </p>
+              <p>This page is an example of my skills as a developer.</p>
+              <p>Check bellow:</p>
+            </WorkCardSubTitle>
+            <WorkCardLink
+              to='works'
+              whileHover={{
+                scale: 1.1,
+              }}
+            >
+              My works <span>💻</span>
+            </WorkCardLink>
+          </WorkCard>
+        </Work>
+      </StyledSection>
       <StyledExitSquare
         variants={squareExitVariants}
         initial='initial'

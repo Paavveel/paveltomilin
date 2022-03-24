@@ -38,7 +38,7 @@ function App() {
           <Routes key={location.pathname} location={location}>
             <Route path='/' element={<Layout />}>
               <Route index element={<Home />} />
-              <Route path='work' element={<Works />} />
+              <Route path='works' element={<Works />} />
               <Route path='about' element={<About />} />
             </Route>
             <Route path='*' element={<NotFound />} />
