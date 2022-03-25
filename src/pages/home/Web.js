@@ -12,9 +12,10 @@ const StyledWeb = styled.div`
   flex-direction: column;
 
   @media ${media.small} {
-    padding: 8rem 1rem 8rem;
+    padding: 4rem 1rem 8rem;
   }
 `;
+
 const StyledTitleDiv = styled(motion.div)`
   display: flex;
   justify-content: center;
@@ -23,24 +24,46 @@ const StyledTitleDiv = styled(motion.div)`
   font-weight: 800;
   text-transform: uppercase;
 
+  @media ${media.small} {
+    font-size: 15vw;
+    flex-direction: column;
+    align-items: center;
+  }
+  @media ${media.xsmall} {
+    font-size: 15vw;
+    flex-direction: column;
+    align-items: center;
+  }
+
   span:first-child {
     color: var(--yellow);
     font-style: italic;
+
+    @media ${media.xsmall} {
+      width: fit-content;
+      font-size: 23vw;
+    }
   }
 
   span:last-child {
     color: ${props => props.theme.text};
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 0.1vw;
+
+    @media ${media.xsmall} {
+      width: fit-content;
+    }
   }
 `;
+
 const StyledSubTitle = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 5vh;
-  font-size: 2.5vw;
+  font-size: 3vw;
   font-weight: 500;
+  text-transform: uppercase;
   text-align: center;
   z-index: 3;
 
@@ -52,7 +75,8 @@ const StyledSubTitle = styled(motion.div)`
     padding-top: 10vh;
   }
   @media ${media.xsmall} {
-    font-size: 4.5vw;
+    font-size: 5.5vw;
+    padding-top: 15vh;
   }
 `;
 

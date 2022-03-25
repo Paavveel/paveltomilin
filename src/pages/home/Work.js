@@ -116,7 +116,7 @@ const FirsrMarquee = styled(Marquee)`
     position: absolute;
     top: 30%;
     left: -50px;
-    width: 105vw;
+    width: 120%;
     transform: rotate(356deg);
     background: ${props => props.theme.text};
     z-index: -1;
@@ -148,16 +148,16 @@ const FirsrMarquee = styled(Marquee)`
     &:nth-child(5) {
       color: ${props => props.theme.background};
     }
-  }
 
-  @media ${media.medium} {
-    font-size: 2rem;
-  }
-  @media ${media.small} {
-    font-size: 1.5rem;
-  }
-  @media ${media.small} {
-    font-size: 1.2rem;
+    @media ${media.medium} {
+      font-size: 12rem;
+    }
+    @media ${media.small} {
+      font-size: 10rem;
+    }
+    @media ${media.xsmall} {
+      font-size: 6rem;
+    }
   }
 `;
 const SecondMarquee = styled(Marquee)`
@@ -165,7 +165,7 @@ const SecondMarquee = styled(Marquee)`
     position: absolute;
     top: 55%;
     left: -50px;
-    width: 105vw;
+    width: 120%;
     transform: rotate(2deg);
     background: var(--yellow);
     z-index: -2;
@@ -188,16 +188,16 @@ const SecondMarquee = styled(Marquee)`
       -webkit-text-stroke: 1px var(--black);
       -webkit-text-fill-color: transparent;
     }
-  }
 
-  @media ${media.medium} {
-    font-size: 2rem;
-  }
-  @media ${media.small} {
-    font-size: 1.5rem;
-  }
-  @media ${media.small} {
-    font-size: 1.2rem;
+    @media ${media.medium} {
+      font-size: 12rem;
+    }
+    @media ${media.small} {
+      font-size: 10rem;
+    }
+    @media ${media.xsmall} {
+      font-size: 6rem;
+    }
   }
 `;
 
