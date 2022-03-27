@@ -4,15 +4,17 @@ import styled from 'styled-components';
 import { media } from '../../styles/GlobalStyles';
 
 import code2x from '../../assets/code.jpg';
+import codeParallax from '../../assets/code-parallax.jpg';
+import ParallaxImage from '../../components/ParallaxImage';
 
 const StyledWeb = styled.div`
-  padding: 14rem 1rem 14rem;
+  padding: 14rem 0 14rem;
   position: relative;
   display: flex;
   flex-direction: column;
 
   @media ${media.small} {
-    padding: 4rem 1rem 8rem;
+    padding: 4rem 0 8rem;
   }
 `;
 
@@ -23,11 +25,13 @@ const StyledTitleDiv = styled(motion.div)`
   font-size: 10vw;
   font-weight: 800;
   text-transform: uppercase;
+  padding-bottom: 25vh;
 
   @media ${media.small} {
     font-size: 15vw;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 20vh;
   }
   @media ${media.xsmall} {
     font-size: 15vw;
@@ -53,30 +57,6 @@ const StyledTitleDiv = styled(motion.div)`
     @media ${media.xsmall} {
       width: fit-content;
     }
-  }
-`;
-
-const StyledSubTitle = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 5vh;
-  font-size: 3vw;
-  font-weight: 500;
-  text-transform: uppercase;
-  text-align: center;
-  z-index: 3;
-
-  @media ${media.medium} {
-    font-size: 3vw;
-  }
-  @media ${media.small} {
-    font-size: 3.5vw;
-    padding-top: 10vh;
-  }
-  @media ${media.xsmall} {
-    font-size: 5.5vw;
-    padding-top: 15vh;
   }
 `;
 
@@ -188,14 +168,11 @@ const Web = () => {
           <span>web</span>
           <span>addicted.</span>
         </StyledTitleDiv>
-        <StyledSubTitle
-        // style={{
-        //   y: subTitleScrollY,
-        // }}
-        >
+        <ParallaxImage src={codeParallax}>
           <p>Developer who cares deeply about user and code.</p>
           <p>Serious passion for new technologies.</p>
-        </StyledSubTitle>
+        </ParallaxImage>
+
         <StyledDevDiv>
           <p>developed</p>
           <p>with react</p>
