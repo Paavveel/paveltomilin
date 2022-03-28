@@ -3,7 +3,6 @@ import { motion, useTransform, useViewportScroll } from 'framer-motion';
 import styled from 'styled-components';
 import { media } from '../../styles/GlobalStyles';
 
-import code2x from '../../assets/code.jpg';
 import codeParallax from '../../assets/code-parallax.jpg';
 import ParallaxImage from '../../components/ParallaxImage';
 
@@ -25,13 +24,13 @@ const StyledTitleDiv = styled(motion.div)`
   font-size: 10vw;
   font-weight: 800;
   text-transform: uppercase;
-  padding-bottom: 25vh;
+  margin-bottom: 25vh;
 
   @media ${media.small} {
     font-size: 15vw;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 20vh;
+    margin-bottom: 20vh;
   }
   @media ${media.xsmall} {
     font-size: 15vw;
@@ -54,6 +53,9 @@ const StyledTitleDiv = styled(motion.div)`
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 0.1vw;
 
+    @media ${media.small} {
+      -webkit-text-stroke: 0.3vw;
+    }
     @media ${media.xsmall} {
       width: fit-content;
     }
@@ -69,7 +71,7 @@ const StyledDevDiv = styled.div`
   text-transform: uppercase;
   font-weight: 700;
   font-size: 15vw;
-  padding-top: 25vh;
+  margin-top: 25vh;
 
   p:first-child {
     font-size: 12vw;
@@ -78,7 +80,7 @@ const StyledDevDiv = styled.div`
 
   @media ${media.small} {
     font-size: 14vw;
-    padding-top: 20vh;
+    margin-top: 20vh;
 
     p:first-child {
       padding-bottom: 5vh;
@@ -88,8 +90,8 @@ const StyledDevDiv = styled.div`
 
 const StyledJsLogo = styled.div`
   position: absolute;
-  bottom: 13%;
-  left: 41%;
+  bottom: 19%;
+  left: 42%;
   width: 230px;
   height: 230px;
   border-radius: 200px;
@@ -106,14 +108,14 @@ const StyledJsLogo = styled.div`
     height: 150px;
   }
   @media ${media.small} {
-    width: 100px;
-    height: 100px;
-    bottom: 8%;
+    width: 80px;
+    height: 80px;
+    bottom: 21%;
   }
   @media ${media.xsmall} {
-    width: 60px;
-    height: 60px;
-    bottom: 8%;
+    width: 40px;
+    height: 40px;
+    bottom: 20%;
   }
 `;
 
@@ -182,15 +184,15 @@ const Web = () => {
         </StyledDevDiv>
       </StyledWeb>
 
-      <StyledCodeImg
+      {/* <StyledCodeImg
         height={500}
         width={500}
         src={code2x}
-        // style={{
-        //   y: imgScrollY,
-        // }}
+        style={{
+          y: imgScrollY,
+        }}
         alt='Web code'
-      />
+      /> */}
     </>
   );
 };

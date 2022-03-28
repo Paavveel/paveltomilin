@@ -6,6 +6,7 @@ import { toggleNoScroll } from '../../utils/utils';
 import Hero from './Hero';
 import Web from './Web';
 import Work from './Work';
+import Contacts from './Contacts';
 
 const StyledSection = styled(motion.section)`
   width: 100vw;
@@ -49,6 +50,9 @@ const Home = () => {
       </StyledSection>
       <StyledSection>
         <Work />
+      </StyledSection>
+      <StyledSection>
+        <Contacts />
       </StyledSection>
       <StyledExitSquare
         variants={squareExitVariants}
@@ -94,25 +98,6 @@ const BannerRowBottom = ({ title }) => {
         >
           down
         </motion.span>
-      </motion.div>
-      <AnimatedLetters title={title} />
-    </div>
-  );
-};
-
-const BannerRowCenter = ({ title, playMarquee }) => {
-  return (
-    <div className={`banner-row marquee  ${playMarquee && 'animate'}`}>
-      <motion.div
-        initial={{ y: 310 }}
-        animate={{ y: 0 }}
-        transition={{ ease: [0.6, 0.01, -0.05, 0.9], duration: 1 }}
-        className='marquee__inner'
-      >
-        <AnimatedLetters title={title} disabled />
-        <AnimatedLetters title={title} />
-        <AnimatedLetters title={title} disabled />
-        <AnimatedLetters title={title} disabled />
       </motion.div>
     </div>
   );

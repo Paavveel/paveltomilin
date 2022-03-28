@@ -40,7 +40,7 @@ const StyledImageBox = styled.div`
     align-items: center;
     font-size: 3vw;
     color: var(--white);
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     text-align: center;
     z-index: 3;

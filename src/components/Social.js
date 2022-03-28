@@ -1,22 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { media } from '../styles/GlobalStyles';
 import { BsTelegram, BsGithub, BsLinkedin } from 'react-icons/bs';
 
 const StyledSocial = styled(motion.div)`
   position: absolute;
-  left: 5%;
+  left: 4%;
   bottom: 8%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.8rem;
   padding: 0.5rem;
   overflow: hidden;
+
+  @media ${media.small} {
+    left: 8%;
+    bottom: 4%;
+  }
 `;
 
 const StyledLink = styled(motion.a)`
   color: ${props => props.theme.text};
-  font-size: 1.3rem;
+  font-size: 2rem;
   display: flex;
 `;
 

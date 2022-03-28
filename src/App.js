@@ -22,12 +22,7 @@ function App() {
   const [theme, toggleTheme] = useDarkMode();
   const location = useLocation();
 
-  if (loading)
-    return (
-      <AnimatePresence exitBeforeEnter>
-        <Loader key='loader' setLoading={setLoading} />
-      </AnimatePresence>
-    );
+  if (loading) return <Loader setLoading={setLoading} />;
 
   return (
     <div className='App'>

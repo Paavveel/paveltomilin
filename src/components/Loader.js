@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import { keyframes } from 'styled-components';
 
 const LoaderContainer = styled(motion.div)`
   height: 100vh;
@@ -10,6 +11,18 @@ const LoaderContainer = styled(motion.div)`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+`;
+
+const Loading = styled(motion.div)`
+  font-size: 4rem;
+  z-index: 2;
+
+  span {
+    display: inline-block;
+    margin: 0 5px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+  }
 `;
 const LoaderFollow = styled(motion.div)`
   position: absolute;
@@ -33,11 +46,22 @@ const LoaderProgress = styled(motion.div)`
   z-index: 1;
 `;
 
+const loadingVariant = {
+  animate: {
+    scale: 0.8,
+    opacity: 0,
+    transition: {
+      delay: 3,
+      duration: 0.8,
+      ease: [0.6, 0.01, -0.05, 0.95],
+    },
+  },
+};
 const followVariant = {
   animate: {
     width: '100%',
     transition: {
-      delay: 3.2,
+      delay: 4,
       velocity: 10,
       damping: 15,
     },
@@ -48,7 +72,7 @@ const spreadVariant = {
   animate: {
     height: '100%',
     transition: {
-      delay: 3.9,
+      delay: 4.7,
       duration: 0.7,
       ease: [0.6, -0.05, 0.01, 0.9],
     },
@@ -66,24 +90,23 @@ const progressVariant = {
 
 const Loader = ({ setLoading }) => {
   return (
-    <LoaderContainer>
-      <div className='loading-text'>
-        <span className='loading-text-words'>L</span>
-        <span className='loading-text-words'>O</span>
-        <span className='loading-text-words'>A</span>
-        <span className='loading-text-words'>D</span>
-        <span className='loading-text-words'>I</span>
-        <span className='loading-text-words'>N</span>
-        <span className='loading-text-words'>G</span>
-      </div>
-      <LoaderProgress
-        variants={progressVariant}
-        animate='animate'
-      ></LoaderProgress>
-      <LoaderFollow variants={followVariant} animate='animate'></LoaderFollow>
+    <LoaderContainer animate='animate'>
+      <Loading variants={loadingVariant}>
+        <span>L</span>
+        <span>O</span>
+        <span>A</span>
+        <span>D</span>
+        <span>I</span>
+        <span>N</span>
+        <span>G</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+      </Loading>
+      <LoaderProgress variants={progressVariant}></LoaderProgress>
+      <LoaderFollow variants={followVariant}></LoaderFollow>
       <LoaderSpread
         variants={spreadVariant}
-        animate='animate'
         onAnimationComplete={() => {
           setLoading(false);
         }}

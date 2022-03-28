@@ -35,6 +35,10 @@ const StyledTitle = styled(motion.h1)`
 const StyledName = styled.span`
   font-size: 4.5rem;
   letter-spacing: 3px;
+  background: linear-gradient(85deg, #ba39f7, #4992f8, #64c0d3);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
   @media ${media.medium} {
     font-size: 4rem;
@@ -49,12 +53,16 @@ const StyledName = styled.span`
 
 const StyledSpan = styled.span`
   font-size: 3rem;
+  color: var(--yellow);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.1vw;
 
   @media ${media.medium} {
     font-size: 2.5rem;
   }
   @media ${media.small} {
     font-size: 2rem;
+    -webkit-text-stroke: 0.3vw;
   }
   @media ${media.xsmall} {
     font-size: 1.5rem;
