@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useTransform, useViewportScroll } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { media } from '../../styles/GlobalStyles';
 import { toggleNoScroll } from '../../utils/utils';
@@ -33,13 +33,6 @@ const squareExitVariants = {
 };
 
 const Home = () => {
-  const [playMarquee, setPlayMarquee] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setPlayMarquee(true);
-    }, 2000);
-  }, []);
   return (
     <>
       <StyledSection>

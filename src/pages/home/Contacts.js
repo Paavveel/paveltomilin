@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useTransform, useViewportScroll } from 'framer-motion';
 import styled from 'styled-components';
 import { media } from '../../styles/GlobalStyles';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import emailjs from '@emailjs/browser';
+import ErrorAlert from '../../components/ErrorAlert';
+import SuccessAlert from '../../components/SuccessAlert';
 
 const StyledContacts = styled.div`
-  padding: 14rem 0 10rem;
+  padding: 5rem 0 5rem;
   position: relative;
   display: flex;
   flex-direction: column;
 
   @media ${media.small} {
-    padding: 0 0 4rem;
+    padding: 0 0 3rem;
   }
   @media ${media.xsmall} {
     padding: 0 0 2rem;
@@ -43,14 +46,20 @@ const StyledForm = styled(motion.form)`
 
   p {
     display: flex;
+    flex-direction: column;
     align-items: baseline;
     flex-wrap: wrap;
-    gap: 0.3rem;
-    font-size: 6vw;
+    gap: 0.2rem;
+    font-size: 5vw;
     line-height: 7.5vw;
     font-weight: 300;
     text-transform: uppercase;
-    padding: 1rem 0;
+
+    @media ${media.small} {
+      font-size: 6vw;
+      gap: 0.4rem;
+      padding: 1rem 0;
+    }
 
     &:nth-of-type(1) {
       padding: 0;
@@ -62,12 +71,8 @@ const StyledForm = styled(motion.form)`
     }
   }
 
-  label {
-    padding-right: 2rem;
-  }
-
   input {
-    width: 35%;
+    width: 45%;
     background: transparent;
     user-select: none;
     outline: none;
@@ -93,7 +98,7 @@ const StyledForm = styled(motion.form)`
 
   textarea {
     width: 100%;
-    min-height: 30vh;
+    min-height: 20vh;
     background: transparent;
     user-select: none;
     outline: none;
@@ -117,6 +122,7 @@ const StyledForm = styled(motion.form)`
 
   span {
     font-size: 1rem;
+    line-height: 1;
     text-transform: lowercase;
     color: red;
   }
@@ -130,6 +136,14 @@ const StyledControlContainer = styled(motion.div)`
   justify-content: space-evenly;
   width: 100%;
   margin-top: 3vw;
+
+  @media ${media.xsmall} {
+    margin-top: 5vw;
+  }
+`;
+const StyledControl = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 const StyledSocials = styled(motion.div)`
   width: 30%;
@@ -164,6 +178,10 @@ const StyledSubmitButton = styled(motion.button)`
   font-weight: 600;
   cursor: pointer;
 
+  &:disabled {
+    cursor: no-drop;
+  }
+
   @media ${media.small} {
     width: 115px;
     height: 115px;
@@ -188,43 +206,71 @@ const schema = yup.object().shape({
   name: yup
     .string()
     .matches(/^([^0-9]*)$/, 'Name should not contain numbers')
+    .max(20, 'Name should be less then 20 letters')
     .required('Name is a required field'),
   email: yup
     .string()
     .email('Email should have correct format')
     .required('Email is a required field'),
-  message: yup.string().required('Write your message'),
+  message: yup
+    .string()
+    .max(500, 'Message should be less then 500 letters')
+    .required('Write your message'),
 });
 
 const Contacts = () => {
+  const [isSending, setIsSending] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const formRef = useRef();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     mode: 'onBlur',
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = data => {
-    console.log(data);
+  const onSubmit = () => {
+    setIsSending(true);
+    emailjs
+      .sendForm(
+        'service_60big02',
+        'template_vylfoyb',
+        formRef.current,
+        'aKUWrbGSHfpnklwPZ'
+      )
+      .then(
+        () => {
+          setIsSending(false);
+          setIsSent(true);
+          reset();
+        },
+        error => {
+          console.error(error.text);
+          setIsSending(false);
+          setIsError(true);
+        }
+      );
   };
 
   return (
     <StyledContacts>
       <StyledTitle>Let's talk!</StyledTitle>
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
+      <StyledForm ref={formRef} onSubmit={handleSubmit(onSubmit)}>
         <StyledFormContainer>
           <p>Hello,</p>
           <p>
             <label htmlFor='name'>my name is</label>
             <input id='name' autoComplete='off' {...register('name')} />
-            <span>{errors.name?.message}</span>
+            {errors.name && <span>{errors.name?.message}</span>}
           </p>
           <p>
             <label htmlFor='email'>here is my email</label>
             <input id='email' autoComplete='off' {...register('email')} />
-            <span>{errors.email?.message}</span>
+            {errors.email && <span>{errors.email?.message}</span>}
           </p>
           <p>
             <label htmlFor='message'>let's talk about</label>
@@ -233,20 +279,23 @@ const Contacts = () => {
               autoComplete='off'
               {...register('message')}
             />
-            <span>{errors.message?.message}</span>
+            {errors.message && <span>{errors.message?.message}</span>}
           </p>
         </StyledFormContainer>
         <StyledControlContainer>
-          <StyledSubmitButton
-            whileHover={{
-              scale: 1.1,
-            }}
-            whileTap={{
-              scale: 0.9,
-            }}
-          >
-            Send
-          </StyledSubmitButton>
+          <StyledControl>
+            <StyledSubmitButton
+              disabled={isSending}
+              whileHover={{
+                scale: 0.9,
+              }}
+            >
+              {isSending ? 'Sending...' : 'Send'}
+            </StyledSubmitButton>
+            {isSent && <SuccessAlert setIsSent={setIsSent} />}
+            {isError && <ErrorAlert setIsError={setIsError} />}
+          </StyledControl>
+
           <StyledSocials>
             <h3>stalk me</h3>
             <div>
