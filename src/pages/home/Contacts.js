@@ -44,11 +44,27 @@ const StyledForm = styled(motion.form)`
   flex-direction: column;
   align-items: center;
 
+  h4 {
+    align-self: flex-start;
+    font-size: 5vw;
+    line-height: 7.5vw;
+    font-weight: 300;
+    text-transform: uppercase;
+    padding: 0;
+    padding-left: 22%;
+
+    @media ${media.small} {
+      font-size: 6vw;
+      padding-left: 10%;
+    }
+  }
+
   p {
     display: flex;
     flex-direction: column;
     align-items: baseline;
     flex-wrap: wrap;
+    width: 100%;
     gap: 0.2rem;
     font-size: 5vw;
     line-height: 7.5vw;
@@ -60,19 +76,10 @@ const StyledForm = styled(motion.form)`
       gap: 0.4rem;
       padding: 1rem 0;
     }
-
-    &:nth-of-type(1) {
-      padding: 0;
-      padding-left: 22%;
-
-      @media ${media.small} {
-        padding-left: 0;
-      }
-    }
   }
 
   input {
-    width: 45%;
+    width: 70%;
     background: transparent;
     user-select: none;
     outline: none;
@@ -98,7 +105,7 @@ const StyledForm = styled(motion.form)`
 
   textarea {
     width: 100%;
-    min-height: 20vh;
+    min-height: 30vh;
     background: transparent;
     user-select: none;
     outline: none;
@@ -115,7 +122,8 @@ const StyledForm = styled(motion.form)`
     @media ${media.small} {
       font-size: 4vw;
     }
-    @media ${media.small} {
+    @media ${media.xsmall} {
+      min-height: 25vh;
       font-size: 5vw;
     }
   }
@@ -130,6 +138,15 @@ const StyledForm = styled(motion.form)`
 const StyledFormContainer = styled(motion.div)`
   background: transparent;
   width: 85%;
+  display: flex;
+
+  div {
+    width: 100%;
+  }
+
+  @media ${media.small} {
+    flex-direction: column;
+  }
 `;
 const StyledControlContainer = styled(motion.div)`
   display: flex;
@@ -190,8 +207,8 @@ const StyledSubmitButton = styled(motion.button)`
 `;
 const StyledLink = styled(motion.a)`
   font-size: 2.2vmax;
-  color: var(--purple);
-  font-weight: normal;
+  color: var(--blue);
+  font-weight: 300;
   text-transform: uppercase;
   width: fit-content;
 
@@ -260,18 +277,21 @@ const Contacts = () => {
     <StyledContacts>
       <StyledTitle>Let's talk!</StyledTitle>
       <StyledForm ref={formRef} onSubmit={handleSubmit(onSubmit)}>
+        <h4>Hello,</h4>
         <StyledFormContainer>
-          <p>Hello,</p>
-          <p>
-            <label htmlFor='name'>my name is</label>
-            <input id='name' autoComplete='off' {...register('name')} />
-            {errors.name && <span>{errors.name?.message}</span>}
-          </p>
-          <p>
-            <label htmlFor='email'>here is my email</label>
-            <input id='email' autoComplete='off' {...register('email')} />
-            {errors.email && <span>{errors.email?.message}</span>}
-          </p>
+          <div>
+            <p>
+              <label htmlFor='name'>my name is</label>
+              <input id='name' autoComplete='off' {...register('name')} />
+              {errors.name && <span>{errors.name?.message}</span>}
+            </p>
+            <p>
+              <label htmlFor='email'>here is my email</label>
+              <input id='email' autoComplete='off' {...register('email')} />
+              {errors.email && <span>{errors.email?.message}</span>}
+            </p>
+          </div>
+
           <p>
             <label htmlFor='message'>let's talk about</label>
             <textarea
@@ -288,6 +308,9 @@ const Contacts = () => {
               disabled={isSending}
               whileHover={{
                 scale: 0.9,
+                transition: {
+                  ease: 'easeOut',
+                },
               }}
             >
               {isSending ? 'Sending...' : 'Send'}
