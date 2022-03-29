@@ -9,6 +9,15 @@ import emailjs from '@emailjs/browser';
 import ErrorAlert from '../../components/ErrorAlert';
 import SuccessAlert from '../../components/SuccessAlert';
 
+const socials = [
+  { name: 'phone', href: 'tel:+79169179195' },
+  { name: 'mail', href: 'mailto:pa.tomilin@gmail.com' },
+  { name: 'telegram', href: 'https://t.me/paul_tm' },
+  { name: 'github', href: 'https://github.com/Paavveel' },
+  { name: 'linkedin', href: '#' },
+  { name: 'cv', href: '#' },
+];
+
 const StyledContacts = styled.div`
   padding: 5rem 0 5rem;
   position: relative;
@@ -322,54 +331,18 @@ const Contacts = () => {
           <StyledSocials>
             <h3>stalk me</h3>
             <div>
-              <StyledLink
-                href='tel:+79169179195'
-                whileHover={{
-                  scale: 1.1,
-                }}
-              >
-                phone
-              </StyledLink>
-              <StyledLink
-                href='mailto:pa.tomilin@gmail.com'
-                whileHover={{
-                  scale: 1.1,
-                }}
-              >
-                mail
-              </StyledLink>
-              <StyledLink
-                href='https://t.me/paul_tm'
-                whileHover={{
-                  scale: 1.1,
-                }}
-              >
-                telegram
-              </StyledLink>
-              <StyledLink
-                href='https://github.com/Paavveel'
-                whileHover={{
-                  scale: 1.1,
-                }}
-              >
-                github
-              </StyledLink>
-              <StyledLink
-                href='#'
-                whileHover={{
-                  scale: 1.1,
-                }}
-              >
-                linkedin
-              </StyledLink>
-              <StyledLink
-                href='#'
-                whileHover={{
-                  scale: 1.1,
-                }}
-              >
-                cv
-              </StyledLink>
+              {socials.map(social => {
+                return (
+                  <StyledLink
+                    href={social.href}
+                    whileHover={{
+                      scale: 1.1,
+                    }}
+                  >
+                    {social.name}
+                  </StyledLink>
+                );
+              })}
             </div>
           </StyledSocials>
         </StyledControlContainer>
