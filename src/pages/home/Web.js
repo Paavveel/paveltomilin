@@ -210,12 +210,8 @@ const Web = () => {
           <motion.span variants={addictedVariants}>addicted.</motion.span>
         </StyledTitleDiv>
         <ParallaxImage src={codeParallax}>
-          <motion.p style={{ y: subTitleScrollY }}>
-            Developer who cares deeply about user and code.
-          </motion.p>
-          <motion.p style={{ y: subTitleScrollY }}>
-            Serious passion for new technologies.
-          </motion.p>
+          <p>Developer who cares deeply about user and code.</p>
+          <p>Serious passion for new technologies.</p>
         </ParallaxImage>
 
         <StyledDevDiv>
