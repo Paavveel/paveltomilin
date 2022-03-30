@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { media } from '../styles/GlobalStyles';
-import { BsTelegram, BsGithub, BsLinkedin } from 'react-icons/bs';
+import { BsTelegram, BsGithub } from 'react-icons/bs';
+import { SiMaildotru } from 'react-icons/si';
 
 const StyledSocial = styled(motion.div)`
   position: absolute;
@@ -51,6 +52,14 @@ const Social = () => {
   return (
     <StyledSocial variants={socialVariants} initial='initial' animate='animate'>
       <StyledLink
+        href='mailto:pa.tomilin@gmail.com'
+        variants={iconVariants}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <SiMaildotru />
+      </StyledLink>
+      <StyledLink
         href='https://t.me/paul_tm'
         variants={iconVariants}
         whileHover={{ scale: 1.1 }}
@@ -58,6 +67,7 @@ const Social = () => {
       >
         <BsTelegram />
       </StyledLink>
+
       <StyledLink
         href='https://github.com/Paavveel'
         variants={iconVariants}
@@ -65,14 +75,6 @@ const Social = () => {
         whileTap={{ scale: 0.9 }}
       >
         <BsGithub />
-      </StyledLink>
-      <StyledLink
-        href='#'
-        variants={iconVariants}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <BsLinkedin />
       </StyledLink>
     </StyledSocial>
   );

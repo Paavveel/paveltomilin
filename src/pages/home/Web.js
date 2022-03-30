@@ -6,7 +6,7 @@ import { media } from '../../styles/GlobalStyles';
 import codeParallax from '../../assets/code-parallax.jpg';
 import ParallaxImage from '../../components/ParallaxImage';
 
-const StyledWeb = styled.div`
+const StyledWeb = styled(motion.div)`
   padding: 14rem 0 14rem;
   position: relative;
   display: flex;
@@ -17,7 +17,7 @@ const StyledWeb = styled.div`
   }
 `;
 
-const StyledTitleDiv = styled(motion.div)`
+const StyledTitleDiv = styled.div`
   display: flex;
   justify-content: center;
   line-height: 1;
@@ -73,25 +73,30 @@ const StyledDevDiv = styled.div`
   font-size: 15vw;
   margin-top: 25vh;
 
-  p:first-child {
-    font-size: 12vw;
-    padding-bottom: 10vh;
+  p:first-child,
+  p:nth-child(2) {
+    font-size: 10vw;
+    padding-bottom: 5vh;
+  }
+  p:nth-child(3) {
+    font-size: 22vw;
   }
 
   @media ${media.small} {
     font-size: 14vw;
     margin-top: 20vh;
 
-    p:first-child {
-      padding-bottom: 5vh;
+    p:first-child,
+    p:nth-child(2) {
+      padding-bottom: 3vh;
     }
   }
 `;
 
-const StyledJsLogo = styled.div`
+const StyledJsLogo = styled(motion.div)`
   position: absolute;
-  bottom: 19%;
-  left: 42%;
+  bottom: -4%;
+  right: 7%;
   width: 230px;
   height: 230px;
   border-radius: 200px;
@@ -101,7 +106,6 @@ const StyledJsLogo = styled.div`
   align-items: center;
   color: var(--black);
   font-size: 5vw;
-  transform: rotate(325deg);
 
   @media ${media.medium} {
     width: 150px;
@@ -110,12 +114,12 @@ const StyledJsLogo = styled.div`
   @media ${media.small} {
     width: 80px;
     height: 80px;
-    bottom: 21%;
+    bottom: -4%;
   }
   @media ${media.xsmall} {
-    width: 40px;
-    height: 40px;
-    bottom: 20%;
+    width: 60px;
+    height: 60px;
+    bottom: -4%;
   }
 `;
 
@@ -140,19 +144,54 @@ const StyledCodeImg = styled(motion.img)`
   }
 `;
 
-const Web = () => {
-  const { scrollY, scrollX, scrollYProgress } = useViewportScroll();
+const webVariants = {
+  offscreen: {
+    x: '-50%',
+    opacity: 0,
+  },
+  onscreen: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      ease: [0.1, 0.01, -0.05, 0.95],
+    },
+  },
+};
+const addictedVariants = {
+  offscreen: {
+    x: '50%',
+    opacity: 0,
+  },
+  onscreen: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.7,
+      ease: [0.6, 0.01, -0.05, 0.95],
+      delay: 0.1,
+    },
+  },
+};
 
-  // const titleScrollY = useTransform(
-  //   scrollYProgress,
-  //   [0.1, 0.5],
-  //   ['0', '-100%']
-  // );
-  // const subTitleScrollY = useTransform(
-  //   scrollYProgress,
-  //   [0.4, 0.7],
-  //   ['0', '-100%']
-  // );
+const Web = () => {
+  const { scrollY, scrollYProgress } = useViewportScroll();
+
+  const jsRotateOnScroll = useTransform(
+    scrollYProgress,
+    [0.4, 0.7],
+    [-150, 150]
+  );
+  const reactColorOnScroll = useTransform(
+    scrollYProgress,
+    [0.5, 0.55, 0.59],
+    ['#ff008c', '#7700ff', '#23d5ab']
+  );
+  const subTitleScrollY = useTransform(
+    scrollYProgress,
+    [0.25, 0.35],
+    ['-150%', '120%']
+  );
   // const imgScrollY = useTransform(
   //   scrollYProgress,
   //   [0.2, 0.9],
@@ -161,24 +200,29 @@ const Web = () => {
 
   return (
     <>
-      <StyledWeb>
-        <StyledTitleDiv
-        // style={{
-        //   y: titleScrollY,
-        // }}
-        >
-          <span>web</span>
-          <span>addicted.</span>
+      <StyledWeb
+        initial='offscreen'
+        whileInView='onscreen'
+        viewport={{ once: true, margin: '-45%' }}
+      >
+        <StyledTitleDiv>
+          <motion.span variants={webVariants}>web</motion.span>
+          <motion.span variants={addictedVariants}>addicted.</motion.span>
         </StyledTitleDiv>
         <ParallaxImage src={codeParallax}>
-          <p>Developer who cares deeply about user and code.</p>
-          <p>Serious passion for new technologies.</p>
+          <motion.p style={{ y: subTitleScrollY }}>
+            Developer who cares deeply about user and code.
+          </motion.p>
+          <motion.p style={{ y: subTitleScrollY }}>
+            Serious passion for new technologies.
+          </motion.p>
         </ParallaxImage>
 
         <StyledDevDiv>
           <p>developed</p>
-          <p>with react</p>
-          <StyledJsLogo>
+          <p>with</p>
+          <motion.p style={{ color: reactColorOnScroll }}>react</motion.p>
+          <StyledJsLogo style={{ rotate: jsRotateOnScroll }}>
             <span>js</span>
           </StyledJsLogo>
         </StyledDevDiv>

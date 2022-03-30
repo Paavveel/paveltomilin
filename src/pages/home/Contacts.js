@@ -55,6 +55,7 @@ const StyledForm = styled(motion.form)`
 
   h4 {
     align-self: flex-start;
+    color: var(--yellow);
     font-size: 5vw;
     line-height: 7.5vw;
     font-weight: 300;
@@ -331,9 +332,10 @@ const Contacts = () => {
           <StyledSocials>
             <h3>stalk me</h3>
             <div>
-              {socials.map(social => {
+              {socials.map((social, i) => {
                 return (
                   <StyledLink
+                    key={i}
                     href={social.href}
                     whileHover={{
                       scale: 1.1,

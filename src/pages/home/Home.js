@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { media } from '../../styles/GlobalStyles';
 import { toggleNoScroll } from '../../utils/utils';
+
+// Components
 import Hero from './Hero';
 import Web from './Web';
 import Work from './Work';
@@ -54,8 +56,6 @@ const Home = () => {
         onAnimationStart={toggleNoScroll}
         onAnimationComplete={toggleNoScroll}
       />
-      {/* <BannerRowCenter title={'experience'} playMarquee={playMarquee} /> */}
-      {/* <BannerRowBottom title={'studio'} /> */}
     </>
   );
 };
