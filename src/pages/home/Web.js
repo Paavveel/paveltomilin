@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { media } from '../../styles/GlobalStyles';
 
 // Assets
-import code1 from '../../assets/code1.jpg';
 import codeParallax from '../../assets/code-parallax.jpg';
 
 // Components
@@ -135,27 +134,6 @@ const StyledJsLogo = styled(motion.div)`
   }
 `;
 
-const StyledCodeImg = styled(motion.img)`
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 400px;
-  height: 500px;
-  object-fit: cover;
-  z-index: -1;
-
-  @media ${media.medium} {
-    width: 300px;
-    height: 400px;
-  }
-  @media ${media.small} {
-    width: 200px;
-    height: 300px;
-    right: 5rem;
-    bottom: 5rem;
-  }
-`;
-
 const webVariants = {
   offscreen: {
     x: '-50%',
@@ -261,15 +239,6 @@ const Web = () => {
             <span>js</span>
           </StyledJsLogo>
         </StyledDevDiv>
-        {/* <StyledCodeImg
-          height={500}
-          width={500}
-          src={code1}
-          style={{
-            y: imgScrollY,
-          }}
-          alt='Web code'
-        /> */}
       </StyledWeb>
     </>
   );
