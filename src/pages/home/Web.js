@@ -3,10 +3,14 @@ import { motion, useTransform, useViewportScroll } from 'framer-motion';
 import styled from 'styled-components';
 import { media } from '../../styles/GlobalStyles';
 
+// Assets
+import code1 from '../../assets/code1.jpg';
 import codeParallax from '../../assets/code-parallax.jpg';
+
+// Components
 import ParallaxImage from '../../components/ParallaxImage';
 
-const StyledWeb = styled(motion.div)`
+const StyledWeb = styled.div`
   padding: 14rem 0 14rem;
   position: relative;
   display: flex;
@@ -17,20 +21,21 @@ const StyledWeb = styled(motion.div)`
   }
 `;
 
-const StyledTitleDiv = styled.div`
+const StyledTitleDiv = styled(motion.div)`
+  position: relative;
   display: flex;
   justify-content: center;
   line-height: 1;
   font-size: 10vw;
   font-weight: 800;
   text-transform: uppercase;
-  margin-bottom: 25vh;
+  margin-bottom: 28rem;
 
   @media ${media.small} {
     font-size: 15vw;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20vh;
+    margin-bottom: 16rem;
   }
   @media ${media.xsmall} {
     font-size: 15vw;
@@ -38,7 +43,7 @@ const StyledTitleDiv = styled.div`
     align-items: center;
   }
 
-  span:first-child {
+  p:first-child {
     color: var(--yellow);
     font-style: italic;
 
@@ -48,7 +53,7 @@ const StyledTitleDiv = styled.div`
     }
   }
 
-  span:last-child {
+  p:nth-child(2) {
     color: ${props => props.theme.text};
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 0.1vw;
@@ -62,7 +67,7 @@ const StyledTitleDiv = styled.div`
   }
 `;
 
-const StyledDevDiv = styled.div`
+const StyledDevDiv = styled(motion.div)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -70,16 +75,19 @@ const StyledDevDiv = styled.div`
   line-height: 1;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 15vw;
   margin-top: 25vh;
+
+  p:nth-child(2) {
+    font-style: italic;
+  }
 
   p:first-child,
   p:nth-child(2) {
-    font-size: 10vw;
+    font-size: 8vw;
     padding-bottom: 5vh;
   }
   p:nth-child(3) {
-    font-size: 22vw;
+    font-size: 19vw;
   }
 
   @media ${media.small} {
@@ -88,7 +96,11 @@ const StyledDevDiv = styled.div`
 
     p:first-child,
     p:nth-child(2) {
+      font-size: 10vw;
       padding-bottom: 3vh;
+    }
+    p:nth-child(3) {
+      font-size: 22vw;
     }
   }
 `;
@@ -96,7 +108,7 @@ const StyledDevDiv = styled.div`
 const StyledJsLogo = styled(motion.div)`
   position: absolute;
   bottom: -4%;
-  right: 7%;
+  right: 13%;
   width: 230px;
   height: 230px;
   border-radius: 200px;
@@ -112,21 +124,21 @@ const StyledJsLogo = styled(motion.div)`
     height: 150px;
   }
   @media ${media.small} {
-    width: 80px;
-    height: 80px;
-    bottom: -4%;
+    width: 100px;
+    height: 100px;
+    right: 9%;
   }
   @media ${media.xsmall} {
     width: 60px;
     height: 60px;
-    bottom: -4%;
+    right: 7%;
   }
 `;
 
 const StyledCodeImg = styled(motion.img)`
   position: absolute;
-  right: 10rem;
-  bottom: 15rem;
+  left: 0;
+  bottom: 0;
   width: 400px;
   height: 500px;
   object-fit: cover;
@@ -173,6 +185,34 @@ const addictedVariants = {
     },
   },
 };
+const devVariants = {
+  offscreen: {
+    y: '-50%',
+    opacity: 0,
+  },
+  onscreen: {
+    y: '0%',
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      ease: 'easeInOut',
+    },
+  },
+};
+const withVariants = {
+  offscreen: {
+    scale: 0.3,
+    opacity: 0,
+  },
+  onscreen: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 0.7,
+      ease: [0.6, 0.01, -0.05, 0.95],
+    },
+  },
+};
 
 const Web = () => {
   const { scrollY, scrollYProgress } = useViewportScroll();
@@ -184,55 +224,53 @@ const Web = () => {
   );
   const reactColorOnScroll = useTransform(
     scrollYProgress,
-    [0.5, 0.55, 0.59],
-    ['#ff008c', '#7700ff', '#23d5ab']
+    [0.46, 0.5, 0.59],
+    ['#ff008c', '#23d5ab', '#7700ff']
   );
-  const subTitleScrollY = useTransform(
+  const imgScrollY = useTransform(
     scrollYProgress,
-    [0.25, 0.35],
-    ['-150%', '120%']
+    [0.4, 0.7],
+    ['100%', '-100%']
   );
-  // const imgScrollY = useTransform(
-  //   scrollYProgress,
-  //   [0.2, 0.9],
-  //   ['-30%', '-380%']
-  // );
 
   return (
     <>
-      <StyledWeb
-        initial='offscreen'
-        whileInView='onscreen'
-        viewport={{ once: true, margin: '-45%' }}
-      >
-        <StyledTitleDiv>
-          <motion.span variants={webVariants}>web</motion.span>
-          <motion.span variants={addictedVariants}>addicted.</motion.span>
+      <StyledWeb>
+        <StyledTitleDiv
+          initial='offscreen'
+          whileInView='onscreen'
+          viewport={{ once: true, amount: 0.9 }}
+        >
+          <motion.p variants={webVariants}>web</motion.p>
+          <motion.p variants={addictedVariants}>addicted.</motion.p>
         </StyledTitleDiv>
         <ParallaxImage src={codeParallax}>
           <p>Developer who cares deeply about user and code.</p>
           <p>Serious passion for new technologies.</p>
         </ParallaxImage>
 
-        <StyledDevDiv>
-          <p>developed</p>
-          <p>with</p>
+        <StyledDevDiv
+          initial='offscreen'
+          whileInView='onscreen'
+          viewport={{ amount: 0.5 }}
+        >
+          <motion.p variants={devVariants}>developed</motion.p>
+          <motion.p variants={withVariants}>with</motion.p>
           <motion.p style={{ color: reactColorOnScroll }}>react</motion.p>
           <StyledJsLogo style={{ rotate: jsRotateOnScroll }}>
             <span>js</span>
           </StyledJsLogo>
         </StyledDevDiv>
+        {/* <StyledCodeImg
+          height={500}
+          width={500}
+          src={code1}
+          style={{
+            y: imgScrollY,
+          }}
+          alt='Web code'
+        /> */}
       </StyledWeb>
-
-      {/* <StyledCodeImg
-        height={500}
-        width={500}
-        src={code2x}
-        style={{
-          y: imgScrollY,
-        }}
-        alt='Web code'
-      /> */}
     </>
   );
 };

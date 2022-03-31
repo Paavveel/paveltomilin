@@ -9,7 +9,7 @@ const StyledWork = styled.div`
   position: relative;
   display: flex;
   justify-content: flex-end;
-  padding: 0 1rem 14rem;
+  padding: 14rem 1rem 14rem;
   color: var(--white);
 
   @media ${media.small} {

@@ -44,15 +44,18 @@ const StyledImageBox = styled.div`
     text-transform: uppercase;
     text-align: center;
     z-index: 3;
+    padding: 2rem 3rem;
 
     @media ${media.medium} {
       font-size: 3vw;
     }
     @media ${media.small} {
-      font-size: 3.5vw;
+      font-size: 4vw;
+      padding: 2rem 3rem;
     }
     @media ${media.xsmall} {
       font-size: 5.5vw;
+      padding: 2rem 1rem;
     }
   }
 `;
