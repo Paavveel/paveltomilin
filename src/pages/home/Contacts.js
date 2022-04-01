@@ -1,11 +1,13 @@
 import React, { useRef, useState } from 'react';
-import { motion, useTransform, useViewportScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { media } from '../../styles/GlobalStyles';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import emailjs from '@emailjs/browser';
+
+// Components
 import ErrorAlert from '../../components/ErrorAlert';
 import SuccessAlert from '../../components/SuccessAlert';
 
@@ -18,7 +20,7 @@ const socials = [
   { name: 'cv', href: '#' },
 ];
 
-const StyledContacts = styled.div`
+const StyledContacts = styled(motion.div)`
   padding: 5rem 0 5rem;
   position: relative;
   display: flex;
@@ -158,7 +160,7 @@ const StyledFormContainer = styled(motion.div)`
     flex-direction: column;
   }
 `;
-const StyledControlContainer = styled(motion.div)`
+const StyledControlContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 100%;
@@ -172,7 +174,7 @@ const StyledControl = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const StyledSocials = styled(motion.div)`
+const StyledSocials = styled.div`
   width: 30%;
   display: flex;
   height: 80%;
@@ -245,6 +247,33 @@ const schema = yup.object().shape({
     .required('Write your message'),
 });
 
+const titleVariants = {
+  offscreen: {
+    y: '30%',
+    opacity: 0,
+  },
+  onscreen: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      ease: 'easeOut',
+    },
+  },
+};
+const formVariants = {
+  offscreen: {
+    opacity: 0,
+  },
+  onscreen: {
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      ease: 'easeInOut',
+    },
+  },
+};
+
 const Contacts = () => {
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
@@ -284,11 +313,21 @@ const Contacts = () => {
   };
 
   return (
-    <StyledContacts>
-      <StyledTitle>Let's talk!</StyledTitle>
-      <StyledForm ref={formRef} onSubmit={handleSubmit(onSubmit)}>
-        <h4>Hello,</h4>
-        <StyledFormContainer>
+    <StyledContacts
+      initial='offscreen'
+      whileInView='onscreen'
+      viewport={{ amount: 0.2 }}
+    >
+      <StyledTitle variants={titleVariants}>Let's talk!</StyledTitle>
+      <StyledForm
+        ref={formRef}
+        onSubmit={handleSubmit(onSubmit)}
+        initial='offscreen'
+        whileInView='onscreen'
+        viewport={{ amount: 0.3 }}
+      >
+        <motion.h4 variants={formVariants}>Hello,</motion.h4>
+        <StyledFormContainer variants={formVariants}>
           <div>
             <p>
               <label htmlFor='name'>my name is</label>

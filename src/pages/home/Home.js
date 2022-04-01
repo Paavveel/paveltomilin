@@ -1,7 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useViewportScroll } from 'framer-motion';
 import styled from 'styled-components';
-import { media } from '../../styles/GlobalStyles';
 import { toggleNoScroll } from '../../utils/utils';
 
 // Components
@@ -35,16 +34,17 @@ const squareExitVariants = {
 };
 
 const Home = () => {
+  const { scrollYProgress } = useViewportScroll();
   return (
     <>
       <StyledSection>
         <Hero />
       </StyledSection>
       <StyledSection>
-        <Web />
+        <Web scrollYProgress={scrollYProgress} />
       </StyledSection>
       <StyledSection>
-        <Work />
+        <Work scrollYProgress={scrollYProgress} />
       </StyledSection>
       <StyledSection>
         <Contacts />
@@ -59,87 +59,5 @@ const Home = () => {
     </>
   );
 };
-
-const BannerRowBottom = ({ title }) => {
-  return (
-    <div className={'banner-row center'}>
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ ease: [0.6, 0.01, -0.05, 0.95], duration: 1, delay: 1 }}
-        className='scroll'
-      >
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: 'easeInOut',
-            duration: 1,
-            delay: 1.8,
-          }}
-        >
-          scroll
-        </motion.span>
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: 'easeInOut',
-            duration: 1,
-            delay: 1.8,
-          }}
-        >
-          down
-        </motion.span>
-      </motion.div>
-    </div>
-  );
-};
-
-const banner = {
-  animate: {
-    transition: {
-      delayChildren: 0.4,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const letterAni = {
-  initial: { y: 400 },
-  animate: {
-    y: 0,
-    transition: {
-      ease: [0.6, 0.01, -0.05, 0.95],
-      duration: 1,
-    },
-  },
-};
-
-const RowTitle = styled(motion.span)`
-  font-size: 4rem;
-  font-weight: 400;
-  position: relative;
-  display: inline-block;
-  white-space: nowrap;
-
-  @media ${media.small} {
-    font-size: 2.5rem;
-  }
-`;
-
-const AnimatedLetters = ({ title, disabled }) => (
-  <RowTitle
-    variants={disabled ? null : banner}
-    initial='initial'
-    animate='animate'
-  >
-    {[...title].map((letter, i) => (
-      <RowTitle key={i} variants={disabled ? null : letterAni}>
-        {letter}
-      </RowTitle>
-    ))}
-  </RowTitle>
-);
 
 export default Home;

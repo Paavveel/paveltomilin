@@ -1,11 +1,11 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useTransform } from 'framer-motion';
 import styled from 'styled-components';
 import { media } from '../../styles/GlobalStyles';
 import { Link } from 'react-router-dom';
 import Marquee from 'react-fast-marquee';
 
-const StyledWork = styled.div`
+const StyledWork = styled(motion.div)`
   position: relative;
   display: flex;
   justify-content: flex-end;
@@ -16,7 +16,7 @@ const StyledWork = styled.div`
     padding: 8rem 1rem 8rem;
   }
 `;
-const WorkCard = styled.div`
+const WorkCard = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -74,7 +74,7 @@ const WorkCardTitle = styled.div`
     }
   }
 `;
-const WorkCardSubTitle = styled.div`
+const WorkCardSubTitle = styled(motion.div)`
   font-size: 1.7rem;
   font-weight: normal;
   line-height: 1.5;
@@ -119,7 +119,7 @@ const FirsrMarquee = styled(Marquee)`
     width: 120%;
     transform: rotate(356deg);
     background: ${props => props.theme.text};
-    z-index: -1;
+    z-index: -2;
     overflow: hidden;
   }
 
@@ -168,7 +168,7 @@ const SecondMarquee = styled(Marquee)`
     width: 120%;
     transform: rotate(2deg);
     background: var(--yellow);
-    z-index: -2;
+    z-index: -3;
     overflow: hidden;
   }
 
@@ -201,18 +201,56 @@ const SecondMarquee = styled(Marquee)`
   }
 `;
 
-const Work = () => {
+const textVariants = {
+  offscreen: {
+    opacity: 0,
+    pointerEvents: 'none',
+  },
+  onscreen: {
+    opacity: 1,
+    pointerEvents: 'auto',
+    transition: {
+      duration: 0.4,
+      ease: 'easeInOut',
+    },
+  },
+};
+const rocketVariants = {
+  offscreen: {
+    scale: 0,
+  },
+  onscreen: {
+    scale: [0, 1.3, 1],
+    transition: {
+      duration: 1,
+      ease: [0.6, 0.01, -0.05, 0.95],
+    },
+  },
+};
+
+const Work = ({ scrollYProgress }) => {
+  const xOnScroll = useTransform(
+    scrollYProgress,
+    [0.45, 0.66],
+    ['-110%', '0%']
+  );
+  const yOnScroll = useTransform(scrollYProgress, [0.45, 0.66], ['-30%', '0%']);
+
   return (
-    <StyledWork>
-      <WorkCard>
+    <StyledWork
+      initial='offscreen'
+      whileInView='onscreen'
+      viewport={{ amount: 0.66 }}
+    >
+      <WorkCard style={{ x: xOnScroll, y: yOnScroll }}>
         <WorkCardTitle>
-          <p>
+          <motion.p variants={textVariants}>
             Welcome! I'm Pavel Tomilin. I am passionate about everything related
             to a web technologies.
-          </p>
-          <span>🚀</span>
+          </motion.p>
+          <motion.span variants={rocketVariants}>🚀</motion.span>
         </WorkCardTitle>
-        <WorkCardSubTitle>
+        <WorkCardSubTitle variants={textVariants}>
           <p>
             I am a Junior Frontend developer and i have currently learn. One of
             my aim when i create aplications is coding clean and effective. I
@@ -228,6 +266,7 @@ const Work = () => {
           whileHover={{
             scale: 1.1,
           }}
+          variants={textVariants}
         >
           My works <span>💻</span>
         </WorkCardLink>

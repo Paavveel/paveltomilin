@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useTransform, useViewportScroll } from 'framer-motion';
+import { motion, useTransform } from 'framer-motion';
 import styled from 'styled-components';
 import { media } from '../../styles/GlobalStyles';
 
@@ -163,16 +163,17 @@ const addictedVariants = {
     },
   },
 };
+
 const devVariants = {
   offscreen: {
-    y: '-50%',
+    x: '-50%',
     opacity: 0,
   },
   onscreen: {
-    y: '0%',
+    x: '0%',
     opacity: 1,
     transition: {
-      duration: 0.3,
+      duration: 0.5,
       ease: 'easeInOut',
     },
   },
@@ -192,9 +193,7 @@ const withVariants = {
   },
 };
 
-const Web = () => {
-  const { scrollY, scrollYProgress } = useViewportScroll();
-
+const Web = ({ scrollYProgress }) => {
   const jsRotateOnScroll = useTransform(
     scrollYProgress,
     [0.4, 0.7],
@@ -204,11 +203,6 @@ const Web = () => {
     scrollYProgress,
     [0.46, 0.5, 0.59],
     ['#ff008c', '#23d5ab', '#7700ff']
-  );
-  const imgScrollY = useTransform(
-    scrollYProgress,
-    [0.4, 0.7],
-    ['100%', '-100%']
   );
 
   return (
@@ -230,7 +224,7 @@ const Web = () => {
         <StyledDevDiv
           initial='offscreen'
           whileInView='onscreen'
-          viewport={{ amount: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
         >
           <motion.p variants={devVariants}>developed</motion.p>
           <motion.p variants={withVariants}>with</motion.p>
