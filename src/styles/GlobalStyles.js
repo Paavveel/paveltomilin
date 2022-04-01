@@ -38,7 +38,7 @@ export const GlobalStyle = createGlobalStyle`
 html {
   font-size: 16px;
   line-height: 1.7;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
   overscroll-behavior: none;
   overflow-x: hidden;
   overflow-y: scroll;

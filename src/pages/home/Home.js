@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, useViewportScroll } from 'framer-motion';
 import styled from 'styled-components';
 import { toggleNoScroll } from '../../utils/utils';
@@ -34,6 +34,9 @@ const squareExitVariants = {
 };
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { scrollYProgress } = useViewportScroll();
   return (
     <>

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { media } from '../styles/GlobalStyles';
 import { toggleNoScroll } from '../utils/utils';
+import { useLocation } from 'react-router-dom';
 
 const StyledSection = styled(motion.section)`
   width: 100vw;
@@ -60,6 +61,11 @@ const squareExitVariants = {
 };
 
 function About() {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <StyledSection>
@@ -72,6 +78,7 @@ function About() {
           onAnimationComplete={toggleNoScroll}
         ></StyledSquare>
       </StyledSection>
+      <StyledSection></StyledSection>
       <StyledExitSquare
         variants={squareExitVariants}
         initial='initial'

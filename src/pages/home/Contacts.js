@@ -208,6 +208,7 @@ const StyledSubmitButton = styled(motion.button)`
   cursor: pointer;
 
   &:disabled {
+    background-color: var(--gray);
     cursor: no-drop;
   }
 
