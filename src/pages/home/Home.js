@@ -9,7 +9,7 @@ import Web from './Web';
 import Work from './Work';
 import Contacts from './Contacts';
 
-const StyledSection = styled(motion.section)`
+const StyledSection = styled.section`
   width: 100vw;
   min-height: 100vh;
   position: relative;

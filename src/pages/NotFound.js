@@ -14,7 +14,7 @@ const StyledNotFound = styled.div`
   }
 `;
 
-function NotFound() {
+const NotFound = () => {
   return (
     <StyledNotFound>
       <h1>NOT FOUND</h1>
@@ -22,6 +22,6 @@ function NotFound() {
       <Link to='/'>Go to Home</Link>
     </StyledNotFound>
   );
-}
+};
 
 export default NotFound;

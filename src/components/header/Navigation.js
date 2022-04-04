@@ -26,7 +26,7 @@ const StyledNavLink = styled(motion(NavLink))`
   }
 `;
 
-function Navigation() {
+const Navigation = () => {
   return (
     <Nav
       initial={{ opacity: 0, y: -180 }}
@@ -63,6 +63,6 @@ function Navigation() {
       </StyledNavLink>
     </Nav>
   );
-}
+};
 
 export default Navigation;

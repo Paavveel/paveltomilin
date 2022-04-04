@@ -7,7 +7,7 @@ const Main = styled.main`
   overflow: hidden;
 `;
 
-function Layout() {
+const Layout = () => {
   return (
     <>
       <Main>
@@ -15,6 +15,6 @@ function Layout() {
       </Main>
     </>
   );
-}
+};
 
 export default Layout;

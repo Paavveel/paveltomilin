@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { media } from '../styles/GlobalStyles';
 import { scrollToTop, toggleNoScroll } from '../utils/utils';
 
-const StyledSection = styled(motion.section)`
+const StyledSection = styled.section`
   width: 100vw;
   min-height: 100vh;
   position: relative;
@@ -59,7 +59,7 @@ const squareExitVariants = {
   },
 };
 
-function About() {
+const About = () => {
   return (
     <>
       <StyledSection>
@@ -85,6 +85,6 @@ function About() {
       />
     </>
   );
-}
+};
 
 export default About;

@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { media } from '../styles/GlobalStyles';
+import { motion } from 'framer-motion';
 
-const StyledImageBox = styled.div`
+const StyledImageBox = styled(motion.div)`
   position: relative;
   width: 100%;
   height: 100vh;
@@ -12,7 +13,7 @@ const StyledImageBox = styled.div`
   div:first-child {
     position: relative;
     background-attachment: fixed;
-    /* background-position: center; */
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;

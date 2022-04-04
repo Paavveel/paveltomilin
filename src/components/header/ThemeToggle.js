@@ -22,7 +22,7 @@ const ThemeButton = styled(motion.button)`
   }
 `;
 
-function ThemeToggle({ toggleTheme }) {
+const ThemeToggle = ({ toggleTheme }) => {
   return (
     <ThemeButton
       onClick={toggleTheme}
@@ -50,6 +50,6 @@ function ThemeToggle({ toggleTheme }) {
       <AiFillThunderbolt />
     </ThemeButton>
   );
-}
+};
 
 export default ThemeToggle;
