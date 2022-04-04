@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion, useViewportScroll } from 'framer-motion';
 import styled from 'styled-components';
-import { toggleNoScroll } from '../../utils/utils';
+import { scrollToTop, toggleNoScroll } from '../../utils/utils';
 
 // Components
 import Hero from './Hero';
@@ -34,9 +34,6 @@ const squareExitVariants = {
 };
 
 const Home = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   const { scrollYProgress } = useViewportScroll();
   return (
     <>
@@ -57,7 +54,10 @@ const Home = () => {
         initial='initial'
         exit='exit'
         onAnimationStart={toggleNoScroll}
-        onAnimationComplete={toggleNoScroll}
+        onAnimationComplete={() => {
+          toggleNoScroll();
+          scrollToTop();
+        }}
       />
     </>
   );

@@ -15,7 +15,6 @@ import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from 'styled-components';
 import { useDarkMode } from './hooks/useDarkMode';
 import { GlobalStyle, darkTheme, lightTheme } from './styles/GlobalStyles';
-import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [loading, setLoading] = useState(false);

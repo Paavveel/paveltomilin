@@ -7,3 +7,7 @@ export const toggleNoScroll = () => {
     html.classList.add('no-scroll');
   }
 };
+
+export const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};
