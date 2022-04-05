@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import { ThemeProvider } from 'styled-components';
+import { useDarkMode } from './hooks/useDarkMode';
+import { GlobalStyle, darkTheme, lightTheme } from './styles/GlobalStyles';
 
 import './sass/main.scss';
 
 // Components
 import Header from './components/header/Header';
 import Loader from './components/Loader';
-import Works from './pages/Works';
+import Works from './pages/works/Works';
 import About from './pages/About';
 import Layout from './pages/Layout';
 import Home from './pages/home/Home';
 import NotFound from './pages/NotFound';
-import { AnimatePresence } from 'framer-motion';
-import { ThemeProvider } from 'styled-components';
-import { useDarkMode } from './hooks/useDarkMode';
-import { GlobalStyle, darkTheme, lightTheme } from './styles/GlobalStyles';
 
 function App() {
   const [loading, setLoading] = useState(false);

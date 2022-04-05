@@ -178,7 +178,12 @@ const StyledSocials = styled.div`
   width: 30%;
   display: flex;
   height: 80%;
-  justify-content: space-between;
+
+  gap: 7rem;
+
+  @media ${media.small} {
+    gap: 1rem;
+  }
 
   @media ${media.small} {
     flex-direction: column;
@@ -193,6 +198,7 @@ const StyledSocials = styled.div`
   div {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
   }
 `;
 
