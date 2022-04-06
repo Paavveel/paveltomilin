@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useViewportScroll, useTransform } from 'framer-motion';
 import { media } from '../../styles/GlobalStyles';
 import { scrollToTop, toggleNoScroll } from '../../utils/utils';
 import { works } from '../../data';
@@ -8,6 +8,7 @@ import { works } from '../../data';
 // Components
 import WorkCard from './WorkCard';
 import WorksHeader from './WorksHeader';
+import WorksFooter from './WorksFooter';
 
 const StyledSection = styled.section`
   width: 100vw;
@@ -31,15 +32,13 @@ const StyledExitSquare = styled(motion.div)`
 const StyledWorksInner = styled(motion.div)`
   position: relative;
   margin: 0 auto;
-  background: #d56040;
-  width: 75%;
-  min-height: 100vh;
   opacity: 0;
 `;
-const StyledWorksCounter = styled(motion.p)`
+const StyledWorksCounter = styled.p`
   position: absolute;
   top: 6.5vh;
   left: 50%;
+  transform: translateX(-50%);
   width: fit-content;
   text-transform: uppercase;
   font-size: 1vw;
@@ -58,7 +57,8 @@ const StyledWorksCounter = styled(motion.p)`
 const StyledWorkContainer = styled.div`
   width: 85%;
   margin: 0 auto;
-  padding-top: 40vh;
+  padding-top: 30vh;
+  padding-bottom: 30vh;
 `;
 
 const squareVariants = {
@@ -101,18 +101,19 @@ const worksInnerVariants = {
   onscreen: {
     width: '100%',
     transition: {
-      // duration: 0.4,
       ease: 'easeOut',
     },
   },
 };
 
-const worksCounterVariants = {
-  initial: { x: '-50%' },
-};
-
 const Works = () => {
-  const controls = useAnimation();
+  const { scrollYProgress } = useViewportScroll();
+
+  const worksInnerColorOnScroll = useTransform(
+    scrollYProgress,
+    [0.25, 0.33, 0.5, 0.65, 0.8],
+    ['#d56040', '#114180', '#8b5cf9', '#1d9675', '#4992f8']
+  );
   return (
     <>
       <StyledSquare
@@ -120,9 +121,7 @@ const Works = () => {
         initial='initial'
         animate='enter'
         onAnimationStart={toggleNoScroll}
-        onAnimationComplete={() => {
-          toggleNoScroll();
-        }}
+        onAnimationComplete={toggleNoScroll}
       ></StyledSquare>
       <WorksHeader />
       <StyledSection>
@@ -135,9 +134,10 @@ const Works = () => {
             duration: 0.6,
             ease: 'easeOut',
           }}
-          viewport={{ amount: 0.04 }}
+          viewport={{ once: true, amount: 0.04 }}
+          style={{ backgroundColor: worksInnerColorOnScroll }}
         >
-          <StyledWorksCounter initial='initial' variants={worksCounterVariants}>
+          <StyledWorksCounter>
             Selected works ({works.length})
           </StyledWorksCounter>
           <StyledWorkContainer>
@@ -147,6 +147,7 @@ const Works = () => {
           </StyledWorkContainer>
         </StyledWorksInner>
       </StyledSection>
+      <WorksFooter />
       <StyledExitSquare
         variants={squareExitVariants}
         initial='initial'

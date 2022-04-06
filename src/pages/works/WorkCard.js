@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { media } from '../../styles/GlobalStyles';
 import { FaExternalLinkSquareAlt, FaGithub } from 'react-icons/fa';
 
-const StyledWorkCard = styled.div`
+const StyledWorkCard = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 5rem;
   padding: 5vh 0;
 
   @media ${media.small} {
-    gap: 5rem;
+    gap: 3rem;
   }
   @media ${media.xsmall} {
-    gap: 4rem;
+    gap: 2rem;
   }
 `;
 const StyledWorkNumber = styled.p`
@@ -50,32 +50,17 @@ const StyledWorkBody = styled.div`
   flex-direction: column;
   min-height: 50vh;
   gap: 25px;
-
-  @media ${media.small} {
-  }
-  @media ${media.xsmall} {
-  }
 `;
 
 const StyledWorkTitle = styled.p`
-  display: flex;
-  gap: 5rem;
-  font-size: 8.9vmax;
+  width: fit-content;
+  font-size: 6.9vmax;
   line-height: 1;
-
-  @media ${media.small} {
-  }
-  @media ${media.xsmall} {
-  }
 `;
 const StyledWorkDescription = styled.p`
   font-size: 17px;
   text-align: justify;
   font-weight: 300;
-  @media ${media.small} {
-  }
-  @media ${media.xsmall} {
-  }
 `;
 const StyledWorkTech = styled.div`
   display: flex;
@@ -88,12 +73,8 @@ const StyledWorkTech = styled.div`
   }
 
   ul {
+    columns: 2;
     font-weight: 300;
-  }
-
-  @media ${media.small} {
-  }
-  @media ${media.xsmall} {
   }
 `;
 const StyledWorkLinks = styled.div`
@@ -117,52 +98,57 @@ const StyledWorkLinks = styled.div`
       font-size: 30px;
     }
   }
-
-  @media ${media.small} {
-  }
-  @media ${media.xsmall} {
-  }
 `;
 const StyledWorkBottomRow = styled.div`
   display: flex;
-  gap: 25px;
+  gap: 60px;
 
   @media ${media.small} {
     flex-direction: column-reverse;
-  }
-  @media ${media.xsmall} {
   }
 `;
 const StyledLeftRow = styled.div`
   display: flex;
   flex-direction: column;
-
   gap: 35px;
-
-  @media ${media.small} {
-  }
-  @media ${media.xsmall} {
-  }
 `;
 
 const StyledWorkImg = styled.img`
   width: 50%;
   height: 100%;
+
   @media ${media.small} {
     width: 100%;
   }
-  @media ${media.xsmall} {
-  }
 `;
-const StyledWorkLine = styled.div`
-  width: 100%;
+const StyledWorkLine = styled(motion.div)`
   height: 5px;
   background: ${props => props.theme.text};
-  @media ${media.small} {
-  }
-  @media ${media.xsmall} {
-  }
 `;
+
+const workCardVariants = {
+  offscreen: {
+    opacity: 0.2,
+  },
+  onscreen: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+    },
+  },
+};
+const workLineVariants = {
+  offscreen: {
+    width: '0%',
+  },
+  onscreen: {
+    width: '100%',
+    transition: {
+      duration: 0.7,
+      ease: [0.6, 0.01, -0.05, 0.95],
+    },
+  },
+};
 
 const WorkCard = ({
   id,
@@ -174,13 +160,17 @@ const WorkCard = ({
   imgLink,
 }) => {
   return (
-    <StyledWorkCard>
+    <StyledWorkCard
+      variants={workCardVariants}
+      initial='offscreen'
+      whileInView='onscreen'
+      viewport={{ amount: 0.4 }}
+    >
       <StyledWorkNumber>
         <span /> {id}
       </StyledWorkNumber>
       <StyledWorkBody>
         <StyledWorkTitle>{name}</StyledWorkTitle>
-
         <StyledWorkBottomRow>
           <StyledLeftRow>
             <StyledWorkDescription>{description}</StyledWorkDescription>
@@ -200,7 +190,7 @@ const WorkCard = ({
                 }}
               >
                 <FaGithub />
-                viev repo
+                view repo
               </motion.a>
               <motion.a
                 href={linkDemo}
@@ -209,14 +199,19 @@ const WorkCard = ({
                 }}
               >
                 <FaExternalLinkSquareAlt />
-                viev demo
+                view demo
               </motion.a>
             </StyledWorkLinks>
           </StyledLeftRow>
           <StyledWorkImg src={imgLink} />
         </StyledWorkBottomRow>
       </StyledWorkBody>
-      <StyledWorkLine />
+      <StyledWorkLine
+        variants={workLineVariants}
+        initial='offscreen'
+        whileInView='onscreen'
+        viewport={{ once: true, amount: 0.01 }}
+      />
     </StyledWorkCard>
   );
 };
