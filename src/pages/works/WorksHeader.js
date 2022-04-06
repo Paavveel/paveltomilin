@@ -2,19 +2,39 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { media } from '../../styles/GlobalStyles';
+import keyboard from '../../assets/worksvideo.mp4';
 
 const StyledWorksHeaderSection = styled(motion.section)`
+  position: relative;
   width: 100vw;
   height: 85vh;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+
+  div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &::before {
+      content: '';
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
 
   p {
     width: fit-content;
     text-transform: uppercase;
     font-size: 1vw;
+    color: var(--white);
     margin-left: 20%;
     overflow: hidden;
     display: flex;
@@ -26,7 +46,7 @@ const StyledWorksHeaderSection = styled(motion.section)`
       width: 3px;
       height: 3px;
       border-radius: 10px;
-      background: ${props => props.theme.text};
+      background: var(--white);
     }
 
     @media ${media.medium} {
@@ -54,6 +74,7 @@ const StyledWorksHeaderSection = styled(motion.section)`
   }
 
   h2:nth-child(2) {
+    color: var(--white);
     padding-left: 30%;
 
     @media ${media.small} {
@@ -71,6 +92,12 @@ const StyledWorksHeaderSection = styled(motion.section)`
       padding-left: 30%;
     }
   }
+`;
+
+const StyledVideo = styled(motion.video)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 const headerVariants = {
@@ -112,11 +139,16 @@ const WorksHeader = () => {
       initial='initial'
       animate='animate'
     >
-      <motion.p variants={headerItemEditionVariants}>
-        {new Date().getFullYear()} edition <span />
-      </motion.p>
-      <motion.h2 variants={headerItemVariants}>Recent</motion.h2>
-      <motion.h2 variants={headerItemVariants}>Works</motion.h2>
+      <StyledVideo autoPlay loop muted>
+        <source src={keyboard} type='video/mp4' />
+      </StyledVideo>
+      <div>
+        <motion.p variants={headerItemEditionVariants}>
+          {new Date().getFullYear()} edition <span />
+        </motion.p>
+        <motion.h2 variants={headerItemVariants}>Recent</motion.h2>
+        <motion.h2 variants={headerItemVariants}>Works</motion.h2>
+      </div>
     </StyledWorksHeaderSection>
   );
 };
