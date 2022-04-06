@@ -61,6 +61,10 @@ const StyledWorksHeaderSection = styled(motion.section)`
     }
   }
   h2:nth-child(3) {
+    background: linear-gradient(85deg, #ba39f7, #4992f8, #64c0d3);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     padding-left: 40%;
 
     @media ${media.small} {
