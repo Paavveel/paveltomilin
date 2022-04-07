@@ -89,9 +89,6 @@ const WorkCardSubTitle = styled(motion.div)`
   @media ${media.small} {
     font-size: 1rem;
   }
-  @media ${media.small} {
-    font-size: 1rem;
-  }
 `;
 
 const WorkCardLink = styled(motion(Link))`
@@ -245,16 +242,14 @@ const Work = ({ scrollYProgress }) => {
       <WorkCard style={{ x: xOnScroll, y: yOnScroll }}>
         <WorkCardTitle>
           <motion.p variants={textVariants}>
-            Welcome! I'm Pavel Tomilin. I am passionate about everything related
-            to a web technologies.
+            Welcome! <br /> I'm Pavel Tomilin. <br /> I am passionate about
+            everything related to a web technologies.
           </motion.p>
           <motion.span variants={rocketVariants}>🚀</motion.span>
         </WorkCardTitle>
         <WorkCardSubTitle variants={textVariants}>
           <p>
-            I am a Junior Frontend developer and i have currently learn. One of
-            my aim when i create aplications is coding clean and effective. I
-            also like to learn modern technologies to keep myself up to date. I
+            I am a self taught Frontend developer and i have currently learn. I
             rely on the most outstanding open source libraries <b>React</b> &{' '}
             <b>Redux</b> being these my tools to be able to solve any challenge.
           </p>

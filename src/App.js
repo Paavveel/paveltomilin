@@ -8,12 +8,12 @@ import { GlobalStyle, darkTheme, lightTheme } from './styles/GlobalStyles';
 import './sass/main.scss';
 
 // Components
-import Header from './components/header/Header';
 import Loader from './components/Loader';
-import Works from './pages/works/Works';
-import About from './pages/About';
-import Layout from './pages/Layout';
+import Header from './components/header/Header';
 import Home from './pages/home/Home';
+import Works from './pages/works/Works';
+import About from './pages/about/About';
+import Layout from './pages/Layout';
 import NotFound from './pages/NotFound';
 
 function App() {
