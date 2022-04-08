@@ -13,10 +13,10 @@ const StyledAboutHero = styled.div`
   justify-content: space-around;
 
   @media ${media.medium} {
-    gap: 30px;
+    gap: 3rem;
   }
   @media ${media.small} {
-    gap: 50px;
+    gap: 5.5rem;
     padding: 5.5rem 0;
     flex-direction: column-reverse;
   }
@@ -89,7 +89,6 @@ const StyledAboutTextTitle = styled.p`
   }
 
   span:nth-child(1) {
-    font-size: 2.5vmax;
     animation-name: ${waveAnimation};
     animation-duration: 3.1s;
     animation-iteration-count: infinite;
@@ -102,17 +101,15 @@ const StyledAboutTextTitle = styled.p`
   }
 
   span:nth-child(2) {
-    font-size: 2.5vmax;
     font-weight: 700;
-
-    @media ${media.xsmall} {
-      font-size: 3.5vmax;
-    }
-
     background: linear-gradient(85deg, #ba39f7, #4992f8, #64c0d3);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    @media ${media.xsmall} {
+      font-size: 3.5vmax;
+    }
   }
 `;
 const StyledAboutLink = styled(motion.a)`
