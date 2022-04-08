@@ -249,9 +249,11 @@ const Work = ({ scrollYProgress }) => {
         </WorkCardTitle>
         <WorkCardSubTitle variants={textVariants}>
           <p>
-            I am a self taught Frontend developer and i have currently learn. I
-            rely on the most outstanding open source libraries <b>React</b> &{' '}
-            <b>Redux</b> being these my tools to be able to solve any challenge.
+            I am a self taught Frontend developer and i have currently learn.
+            One of my aim when i create aplications is coding clean and
+            effective. I rely on the most outstanding open source libraries{' '}
+            <b>React</b> & <b>Redux</b> being these my tools to be able to solve
+            any challenge.
           </p>
           <p>This page is an example of my skills as a developer.</p>
           <p>Check bellow:</p>
