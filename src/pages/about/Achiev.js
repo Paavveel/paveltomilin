@@ -37,7 +37,7 @@ const Achiev = ({ title, date, img, id, changeImg, setHoverState, x, y }) => {
           setHoverState(true);
         }}
         onHoverEnd={() => {
-          changeImg('');
+          changeImg(null);
           setHoverState(false);
         }}
       >

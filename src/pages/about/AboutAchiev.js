@@ -41,7 +41,7 @@ const StyledAchiveContainer = styled.div`
     overflow: hidden;
 
     img {
-      width: 100%;
+      width: auto;
       height: 100%;
     }
   }
@@ -156,9 +156,12 @@ const AboutAchiev = () => {
   const [hoverState, setHoverState] = useState(false);
 
   const changeImg = id => {
-    if (id === '') setCurrnetImg(null);
-    const obj = achievements.find(item => item.id === id);
-    setCurrnetImg(obj.img);
+    if (id) {
+      const obj = achievements.find(item => item.id === id);
+      setCurrnetImg(obj.img);
+    } else {
+      setCurrnetImg('');
+    }
   };
   return (
     <StyledAboutAchive>
@@ -196,7 +199,7 @@ const AboutAchiev = () => {
           }}
           transition={{ ease: 'linear' }}
         >
-          <img src={currentImg} />
+          <img src={currentImg} alt='' />
         </motion.div>
       </StyledAchiveContainer>
     </StyledAboutAchive>
