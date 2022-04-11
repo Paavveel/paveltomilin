@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { media } from '../../styles/GlobalStyles';
 import Marquee from 'react-fast-marquee';
+import { achievements } from '../../data';
+import { useMousePosition } from '../../hooks/useMousePosition';
+
+// Components
+import Achiev from './Achiev';
 
 const StyledAboutAchive = styled.div`
-  position: relative;
+  /* position: relative; */
   padding: 5rem 0;
   min-height: 100vh;
 
@@ -14,8 +19,10 @@ const StyledAboutAchive = styled.div`
   }
 `;
 const StyledAchiveContainer = styled.div`
+  /* position: relative; */
+  width: 90%;
+  margin: 0 auto;
   padding: 10rem 0;
-  padding-right: 5vw;
   display: flex;
   justify-content: flex-end;
 
@@ -23,23 +30,43 @@ const StyledAchiveContainer = styled.div`
     padding: 11rem 0;
   }
 
-  @media ${media.small} {
+  div.img {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 50vh;
+    z-index: 99;
+    box-shadow: rgb(0 0 0 / 10%) 5px 5px 15px 5px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 `;
 const StyledAchiveInner = styled.div`
-  width: 50%;
+  width: 70%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 
-  @media ${media.small} {
+  p {
+    font-size: 1.5vmax;
+    font-weight: 400;
+    line-height: 120%;
+    word-spacing: 5px;
+    margin: 1vw 0px;
+    padding: 1vw 0px;
+
+    @media ${media.medium} {
+      font-size: 17px;
+    }
   }
-`;
-const StyledAchiveName = styled.div`
+
   @media ${media.small} {
-  }
-`;
-const StyledAchiveDate = styled.div`
-  @media ${media.small} {
+    width: 100%;
   }
 `;
 
@@ -123,7 +150,16 @@ const SecondMarquee = styled(Marquee)`
   }
 `;
 
-const AboutAchive = () => {
+const AboutAchiev = () => {
+  const { x, y } = useMousePosition();
+  const [currentImg, setCurrnetImg] = useState('');
+  const [hoverState, setHoverState] = useState(false);
+
+  const changeImg = id => {
+    if (id === '') setCurrnetImg(null);
+    const obj = achievements.find(item => item.id === id);
+    setCurrnetImg(obj.img);
+  };
   return (
     <StyledAboutAchive>
       <FirsrMarquee gradient={false} speed={100}>
@@ -139,22 +175,32 @@ const AboutAchive = () => {
       </SecondMarquee>
       <StyledAchiveContainer>
         <StyledAchiveInner>
-          <StyledAchiveName>
-            <p>html1</p>
-            <p>html2</p>
-            <p>js1</p>
-            <p>frontend</p>
-          </StyledAchiveName>
-          <StyledAchiveDate>
-            <p>Feb 2020</p>
-            <p>March 2020</p>
-            <p>March 2020</p>
-            <p>March 2020</p>
-          </StyledAchiveDate>
+          {achievements.map((item, i) => (
+            <Achiev
+              key={i}
+              {...item}
+              x={x}
+              y={y}
+              changeImg={changeImg}
+              setHoverState={setHoverState}
+            />
+          ))}
         </StyledAchiveInner>
+        <motion.div
+          className='img'
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: hoverState ? 1 : 0,
+            x: x,
+            y: y,
+          }}
+          transition={{ ease: 'linear' }}
+        >
+          <img src={currentImg} />
+        </motion.div>
       </StyledAchiveContainer>
     </StyledAboutAchive>
   );
 };
 
-export default AboutAchive;
+export default AboutAchiev;

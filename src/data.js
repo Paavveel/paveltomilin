@@ -1,3 +1,9 @@
+// Serts
+import html1 from '../src/assets/serts/html1.jpg';
+import html2 from '../src/assets/serts/html2.jpg';
+import html3 from '../src/assets/serts/html3.jpg';
+import html4 from '../src/assets/serts/html4.jpg';
+
 export const works = [
   {
     id: '01',
@@ -105,4 +111,41 @@ export const works = [
     linkDemo: '#',
     imgLink: 'https://via.placeholder.com/1920x1080',
   },
+];
+
+export const achievements = [
+  {
+    id: '1',
+    title: 'HTML Academy - HTML & CSS. Professional Website Coding',
+    date: 'July 2020',
+    img: `${html1}`,
+  },
+  {
+    id: '2',
+    title: 'HTML Academy - HTML & CSS. Adeptive Website Coding and Automation',
+    date: 'Sept 2020',
+    img: `${html2}`,
+  },
+  {
+    id: '3',
+    title:
+      'HTML Academy - JavaScript. Professional Development of Web Interfaces',
+    date: 'Nov 2020',
+    img: `${html3}`,
+  },
+  {
+    id: '4',
+    title: 'HTML Academy - Profession Front-end Developer',
+    date: 'Nov 2020',
+    img: `${html4}`,
+  },
+];
+
+export const socials = [
+  { name: 'phone', href: 'tel:+79169179195' },
+  { name: 'mail', href: 'mailto:pa.tomilin@gmail.com' },
+  { name: 'telegram', href: 'https://t.me/paul_tm' },
+  { name: 'github', href: 'https://github.com/Paavveel' },
+  { name: 'linkedin', href: '#' },
+  { name: 'cv', href: '#' },
 ];

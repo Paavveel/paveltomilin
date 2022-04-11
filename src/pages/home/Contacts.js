@@ -6,19 +6,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import emailjs from '@emailjs/browser';
+import { socials } from '../../data';
 
 // Components
 import ErrorAlert from '../../components/ErrorAlert';
 import SuccessAlert from '../../components/SuccessAlert';
-
-const socials = [
-  { name: 'phone', href: 'tel:+79169179195' },
-  { name: 'mail', href: 'mailto:pa.tomilin@gmail.com' },
-  { name: 'telegram', href: 'https://t.me/paul_tm' },
-  { name: 'github', href: 'https://github.com/Paavveel' },
-  { name: 'linkedin', href: '#' },
-  { name: 'cv', href: '#' },
-];
 
 const StyledContacts = styled(motion.div)`
   padding: 5rem 0 5rem;
