@@ -122,7 +122,7 @@ const StyledSkills = styled.div`
   }
   p {
     font-size: 1.5vmax;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 120%;
     margin-bottom: 2vw;
 

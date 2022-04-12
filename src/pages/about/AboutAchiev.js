@@ -8,21 +8,19 @@ import { useMousePosition } from '../../hooks/useMousePosition';
 
 const StyledAboutAchive = styled.div`
   padding: 5rem 0;
-  min-height: 100vh;
 
   @media ${media.small} {
     padding: 5.5rem 0;
   }
 `;
 const StyledAchiveContainer = styled(motion.div)`
-  width: 90%;
-  margin: 0 auto;
-  padding: 10rem 0;
+  min-height: 100vh;
+  padding: 10rem 5%;
   display: flex;
   justify-content: flex-end;
 
   @media ${media.small} {
-    padding: 11rem 0;
+    padding: 11rem 5%;
   }
 
   div.floating-img {
@@ -45,7 +43,7 @@ const StyledAchiveInner = styled.div`
   width: 70%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 
   p {
     font-size: 1.5vmax;
@@ -61,6 +59,7 @@ const StyledAchiveInner = styled.div`
   }
 
   @media ${media.small} {
+    justify-content: flex-start;
     width: 100%;
   }
 `;

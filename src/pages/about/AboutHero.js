@@ -33,10 +33,6 @@ const StyledAboutAvatar = styled(motion.img)`
     width: 380px;
     height: 380px;
   }
-  @media ${media.small} {
-  }
-  @media ${media.xsmall} {
-  }
 `;
 
 const waveAnimation = keyframes`
@@ -70,6 +66,7 @@ const StyledAboutText = styled(motion.div)`
   font-size: 25px;
 
   p {
+    font-weight: 300;
     padding: 7px 0;
   }
 
@@ -80,9 +77,10 @@ const StyledAboutText = styled(motion.div)`
     width: 100%;
   }
 `;
-const StyledAboutTextTitle = styled.p`
+const StyledAboutTextTitle = styled.h2`
   font-size: 2.5vmax;
   font-weight: 600;
+  padding: 7px 0;
 
   @media ${media.xsmall} {
     font-size: 3.5vmax;
