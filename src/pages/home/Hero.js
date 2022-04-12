@@ -6,7 +6,6 @@ import Social from '../../components/Social';
 import Tilt from 'react-parallax-tilt';
 import keyboard from '../../assets/keyboard.mp4';
 import { toggleNoScroll } from '../../utils/utils';
-import { gsap } from 'gsap';
 
 const StyledTilt = styled(Tilt)`
   height: 100vh;
@@ -212,8 +211,8 @@ const Hero = () => {
             <source src={keyboard} type='video/mp4' />
           </StyledVideo>
         </StyledSquare>
-        <StyledSquare className='level--1' />
-        <StyledSquare className='level--2' />
+        {/* <StyledSquare className='level--1' />
+        <StyledSquare className='level--2' /> */}
       </StyledTilt>
 
       <Social />

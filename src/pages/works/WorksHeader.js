@@ -19,7 +19,7 @@ const StyledWorksHeaderSection = styled(motion.section)`
     flex-direction: column;
     justify-content: center;
 
-    &::before {
+    /* &::before {
       content: '';
       background-color: rgba(0, 0, 0, 0.5);
       position: absolute;
@@ -27,14 +27,14 @@ const StyledWorksHeaderSection = styled(motion.section)`
       left: 0;
       right: 0;
       bottom: 0;
-    }
+    } */
   }
 
   p {
     width: fit-content;
     text-transform: uppercase;
     font-size: 1vw;
-    color: var(--white);
+    /* color: var(--white); */
     margin-left: 20%;
     overflow: hidden;
     display: flex;
@@ -46,7 +46,8 @@ const StyledWorksHeaderSection = styled(motion.section)`
       width: 3px;
       height: 3px;
       border-radius: 10px;
-      background: var(--white);
+      /* background: var(--white); */
+      background: ${props => props.theme.text};
     }
 
     @media ${media.medium} {
@@ -74,7 +75,7 @@ const StyledWorksHeaderSection = styled(motion.section)`
   }
 
   h2:nth-child(2) {
-    color: var(--white);
+    /* color: var(--white); */
     padding-left: 30%;
 
     @media ${media.small} {
@@ -139,9 +140,9 @@ const WorksHeader = () => {
       initial='initial'
       animate='animate'
     >
-      <StyledVideo autoPlay loop muted>
+      {/* <StyledVideo autoPlay loop muted>
         <source src={keyboard} type='video/mp4' />
-      </StyledVideo>
+      </StyledVideo> */}
       <div>
         <motion.p variants={headerItemEditionVariants}>
           {new Date().getFullYear()} edition <span />
