@@ -7,6 +7,7 @@
     "@hookform/resolvers": "^2.8.8",
     "@reduxjs/toolkit": "^1.8.0",
     "framer-motion": "^6.2.8",
+    "gsap": "^3.10.3",
     "hover-effect": "^1.1.0",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",

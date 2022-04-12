@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import styled from 'styled-components';
 import { media } from '../../styles/GlobalStyles';
@@ -6,11 +6,43 @@ import Social from '../../components/Social';
 import Tilt from 'react-parallax-tilt';
 import keyboard from '../../assets/keyboard.mp4';
 import { toggleNoScroll } from '../../utils/utils';
+import { gsap } from 'gsap';
 
 const StyledTilt = styled(Tilt)`
   height: 100vh;
   width: 100vw;
   transform-style: preserve-3d;
+
+  @media ${media.small} {
+    transform: none !important;
+  }
+
+  .level--2 {
+    position: absolute;
+    left: 24%;
+    top: 29%;
+    width: 55%;
+    height: 52%;
+    z-index: 50;
+    opacity: 0.7;
+    transform: translateZ(-100px);
+  }
+  .level--1 {
+    position: absolute;
+    left: 27%;
+    top: 25%;
+    width: 55%;
+    height: 52%;
+    z-index: 70;
+    opacity: 0.9;
+    transform: translateZ(-50px);
+  }
+  .level-1 {
+  }
+  .level-2 {
+  }
+  .level-3 {
+  }
 `;
 
 const StyledSquare = styled(motion.div)`
@@ -20,30 +52,27 @@ const StyledSquare = styled(motion.div)`
   z-index: 100;
 `;
 
-const StyledTitle = styled(motion.h1)`
+const StyledName = styled(motion.h1)`
   position: absolute;
-  left: -12%;
+  left: -20%;
   top: 25%;
-  display: flex;
-  flex-direction: column;
+  font-size: 4.5rem;
   font-weight: 800;
   line-height: 0.9;
-  text-transform: uppercase;
-  transform: translateZ(100px);
-`;
-
-const StyledName = styled.span`
-  font-size: 4.5rem;
   letter-spacing: 3px;
-  background: linear-gradient(85deg, #ba39f7, #4992f8, #64c0d3);
+  text-transform: uppercase;
+  /* background: linear-gradient(85deg, #ba39f7, #4992f8, #64c0d3);
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
+  transform: translateZ(100px);
 
   @media ${media.medium} {
     font-size: 4rem;
   }
   @media ${media.small} {
+    left: -20%;
+    top: -20%;
     font-size: 3.5rem;
   }
   @media ${media.xsmall} {
@@ -51,21 +80,31 @@ const StyledName = styled.span`
   }
 `;
 
-const StyledSpan = styled.span`
+const StyledSpan = styled(motion.span)`
+  position: absolute;
+  left: -19%;
+  top: 55%;
+  font-weight: 800;
+  line-height: 0.9;
   font-size: 3rem;
-  color: var(--yellow);
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 0.1vw;
+  /* color: var(--blue); */
+  /* -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.1vw; */
+  transform: translateZ(50px);
 
   @media ${media.medium} {
     font-size: 2.5rem;
   }
   @media ${media.small} {
     font-size: 2rem;
-    -webkit-text-stroke: 0.3vw;
+    left: unset;
+    top: unset;
+    bottom: -18%;
+    right: 0;
+    /* -webkit-text-stroke: 0.3vw; */
   }
   @media ${media.xsmall} {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 `;
 const StyledVideo = styled(motion.video)`
@@ -80,7 +119,7 @@ const squareVariants = {
   enter: {
     width: '55%',
     height: '52%',
-    left: '26%',
+    left: '30%',
     top: '21%',
 
     transition: {
@@ -120,6 +159,7 @@ const videoVariats = {
 const Hero = () => {
   const [playTilt, setPlayTilt] = useState(false);
   const controls = useAnimation();
+  const tiltRef = useRef();
 
   return (
     <>
@@ -129,7 +169,7 @@ const Hero = () => {
         tiltReverse
         tiltMaxAngleX={7}
         tiltMaxAngleY={7}
-        perspective={700}
+        perspective={800}
       >
         <StyledSquare
           variants={squareVariants}
@@ -142,17 +182,25 @@ const Hero = () => {
             toggleNoScroll();
           }}
         >
-          <StyledTitle
+          <StyledName
             variants={titleVariants}
             initial='initial'
             animate='enter'
             exit='exit'
           >
-            <StyledName>Pavel</StyledName>
-            <StyledName>Tomilin</StyledName>
-            <StyledSpan>frontend</StyledSpan>
-            <StyledSpan>developer</StyledSpan>
-          </StyledTitle>
+            Pavel <br />
+            Tomilin
+          </StyledName>
+          <StyledSpan
+            variants={titleVariants}
+            initial='initial'
+            animate='enter'
+            exit='exit'
+          >
+            frontend <br />
+            developer
+          </StyledSpan>
+
           <StyledVideo
             autoPlay
             loop
@@ -164,6 +212,8 @@ const Hero = () => {
             <source src={keyboard} type='video/mp4' />
           </StyledVideo>
         </StyledSquare>
+        <StyledSquare className='level--1' />
+        <StyledSquare className='level--2' />
       </StyledTilt>
 
       <Social />
