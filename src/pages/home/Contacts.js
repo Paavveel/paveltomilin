@@ -49,7 +49,6 @@ const StyledForm = styled(motion.form)`
 
   h4 {
     align-self: flex-start;
-    color: var(--yellow);
     font-size: 5vw;
     line-height: 7.5vw;
     font-weight: 300;

@@ -6,11 +6,7 @@ import Marquee from 'react-fast-marquee';
 import { achievements } from '../../data';
 import { useMousePosition } from '../../hooks/useMousePosition';
 
-// Components
-import Achiev from './Achiev';
-
 const StyledAboutAchive = styled.div`
-  /* position: relative; */
   padding: 5rem 0;
   min-height: 100vh;
 
@@ -19,7 +15,6 @@ const StyledAboutAchive = styled.div`
   }
 `;
 const StyledAchiveContainer = styled(motion.div)`
-  /* position: relative; */
   width: 90%;
   margin: 0 auto;
   padding: 10rem 0;
@@ -67,6 +62,15 @@ const StyledAchiveInner = styled.div`
 
   @media ${media.small} {
     width: 100%;
+  }
+`;
+
+const StyledAchive = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  p:nth-child(1) {
+    width: 70%;
   }
 `;
 
@@ -155,16 +159,14 @@ const AboutAchiev = () => {
   const [currentImg, setCurrentImg] = useState('');
   const [hoverState, setHoverState] = useState(false);
 
-  const changeImg = e => {
-    const id = e.target?.dataset?.imgContent;
-    if (id) {
-      const obj = achievements.find(item => item.id === id);
-      setCurrentImg(obj.img);
-      setHoverState(true);
-    } else {
-      setCurrentImg('');
-      setHoverState(false);
-    }
+  const hoverImg = imgUrl => {
+    setCurrentImg(imgUrl);
+    setHoverState(true);
+  };
+
+  const unHoverImg = () => {
+    setCurrentImg('');
+    setHoverState(false);
   };
   return (
     <StyledAboutAchive>
@@ -179,18 +181,18 @@ const AboutAchiev = () => {
         <span>achievements</span>
         <span>achievements</span>
       </SecondMarquee>
-      <StyledAchiveContainer onClick={changeImg}>
+      <StyledAchiveContainer>
         <StyledAchiveInner>
-          {achievements.map(item => (
-            <Achiev
-              key={item.id}
-              {...item}
-              x={x}
-              y={y}
-              changeImg={changeImg}
-              setCurrentImg={setCurrentImg}
-              setHoverState={setHoverState}
-            />
+          {achievements.map(({ id, title, date, imgUrl }) => (
+            <StyledAchive key={id}>
+              <motion.p
+                onMouseEnter={() => hoverImg(imgUrl)}
+                onMouseLeave={unHoverImg}
+              >
+                {title}
+              </motion.p>
+              <p>{date}</p>
+            </StyledAchive>
           ))}
         </StyledAchiveInner>
         <motion.div
@@ -201,7 +203,7 @@ const AboutAchiev = () => {
             x: x,
             y: y,
           }}
-          transition={{ ease: 'linear' }}
+          transition={{ duration: 0.3, ease: 'linear' }}
         >
           <img src={currentImg} alt='' />
         </motion.div>

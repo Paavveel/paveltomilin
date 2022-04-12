@@ -108,12 +108,12 @@ const worksInnerVariants = {
 
 const Works = () => {
   const { scrollYProgress } = useViewportScroll();
-
   const worksInnerColorOnScroll = useTransform(
     scrollYProgress,
     [0.25, 0.33, 0.5, 0.65, 0.8],
     ['#d56040', '#114180', '#8b5cf9', '#1d9675', '#4992f8']
   );
+
   return (
     <>
       <StyledSquare

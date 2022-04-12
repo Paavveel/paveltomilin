@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { media } from '../../styles/GlobalStyles';
 import { FaExternalLinkSquareAlt, FaGithub } from 'react-icons/fa';
+import hoverEffect from 'hover-effect';
+import heightMap from '../../assets/works/heightMap.png';
 
 const StyledWorkCard = styled(motion.div)`
   display: flex;
@@ -69,6 +71,7 @@ const StyledWorkTech = styled.div`
 
   span {
     font-size: 18.5px;
+    font-weight: 500;
     text-transform: uppercase;
   }
 
@@ -113,14 +116,31 @@ const StyledLeftRow = styled.div`
   gap: 35px;
 `;
 
-const StyledWorkImg = styled.img`
-  width: 50%;
-  height: 100%;
+const StyledWorkImgLink = styled.a`
+  color: ${props => props.theme.text};
+`;
+
+const StyledWorkImgConteiner = styled.div`
+  position: relative;
+  width: 60vw;
+  height: 30vw;
+  box-shadow: 0.5px 0.5px 4px #070707;
+
+  p {
+    position: absolute;
+    bottom: -30px;
+    right: 10px;
+    text-transform: uppercase;
+    font-size: 17px;
+    font-weight: 300;
+  }
 
   @media ${media.small} {
-    width: 100%;
+    width: 85vw;
+    height: 45vw;
   }
 `;
+
 const StyledWorkLine = styled(motion.div)`
   height: 5px;
   background: ${props => props.theme.text};
@@ -153,12 +173,31 @@ const workLineVariants = {
 const WorkCard = ({
   id,
   name,
+  date,
   description,
   tech,
   linkRepo,
   linkDemo,
-  imgLink,
+  firstImg,
+  secondImg,
 }) => {
+  const imgRef = useRef();
+  const [hover, setHover] = useState(false);
+
+  useEffect(() => {
+    new hoverEffect({
+      parent: imgRef.current,
+      intensity: 0.4,
+      angle: Math.PI / 8,
+      speedIn: 1.5,
+      speedOut: 1.5,
+      image1: firstImg,
+      image2: secondImg,
+      displacementImage: heightMap,
+      imagesRatio: 0.5,
+    });
+  }, [firstImg, secondImg]);
+
   return (
     <StyledWorkCard
       variants={workCardVariants}
@@ -185,6 +224,8 @@ const WorkCard = ({
             <StyledWorkLinks>
               <motion.a
                 href={linkRepo}
+                target='_blank'
+                rel='noopener noreferrer'
                 whileHover={{
                   scale: 1.1,
                 }}
@@ -194,6 +235,8 @@ const WorkCard = ({
               </motion.a>
               <motion.a
                 href={linkDemo}
+                target='_blank'
+                rel='noopener noreferrer'
                 whileHover={{
                   scale: 1.1,
                 }}
@@ -203,7 +246,19 @@ const WorkCard = ({
               </motion.a>
             </StyledWorkLinks>
           </StyledLeftRow>
-          <StyledWorkImg src={imgLink} />
+          <StyledWorkImgLink
+            href={linkDemo}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <StyledWorkImgConteiner
+              ref={imgRef}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            >
+              {hover ? <p>click to explore app 🧐</p> : <p>{date}</p>}
+            </StyledWorkImgConteiner>
+          </StyledWorkImgLink>
         </StyledWorkBottomRow>
       </StyledWorkBody>
       <StyledWorkLine
