@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { media } from '../../styles/GlobalStyles';
@@ -28,16 +28,21 @@ const StyledAchive = styled.div`
     height: 100%;
   }
 `;
-const Achiev = ({ title, date, img, id, changeImg, setHoverState, x, y }) => {
+const Achiev = ({
+  title,
+  date,
+  id,
+  changeImg,
+  setCurrentImg,
+  setHoverState,
+}) => {
   return (
     <StyledAchive>
       <motion.p
-        onHoverStart={() => {
-          changeImg(id);
-          setHoverState(true);
-        }}
+        data-img-content={id}
+        onHoverStart={changeImg}
         onHoverEnd={() => {
-          changeImg(null);
+          setCurrentImg('');
           setHoverState(false);
         }}
       >

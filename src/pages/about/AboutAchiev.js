@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { media } from '../../styles/GlobalStyles';
@@ -18,7 +18,7 @@ const StyledAboutAchive = styled.div`
     padding: 5.5rem 0;
   }
 `;
-const StyledAchiveContainer = styled.div`
+const StyledAchiveContainer = styled(motion.div)`
   /* position: relative; */
   width: 90%;
   margin: 0 auto;
@@ -30,7 +30,7 @@ const StyledAchiveContainer = styled.div`
     padding: 11rem 0;
   }
 
-  div.img {
+  div.floating-img {
     position: absolute;
     pointer-events: none;
     top: 0;
@@ -152,15 +152,18 @@ const SecondMarquee = styled(Marquee)`
 
 const AboutAchiev = () => {
   const { x, y } = useMousePosition();
-  const [currentImg, setCurrnetImg] = useState('');
+  const [currentImg, setCurrentImg] = useState('');
   const [hoverState, setHoverState] = useState(false);
 
-  const changeImg = id => {
+  const changeImg = e => {
+    const id = e.target?.dataset?.imgContent;
     if (id) {
       const obj = achievements.find(item => item.id === id);
-      setCurrnetImg(obj.img);
+      setCurrentImg(obj.img);
+      setHoverState(true);
     } else {
-      setCurrnetImg('');
+      setCurrentImg('');
+      setHoverState(false);
     }
   };
   return (
@@ -176,21 +179,22 @@ const AboutAchiev = () => {
         <span>achievements</span>
         <span>achievements</span>
       </SecondMarquee>
-      <StyledAchiveContainer>
+      <StyledAchiveContainer onClick={changeImg}>
         <StyledAchiveInner>
-          {achievements.map((item, i) => (
+          {achievements.map(item => (
             <Achiev
-              key={i}
+              key={item.id}
               {...item}
               x={x}
               y={y}
               changeImg={changeImg}
+              setCurrentImg={setCurrentImg}
               setHoverState={setHoverState}
             />
           ))}
         </StyledAchiveInner>
         <motion.div
-          className='img'
+          className='floating-img'
           initial={{ opacity: 0 }}
           animate={{
             opacity: hoverState ? 1 : 0,
