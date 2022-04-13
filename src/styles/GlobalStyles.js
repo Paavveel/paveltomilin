@@ -20,7 +20,8 @@ export const media = {
 export const GlobalStyle = createGlobalStyle`
 
 :root {
-  --white: #fafafa;
+  /* --white: #fafafa; */
+  --white: #fff;
   --black: #0b0b0b;
   --gray: #adadb8;
   --yellow: #f4e15c;

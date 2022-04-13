@@ -33,7 +33,7 @@ const StyledWorkNumber = styled.p`
     width: 3px;
     height: 3px;
     border-radius: 10px;
-    background: ${props => props.theme.text};
+    background: var(--white);
   }
 
   @media ${media.medium} {
@@ -95,7 +95,7 @@ const StyledWorkLinks = styled.div`
     gap: 0.5rem;
     font-size: 20px;
     line-height: 1;
-    color: ${props => props.theme.text};
+    color: var(--white);
 
     svg {
       font-size: 30px;
@@ -117,7 +117,7 @@ const StyledLeftRow = styled.div`
 `;
 
 const StyledWorkImgLink = styled.a`
-  color: ${props => props.theme.text};
+  color: var(--white);
 `;
 
 const StyledWorkImgConteiner = styled.div`
@@ -143,7 +143,7 @@ const StyledWorkImgConteiner = styled.div`
 
 const StyledWorkLine = styled(motion.div)`
   height: 5px;
-  background: ${props => props.theme.text};
+  background: var(--white);
 `;
 
 const workCardVariants = {

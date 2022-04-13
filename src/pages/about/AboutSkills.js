@@ -34,7 +34,7 @@ const SkillsMarquee = styled(Marquee)`
   }
 
   span {
-    font-size: 10rem;
+    font-size: 12rem;
     font-weight: 700;
     line-height: 1.2;
     text-transform: uppercase;
@@ -43,28 +43,20 @@ const SkillsMarquee = styled(Marquee)`
     white-space: nowrap;
 
     &:nth-child(odd) {
-      color: var(--black);
+      color: var(--white);
     }
     &:nth-child(even) {
       -webkit-text-stroke: 1px var(--black);
       -webkit-text-fill-color: transparent;
+      font-style: italic;
     }
 
-    @media ${media.medium} {
-      font-size: 12rem;
-    }
     @media ${media.small} {
       font-size: 10rem;
     }
     @media ${media.xsmall} {
       font-size: 6rem;
     }
-  }
-
-  &:hover {
-    font-style: italic;
-    text-decoration: line-through;
-    color: var(--black);
   }
 `;
 
@@ -91,13 +83,18 @@ const StyledSkills = styled.div`
     @media ${media.medium} {
       font-size: 17px;
     }
+    @media ${media.small} {
+      margin-bottom: 3vw;
+    }
   }
 `;
 
 const AboutSkills = () => {
   return (
     <StyledSkillsContainer>
-      <SkillsMarquee gradient={false} speed={100} direction='right'>
+      <SkillsMarquee gradient={false} speed={100}>
+        <span>Skills</span>
+        <span>Skills</span>
         <span>Skills</span>
         <span>Skills</span>
         <span>Skills</span>

@@ -33,6 +33,7 @@ const StyledWorksInner = styled(motion.div)`
   position: relative;
   margin: 0 auto;
   opacity: 0;
+  color: var(--white);
 `;
 const StyledWorksCounter = styled.p`
   position: absolute;

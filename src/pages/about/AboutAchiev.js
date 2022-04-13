@@ -14,7 +14,6 @@ const StyledAboutAchive = styled.div`
   }
 `;
 const StyledAchiveContainer = styled(motion.div)`
-  min-height: 100vh;
   padding: 10rem 5%;
   display: flex;
   justify-content: flex-end;
@@ -46,7 +45,7 @@ const StyledAchiveInner = styled.div`
   justify-content: center;
 
   p {
-    font-size: 1.5vmax;
+    font-size: 1.7vmax;
     font-weight: 400;
     line-height: 120%;
     word-spacing: 5px;
@@ -55,6 +54,10 @@ const StyledAchiveInner = styled.div`
 
     @media ${media.medium} {
       font-size: 17px;
+    }
+    @media ${media.small} {
+      margin: 2vw 0px;
+      padding: 2vw 0px;
     }
   }
 
@@ -81,7 +84,7 @@ const SecondMarquee = styled(Marquee)`
   }
 
   span {
-    font-size: 10rem;
+    font-size: 12rem;
     font-weight: 700;
     line-height: 1.2;
     text-transform: uppercase;
@@ -94,24 +97,16 @@ const SecondMarquee = styled(Marquee)`
     }
     &:nth-child(even) {
       -webkit-text-stroke: 1px var(--black);
-      -webkit-text-fill-color: transparent;
+      -webkit-text-fill-color: var(--white);
+      font-style: italic;
     }
 
-    @media ${media.medium} {
-      font-size: 12rem;
-    }
     @media ${media.small} {
       font-size: 10rem;
     }
     @media ${media.xsmall} {
       font-size: 6rem;
     }
-  }
-
-  &:hover {
-    font-style: italic;
-    text-decoration: line-through;
-    color: var(--black);
   }
 `;
 
@@ -131,7 +126,9 @@ const AboutAchiev = () => {
   };
   return (
     <StyledAboutAchive>
-      <SecondMarquee gradient={false} speed={100} direction='right'>
+      <SecondMarquee gradient={false} speed={100}>
+        <span>education</span>
+        <span>certificates</span>
         <span>education</span>
         <span>certificates</span>
       </SecondMarquee>

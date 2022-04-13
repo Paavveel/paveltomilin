@@ -7,6 +7,7 @@ import { scrollToTop, toggleNoScroll } from '../../utils/utils';
 import AboutHero from './AboutHero';
 import AboutSkills from './AboutSkills';
 import AboutAchiev from './AboutAchiev';
+import AboutFooter from './AboutFooter';
 
 const StyledSection = styled.section`
   width: 100vw;
@@ -68,7 +69,7 @@ const About = () => {
       </StyledSection>
       <AboutSkills />
       <AboutAchiev />
-      <StyledSection></StyledSection>
+      <AboutFooter />
       <StyledExitSquare
         variants={squareExitVariants}
         initial='initial'
