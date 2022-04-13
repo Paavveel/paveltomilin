@@ -1,12 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { keyframes } from 'styled-components';
 
 const LoaderContainer = styled(motion.div)`
   height: 100vh;
   width: 100%;
-  background-color: #000;
+  background-color: #0b0b0b;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +19,7 @@ const Loading = styled(motion.div)`
   span {
     display: inline-block;
     margin: 0 5px;
-    color: #fff;
+    color: #fafafa;
     font-family: 'Poppins', sans-serif;
   }
 `;

@@ -184,8 +184,8 @@ const AboutHero = () => {
           you enjoyed browsing this site as much as I enjoyed building it.
         </motion.p>
         <motion.p variants={textItemVariants}>
-          I am a self taught Frontend developer based in Russia but available
-          remotely.
+          I am a self taught Frontend developer currently based in Russia but
+          available remotely.
         </motion.p>
         <motion.p variants={textItemVariants}>
           One of my passion in this life is coding. Since i love coding i also

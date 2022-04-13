@@ -25,13 +25,13 @@ const StyledTitleDiv = styled(motion.div)`
   display: flex;
   justify-content: center;
   line-height: 1;
-  font-size: 10vw;
+  font-size: 8vw;
   font-weight: 800;
   text-transform: uppercase;
   margin-bottom: 28rem;
 
   @media ${media.small} {
-    font-size: 15vw;
+    font-size: 12vw;
     flex-direction: column;
     align-items: center;
     margin-bottom: 16rem;
@@ -90,16 +90,21 @@ const StyledDevDiv = styled(motion.div)`
   }
 
   @media ${media.small} {
-    font-size: 14vw;
     margin-top: 20vh;
 
     p:first-child,
     p:nth-child(2) {
-      font-size: 10vw;
+      font-size: 12vw;
       padding-bottom: 3vh;
     }
     p:nth-child(3) {
-      font-size: 22vw;
+      font-size: 23vw;
+    }
+  }
+  @media ${media.xsmall} {
+    p:first-child,
+    p:nth-child(2) {
+      font-size: 13vw;
     }
   }
 `;

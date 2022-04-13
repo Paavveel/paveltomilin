@@ -26,51 +26,7 @@ const StyledAboutSkillsInner = styled.div`
   }
 `;
 
-const FirsrMarquee = styled(Marquee)`
-  &.marquee-container {
-    width: 120%;
-    background: ${props => props.theme.text};
-    overflow: hidden;
-  }
-
-  span {
-    font-size: 10rem;
-    font-weight: 700;
-    line-height: 1.2;
-    text-transform: uppercase;
-    padding: 0 1vw;
-    display: inline-block;
-    white-space: nowrap;
-
-    &:nth-child(1) {
-      color: ${props => props.theme.background};
-    }
-    &:nth-child(2) {
-      color: var(--yellow);
-    }
-    &:nth-child(3) {
-      color: var(--yellow);
-    }
-    &:nth-child(4) {
-      -webkit-text-stroke: 1px ${props => props.theme.background};
-      -webkit-text-fill-color: transparent;
-    }
-    &:nth-child(5) {
-      color: ${props => props.theme.background};
-    }
-
-    @media ${media.medium} {
-      font-size: 12rem;
-    }
-    @media ${media.small} {
-      font-size: 10rem;
-    }
-    @media ${media.xsmall} {
-      font-size: 6rem;
-    }
-  }
-`;
-const SecondMarquee = styled(Marquee)`
+const SkillsMarquee = styled(Marquee)`
   &.marquee-container {
     width: 120%;
     background: var(--yellow);
@@ -104,6 +60,12 @@ const SecondMarquee = styled(Marquee)`
       font-size: 6rem;
     }
   }
+
+  &:hover {
+    font-style: italic;
+    text-decoration: line-through;
+    color: var(--black);
+  }
 `;
 
 const StyledSkills = styled.div`
@@ -135,27 +97,20 @@ const StyledSkills = styled.div`
 const AboutSkills = () => {
   return (
     <StyledSkillsContainer>
-      <FirsrMarquee gradient={false} speed={100} direction='right'>
-        <span>My Skills</span>
-        <span>-</span>
-        <span>My Skills</span>
+      <SkillsMarquee gradient={false} speed={100} direction='right'>
         <span>Skills</span>
-        <span>-</span>
-      </FirsrMarquee>
-      <SecondMarquee gradient={false} speed={100}>
-        <span>Languages</span>
-        <span>Frameworks</span>
-        <span>Libraries</span>
-        <span>Learning</span>
-      </SecondMarquee>
+        <span>Skills</span>
+        <span>Skills</span>
+        <span>Skills</span>
+      </SkillsMarquee>
       <StyledAboutSkillsInner>
         <StyledSkills>
           <h2>Languages</h2>
           <p>JavaScript(ES6+), HTML, CSS/Scss/Sass</p>
           <h2>Frameworks/Libraries/Others</h2>
           <p>
-            React.js, React Router, Redux, React Hook Form, Styled Components,
-            Framer Motion, REST API, Axios, NPM, Webpack, Git
+            React.js, React Router, Redux, Redux Toolkit, React Hook Form,
+            Styled Components, Framer Motion, REST API, Axios, NPM, Webpack, Git
           </p>
           <h2>UI/UX</h2>
           <p>
