@@ -316,7 +316,12 @@ const Contacts = () => {
       whileInView='onscreen'
       viewport={{ amount: 0.2 }}
     >
-      <StyledTitle variants={titleVariants}>Let's talk!</StyledTitle>
+      <StyledTitle
+        variants={titleVariants}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
+      >
+        Let's talk!
+      </StyledTitle>
       <StyledForm
         ref={formRef}
         onSubmit={handleSubmit(onSubmit)}

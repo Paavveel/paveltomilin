@@ -18,6 +18,7 @@ const StyledAboutFooter = styled(motion.div)`
     padding: 0 0 3rem;
   }
   @media ${media.xsmall} {
+    justify-content: flex-start;
     padding: 0 0 2rem;
   }
 `;
@@ -25,6 +26,10 @@ const StyledFooterTop = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+  @media ${media.xsmall} {
+    margin-bottom: 20vh;
+  }
 `;
 const StyledFooterBottom = styled.div`
   display: flex;
@@ -40,7 +45,7 @@ const StyledTitle = styled(motion.h2)`
   padding-bottom: 1vh;
 
   @media ${media.small} {
-    font-size: 12.7vw;
+    font-size: 10vw;
     padding-bottom: 3vh;
   }
 `;
@@ -58,8 +63,8 @@ const StyledTitleLink = styled(motion.a)`
     -webkit-text-fill-color: ${props => props.theme.text};
   }
 
-  @media ${media.small} {
-    font-size: 12.7vw;
+  @media ${media.xsmall} {
+    font-size: 15vw;
   }
 `;
 
@@ -77,23 +82,38 @@ const StyledThanks = styled.div`
     line-height: 1.2;
   }
 
-  @media ${media.small} {
-    font-size: 12.7vw;
+  @media ${media.xsmall} {
+    font-size: 1.3rem;
     padding-bottom: 3vh;
   }
 `;
 const StyledSocialLinks = styled.div`
+  display: flex;
+  gap: 1vw;
   @media ${media.small} {
   }
 `;
-const StyledSocialLink = styled.a`
-  @media ${media.small} {
+const StyledSocialLink = styled(motion.a)`
+  display: block;
+  font-size: 1.6rem;
+  color: var(--blue);
+  font-weight: 300;
+  text-transform: uppercase;
+  width: fit-content;
+
+  &:focus,
+  &:hover {
+    text-decoration: line-through;
+    font-style: italic;
+  }
+  @media ${media.xsmall} {
+    font-size: 1.3rem;
   }
 `;
 
 const titleVariants = {
   offscreen: {
-    y: '30%',
+    y: '100%',
     opacity: 0,
   },
   onscreen: {
@@ -111,7 +131,11 @@ const AboutFooter = () => {
     <StyledAboutFooter
       initial='offscreen'
       whileInView='onscreen'
-      viewport={{ amount: 0.2 }}
+      transition={{
+        duration: 0.4,
+        ease: 'easeOut',
+      }}
+      viewport={{ amount: 0.4 }}
     >
       <StyledFooterTop>
         <StyledTitle variants={titleVariants}>Got some ideas?</StyledTitle>
@@ -131,7 +155,13 @@ const AboutFooter = () => {
         </StyledThanks>
         <StyledSocialLinks>
           {socials.map((item, i) => (
-            <StyledSocialLink key={i} href={item.href}>
+            <StyledSocialLink
+              key={i}
+              href={item.href}
+              whileHover={{
+                scale: 1.1,
+              }}
+            >
               {item.name}
             </StyledSocialLink>
           ))}
