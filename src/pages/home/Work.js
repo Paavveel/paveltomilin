@@ -242,8 +242,8 @@ const Work = ({ scrollYProgress }) => {
       <WorkCard style={{ x: xOnScroll, y: yOnScroll }}>
         <WorkCardTitle>
           <motion.p variants={textVariants}>
-            Welcome! <br /> I'm Pavel Tomilin. <br /> I am passionate about
-            everything related to a web technologies.
+            Welcome! I am passionate about everything related to a web
+            technologies.
           </motion.p>
           <motion.span variants={rocketVariants}>🚀</motion.span>
         </WorkCardTitle>

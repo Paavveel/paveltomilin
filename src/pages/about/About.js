@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, useViewportScroll } from 'framer-motion';
 import { scrollToTop, toggleNoScroll } from '../../utils/utils';
 
 // Components
 import AboutHero from './AboutHero';
+import AboutText from './AboutText';
 import AboutSkills from './AboutSkills';
 import AboutAchiev from './AboutAchiev';
 import AboutFooter from './AboutFooter';
+import SkillsMarque from './SkillsMarque';
+import AchievMarque from './AchievMarque';
 
 const StyledSection = styled.section`
   width: 100vw;
@@ -54,6 +57,8 @@ const squareExitVariants = {
 };
 
 const About = () => {
+  const { scrollYProgress } = useViewportScroll();
+
   return (
     <>
       <StyledSquare
@@ -65,9 +70,14 @@ const About = () => {
       ></StyledSquare>
 
       <StyledSection>
-        <AboutHero />
+        <AboutHero scrollYProgress={scrollYProgress} />
       </StyledSection>
+      <StyledSection>
+        <AboutText />
+      </StyledSection>
+      <SkillsMarque />
       <AboutSkills />
+      <AchievMarque />
       <AboutAchiev />
       <AboutFooter />
       <StyledExitSquare

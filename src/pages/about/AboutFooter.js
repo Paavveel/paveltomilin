@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { media } from '../../styles/GlobalStyles';
@@ -15,11 +15,12 @@ const StyledAboutFooter = styled(motion.div)`
   justify-content: space-between;
 
   @media ${media.small} {
-    padding: 0 0 3rem;
+    min-height: 70vh;
   }
   @media ${media.xsmall} {
+    min-height: auto;
+    padding: 3rem 0 3rem;
     justify-content: flex-start;
-    padding: 0 0 2rem;
   }
 `;
 const StyledFooterTop = styled.div`
@@ -28,7 +29,7 @@ const StyledFooterTop = styled.div`
   align-items: flex-end;
 
   @media ${media.xsmall} {
-    margin-bottom: 20vh;
+    margin-bottom: 10vh;
   }
 `;
 const StyledFooterBottom = styled.div`
@@ -41,11 +42,19 @@ const StyledTitle = styled(motion.h2)`
   width: fit-content;
   font-size: 7vw;
   font-weight: 700;
+  background: linear-gradient(85deg, #ba39f7, #4992f8, #64c0d3);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-transform: uppercase;
   padding-bottom: 1vh;
 
   @media ${media.small} {
-    font-size: 10vw;
+    font-size: 8vw;
+    padding-bottom: 3vh;
+  }
+  @media ${media.xsmall} {
+    font-size: 8vw;
     padding-bottom: 3vh;
   }
 `;
@@ -63,6 +72,9 @@ const StyledTitleLink = styled(motion.a)`
     -webkit-text-fill-color: ${props => props.theme.text};
   }
 
+  @media ${media.small} {
+    font-size: 14vw;
+  }
   @media ${media.xsmall} {
     font-size: 15vw;
   }
@@ -82,17 +94,24 @@ const StyledThanks = styled.div`
     line-height: 1.2;
   }
 
+  @media ${media.small} {
+    font-size: 1.7rem;
+  }
   @media ${media.xsmall} {
-    font-size: 1.3rem;
-    padding-bottom: 3vh;
+    font-size: 1.2rem;
   }
 `;
+
 const StyledSocialLinks = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 1vw;
+
   @media ${media.small} {
+    gap: 2vw;
   }
 `;
+
 const StyledSocialLink = styled(motion.a)`
   display: block;
   font-size: 1.6rem;
@@ -106,14 +125,18 @@ const StyledSocialLink = styled(motion.a)`
     text-decoration: line-through;
     font-style: italic;
   }
-  @media ${media.xsmall} {
+
+  @media ${media.small} {
     font-size: 1.3rem;
+  }
+  @media ${media.xsmall} {
+    font-size: 1rem;
   }
 `;
 
 const titleVariants = {
   offscreen: {
-    y: '100%',
+    y: '100px',
     opacity: 0,
   },
   onscreen: {
@@ -150,7 +173,7 @@ const AboutFooter = () => {
         <StyledThanks>
           <p>Thanks for your visit!</p>
           <p>
-            You can check out my networks <br /> to follow my new adventures!
+            Let's work together <br /> You can check out my networks!
           </p>
         </StyledThanks>
         <StyledSocialLinks>

@@ -2,24 +2,19 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { media } from '../../styles/GlobalStyles';
-import Marquee from 'react-fast-marquee';
 import { achievements } from '../../data';
 import { useMousePosition } from '../../hooks/useMousePosition';
 
-const StyledAboutAchive = styled.div`
-  padding: 5rem 0;
-
-  @media ${media.small} {
-    padding: 5.5rem 0;
-  }
-`;
 const StyledAchiveContainer = styled(motion.div)`
-  padding: 10rem 5%;
+  width: 90%;
+  margin: 0 auto;
   display: flex;
   justify-content: flex-end;
 
+  padding: 8rem 0;
+
   @media ${media.small} {
-    padding: 11rem 5%;
+    padding: 3rem 0;
   }
 
   div.floating-img {
@@ -49,15 +44,17 @@ const StyledAchiveInner = styled.div`
     font-weight: 400;
     line-height: 120%;
     word-spacing: 5px;
-    margin: 1vw 0px;
-    padding: 1vw 0px;
+    margin: 1.5vw 0;
+    padding: 1.5vw 0;
 
-    @media ${media.medium} {
-      font-size: 17px;
-    }
     @media ${media.small} {
-      margin: 2vw 0px;
-      padding: 2vw 0px;
+      font-size: 1.9vmax;
+      margin: 2.5vw 0;
+      padding: 2.5vw 0;
+    }
+    @media ${media.xsmall} {
+      margin: 3.5vw 0;
+      padding: 3.5vw 0;
     }
   }
 
@@ -76,40 +73,6 @@ const StyledAchive = styled.div`
   }
 `;
 
-const SecondMarquee = styled(Marquee)`
-  &.marquee-container {
-    width: 120%;
-    background: var(--yellow);
-    overflow: hidden;
-  }
-
-  span {
-    font-size: 12rem;
-    font-weight: 700;
-    line-height: 1.2;
-    text-transform: uppercase;
-    padding: 0 1vw;
-    display: inline-block;
-    white-space: nowrap;
-
-    &:nth-child(odd) {
-      color: var(--black);
-    }
-    &:nth-child(even) {
-      -webkit-text-stroke: 1px var(--black);
-      -webkit-text-fill-color: var(--white);
-      font-style: italic;
-    }
-
-    @media ${media.small} {
-      font-size: 10rem;
-    }
-    @media ${media.xsmall} {
-      font-size: 6rem;
-    }
-  }
-`;
-
 const AboutAchiev = () => {
   const { x, y } = useMousePosition();
   const [currentImg, setCurrentImg] = useState('');
@@ -125,42 +88,33 @@ const AboutAchiev = () => {
     setHoverState(false);
   };
   return (
-    <StyledAboutAchive>
-      <SecondMarquee gradient={false} speed={100}>
-        <span>education</span>
-        <span>certificates</span>
-        <span>education</span>
-        <span>certificates</span>
-      </SecondMarquee>
-
-      <StyledAchiveContainer>
-        <StyledAchiveInner>
-          {achievements.map(({ id, title, date, imgUrl }) => (
-            <StyledAchive key={id}>
-              <motion.p
-                onMouseEnter={() => hoverImg(imgUrl)}
-                onMouseLeave={unHoverImg}
-              >
-                {title}
-              </motion.p>
-              <p>{date}</p>
-            </StyledAchive>
-          ))}
-        </StyledAchiveInner>
-        <motion.div
-          className='floating-img'
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: hoverState ? 1 : 0,
-            x: x,
-            y: y,
-          }}
-          transition={{ duration: 0.3, ease: 'linear' }}
-        >
-          <img src={currentImg} alt='' />
-        </motion.div>
-      </StyledAchiveContainer>
-    </StyledAboutAchive>
+    <StyledAchiveContainer>
+      <StyledAchiveInner>
+        {achievements.map(({ id, title, date, imgUrl }) => (
+          <StyledAchive key={id}>
+            <motion.p
+              onMouseEnter={() => hoverImg(imgUrl)}
+              onMouseLeave={unHoverImg}
+            >
+              {title}
+            </motion.p>
+            <p>{date}</p>
+          </StyledAchive>
+        ))}
+      </StyledAchiveInner>
+      <motion.div
+        className='floating-img'
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: hoverState ? 1 : 0,
+          x: x,
+          y: y,
+        }}
+        transition={{ duration: 0.3, ease: 'linear' }}
+      >
+        <img src={currentImg} alt='' />
+      </motion.div>
+    </StyledAchiveContainer>
   );
 };
 
