@@ -105,7 +105,7 @@ const StyledThanks = styled.div`
 const StyledSocialLinks = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 1vw;
+  gap: 1.2vw;
 
   @media ${media.small} {
     gap: 2vw;

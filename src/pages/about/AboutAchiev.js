@@ -44,13 +44,13 @@ const StyledAchiveInner = styled.div`
     font-weight: 400;
     line-height: 120%;
     word-spacing: 5px;
-    margin: 1.5vw 0;
-    padding: 1.5vw 0;
+    margin: 1.1vw 0;
+    padding: 1.1vw 0;
 
     @media ${media.small} {
       font-size: 1.9vmax;
-      margin: 2.5vw 0;
-      padding: 2.5vw 0;
+      margin: 1.5vw 0;
+      padding: 1.5vw 0;
     }
     @media ${media.xsmall} {
       margin: 3.5vw 0;

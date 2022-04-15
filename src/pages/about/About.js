@@ -68,13 +68,8 @@ const About = () => {
         onAnimationStart={toggleNoScroll}
         onAnimationComplete={toggleNoScroll}
       ></StyledSquare>
-
-      <StyledSection>
-        <AboutHero scrollYProgress={scrollYProgress} />
-      </StyledSection>
-      <StyledSection>
-        <AboutText />
-      </StyledSection>
+      <AboutHero scrollYProgress={scrollYProgress} />
+      <AboutText scrollYProgress={scrollYProgress} />
       <SkillsMarque />
       <AboutSkills />
       <AchievMarque />

@@ -36,6 +36,18 @@ const StyledSkills = styled.div`
     line-height: 120%;
     margin-bottom: 2vw;
 
+    &:last-of-type {
+      font-weight: 400;
+      padding-top: 4vw;
+
+      @media ${media.small} {
+        padding-top: 6vw;
+      }
+      @media ${media.xsmall} {
+        padding-top: 8vw;
+      }
+    }
+
     @media ${media.small} {
       font-size: 1.8vmax;
       margin-bottom: 3vw;
