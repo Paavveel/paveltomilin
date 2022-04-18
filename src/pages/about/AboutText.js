@@ -6,8 +6,8 @@ import hoverEffect from 'hover-effect';
 import heightMap from '../../assets/works/heightMap.png';
 
 // test img
-import work11 from '../../assets/works/work1.jpg';
-import work12 from '../../assets/works/work2.jpg';
+import avatar_mono from '../../assets/avatar_mono.jpg';
+import avatar from '../../assets/avatar.jpg';
 
 const StyledAboutText = styled.div`
   width: 80%;
@@ -59,7 +59,6 @@ const StyledAboutDescription = styled.div`
 `;
 
 const StyledAboutAvatar = styled(motion.div)`
-  object-fit: contain;
   width: 25vw;
   height: 30vw;
   align-self: center;
@@ -86,10 +85,10 @@ const AboutText = ({ scrollYProgress }) => {
       angle: Math.PI / 8,
       speedIn: 1.5,
       speedOut: 1.5,
-      image1: work11,
-      image2: work12,
+      image1: avatar_mono,
+      image2: avatar,
       displacementImage: heightMap,
-      imagesRatio: 0.5,
+      imagesRatio: 1.15,
     });
   }, []);
 

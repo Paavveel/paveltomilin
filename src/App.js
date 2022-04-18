@@ -17,8 +17,7 @@ import Layout from './pages/Layout';
 import NotFound from './pages/NotFound';
 
 function App() {
-  const [loading, setLoading] = useState(false);
-  const [cursorHovered, setCursorHovered] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [theme, toggleTheme] = useDarkMode();
   const location = useLocation();
 

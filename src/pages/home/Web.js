@@ -25,7 +25,7 @@ const StyledTitleDiv = styled(motion.div)`
   display: flex;
   justify-content: center;
   line-height: 1;
-  font-size: 8vw;
+  font-size: 10vw;
   font-weight: 800;
   text-transform: uppercase;
   margin-bottom: 28rem;

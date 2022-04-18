@@ -20,7 +20,6 @@ export const media = {
 export const GlobalStyle = createGlobalStyle`
 
 :root {
-  /* --white: #fafafa; */
   --white: #fff;
   --black: #0b0b0b;
   --gray: #adadb8;
@@ -60,9 +59,6 @@ body, html {
   position: relative;
 }
 
-body::-webkit-scrollbar, html::-webkit-scrollbar {
-    display: none;
-}
 
 h1,
 h2,

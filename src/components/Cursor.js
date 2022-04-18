@@ -9,7 +9,7 @@ const StyledCursor = styled(motion.div)`
   width: 32px;
   top: 0;
   left: 0;
-  background: var(--grey);
+  background: var(--gray);
   border-radius: 100%;
   pointer-events: none;
   z-index: 999;
@@ -29,7 +29,7 @@ function Cursor({ cursorHovered }) {
         opacity: cursorHovered ? 0.7 : 0,
       }}
       transition={{ ease: 'linear' }}
-    ></StyledCursor>
+    />
   );
 }
 

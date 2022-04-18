@@ -12,12 +12,6 @@ import AboutFooter from './AboutFooter';
 import SkillsMarque from './SkillsMarque';
 import AchievMarque from './AchievMarque';
 
-const StyledSection = styled.section`
-  width: 100vw;
-  min-height: 100vh;
-  position: relative;
-`;
-
 const StyledSquare = styled(motion.div)`
   position: absolute;
   background: linear-gradient(230deg, #ba39f7, #4992f8, #64c0d3);
