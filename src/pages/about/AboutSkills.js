@@ -66,8 +66,9 @@ const AboutSkills = () => {
         <p>JavaScript(ES6+), HTML, CSS/Scss/Sass</p>
         <h2>Frameworks/Libraries/Others</h2>
         <p>
-          React.js, React Router, Redux, Redux Toolkit, React Hook Form, Styled
-          Components, Framer Motion, REST API, Axios, NPM, Webpack, Git
+          React.js, React Router, Redux, Redux Toolkit, Styled Components, REST
+          API, Axios, NPM, Webpack, Git, React Hook Form, Framer Motion,
+          GreenSock
         </p>
         <h2>UI/UX</h2>
         <p>

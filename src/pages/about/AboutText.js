@@ -9,7 +9,7 @@ import heightMap from '../../assets/works/heightMap.png';
 import work11 from '../../assets/works/work1.jpg';
 import work12 from '../../assets/works/work2.jpg';
 
-const StyledAboutText = styled(motion.div)`
+const StyledAboutText = styled.div`
   width: 80%;
   margin: 0 auto;
   min-height: 100vh;
