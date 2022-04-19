@@ -194,7 +194,7 @@ const WorkCard = ({
       image1: firstImg,
       image2: secondImg,
       displacementImage: heightMap,
-      imagesRatio: 0.5,
+      imagesRatio: 0.55,
     });
   }, [firstImg, secondImg]);
 

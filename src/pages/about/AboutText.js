@@ -82,13 +82,12 @@ const AboutText = ({ scrollYProgress }) => {
     new hoverEffect({
       parent: avatarRef.current,
       intensity: 0.4,
-      angle: Math.PI / 8,
       speedIn: 1.5,
       speedOut: 1.5,
       image1: avatar_mono,
       image2: avatar,
       displacementImage: heightMap,
-      imagesRatio: 1.15,
+      imagesRatio: 1.2,
     });
   }, []);
 
