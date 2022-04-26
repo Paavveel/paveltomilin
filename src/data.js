@@ -9,6 +9,10 @@ import work11 from '../src/assets/works/work1.jpg';
 import work12 from '../src/assets/works/work2.jpg';
 import work21 from '../src/assets/works/1.png';
 import work22 from '../src/assets/works/2.png';
+import mishka1 from '../src/assets/works/mishka1.jpg';
+import mishka2 from '../src/assets/works/mishka2.jpg';
+import sedona1 from '../src/assets/works/sedona1.jpg';
+import sedona2 from '../src/assets/works/sedona2.jpg';
 
 export const works = [
   {
@@ -83,49 +87,34 @@ export const works = [
   },
   {
     id: '04',
-    name: 'Name4',
-    date: '01.01.22',
+    name: 'Mishka',
+    date: '30.08.20',
     description:
-      'An individual effort creating a social travel app consuming TFLs public API and allows users to plan journeys as well as check for live travel updates. The app will include a social feature where users can post pictures and statuses mimicking a social media platform.',
+      'My second study project. A small site for a soft toy store. Responsive for desktop, tablet and mobile. Made semantically and with a11y. Has a homepage, a catalog page and an order page.',
     tech: [
-      'React.js',
-      'JavaScript (ES6)',
       'HTML5/SASS',
-      'Axios',
-      'JSON',
-      'React.js',
       'JavaScript (ES6)',
-      'HTML5/SASS',
-      'Axios',
-      'JSON',
+      'Gulp',
+      'Retina pictures',
+      'SVG Sprites',
+      'Form validation',
     ],
-    linkRepo: '#',
-    linkDemo: '#',
-    firstImg: work11,
-    secondImg: work12,
+    linkRepo: 'https://github.com/Paavveel/Mishka',
+    linkDemo: 'https://paveltomilin-mishka.netlify.app',
+    firstImg: mishka1,
+    secondImg: mishka2,
   },
   {
     id: '05',
-    name: 'Name5',
-    date: '01.01.22',
+    name: 'Sedona',
+    date: '07.07.20',
     description:
-      'An individual effort creating a social travel app consuming TFLs public API and allows users to plan journeys as well as check for live travel updates. The app will include a social feature where users can post pictures and statuses mimicking a social media platform.',
-    tech: [
-      'React.js',
-      'JavaScript (ES6)',
-      'HTML5/SASS',
-      'Axios',
-      'JSON',
-      'React.js',
-      'JavaScript (ES6)',
-      'HTML5/SASS',
-      'Axios',
-      'JSON',
-    ],
-    linkRepo: '#',
-    linkDemo: '#',
-    firstImg: work11,
-    secondImg: work12,
+      'My first study project using HTML/CSS and some JavaScript. A small site about the city of Sedona. Not adaptive, but done semantically and with a11y. It has a main page and a hotel booking page.',
+    tech: ['HTML5/CSS', 'JavaScript (ES6)'],
+    linkRepo: 'https://github.com/Paavveel/Sedona',
+    linkDemo: 'https://paveltomilin-sedona.netlify.app',
+    firstImg: sedona1,
+    secondImg: sedona2,
   },
 ];
 
