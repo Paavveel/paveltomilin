@@ -9,6 +9,8 @@ import work11 from '../src/assets/works/work1.jpg';
 import work12 from '../src/assets/works/work2.jpg';
 import work21 from '../src/assets/works/1.png';
 import work22 from '../src/assets/works/2.png';
+import timer1 from '../src/assets/works/timer1.jpg';
+import timer2 from '../src/assets/works/timer2.jpg';
 import mishka1 from '../src/assets/works/mishka1.jpg';
 import mishka2 from '../src/assets/works/mishka2.jpg';
 import sedona1 from '../src/assets/works/sedona1.jpg';
@@ -64,26 +66,15 @@ export const works = [
   },
   {
     id: '03',
-    name: 'Name3',
-    date: '01.01.22',
+    name: 'Timer',
+    date: '30.11.21',
     description:
-      'An individual effort creating a social travel app consuming TFLs public API and allows users to plan journeys as well as check for live travel updates. The app will include a social feature where users can post pictures and statuses mimicking a social media platform.',
-    tech: [
-      'React.js',
-      'JavaScript (ES6)',
-      'HTML5/SASS',
-      'Axios',
-      'JSON',
-      'React.js',
-      'JavaScript (ES6)',
-      'HTML5/SASS',
-      'Axios',
-      'JSON',
-    ],
-    linkRepo: '#',
-    linkDemo: '#',
-    firstImg: work11,
-    secondImg: work12,
+      'Allows you to start the countdown, stop, continue and reset the timer. When the page is reloaded, the previous timer value is stored in local storage.',
+    tech: ['React.js', 'JavaScript (ES6)', 'HTML5/CSS', 'Materialize'],
+    linkRepo: 'https://github.com/Paavveel/react-timer-on-hooks',
+    linkDemo: 'https://paavveel.github.io/react-timer-on-hooks/',
+    firstImg: timer1,
+    secondImg: timer2,
   },
   {
     id: '04',
@@ -98,6 +89,7 @@ export const works = [
       'Retina pictures',
       'SVG Sprites',
       'Form validation',
+      'Pixel perfect',
     ],
     linkRepo: 'https://github.com/Paavveel/Mishka',
     linkDemo: 'https://paveltomilin-mishka.netlify.app',
@@ -110,7 +102,7 @@ export const works = [
     date: '07.07.20',
     description:
       'My first study project using HTML/CSS and some JavaScript. A small site about the city of Sedona. Not adaptive, but done semantically and with a11y. It has a main page and a hotel booking page.',
-    tech: ['HTML5/CSS', 'JavaScript (ES6)'],
+    tech: ['HTML5/CSS', 'Pixel perfect', 'JavaScript (ES6)'],
     linkRepo: 'https://github.com/Paavveel/Sedona',
     linkDemo: 'https://paveltomilin-sedona.netlify.app',
     firstImg: sedona1,
