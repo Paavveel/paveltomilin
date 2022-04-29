@@ -5,10 +5,11 @@ import html3 from '../src/assets/serts/html3.jpg';
 import html4 from '../src/assets/serts/html4.jpg';
 
 // Works Img
-import work11 from '../src/assets/works/work1.jpg';
-import work12 from '../src/assets/works/work2.jpg';
+
 import work21 from '../src/assets/works/1.png';
 import work22 from '../src/assets/works/2.png';
+import todo1 from '../src/assets/works/todo1.jpg';
+import todo2 from '../src/assets/works/todo2.jpg';
 import timer1 from '../src/assets/works/timer1.jpg';
 import timer2 from '../src/assets/works/timer2.jpg';
 import mishka1 from '../src/assets/works/mishka1.jpg';
@@ -43,26 +44,21 @@ export const works = [
   },
   {
     id: '02',
-    name: 'Name2',
-    date: '01.01.22',
+    name: 'Todo App',
+    date: '29.04.22',
     description:
-      'An individual effort creating a social travel app consuming TFLs public API and allows users to plan journeys as well as check for live travel updates. The app will include a social feature where users can post pictures and statuses mimicking a social media platform.',
+      'I have build Todo App in order to get better with React and Redux and practise CRUD operations.You can add tasks, delete and edit. Each task can be edited using a pop-up modal window. Tasks can be filtered based on status using a selector. I have also implemented local storage for this project.',
     tech: [
       'React.js',
+      'Redux Toolkit',
       'JavaScript (ES6)',
       'HTML5/SASS',
-      'Axios',
-      'JSON',
-      'React.js',
-      'JavaScript (ES6)',
-      'HTML5/SASS',
-      'Axios',
-      'JSON',
+      'Framer Motion',
     ],
-    linkRepo: '#',
-    linkDemo: '#',
-    firstImg: work11,
-    secondImg: work12,
+    linkRepo: 'https://github.com/Paavveel/todo-app-redux-toolkit',
+    linkDemo: 'https://paavveel.github.io/todo-app-redux-toolkit/',
+    firstImg: todo1,
+    secondImg: todo2,
   },
   {
     id: '03',

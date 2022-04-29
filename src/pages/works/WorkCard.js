@@ -57,7 +57,7 @@ const StyledWorkBody = styled.div`
 const StyledWorkTitle = styled.p`
   width: fit-content;
   font-size: 6.9vmax;
-  line-height: 1;
+  line-height: 1.4;
 `;
 const StyledWorkDescription = styled.p`
   font-size: 17px;
