@@ -47,7 +47,7 @@ export const works = [
     name: 'Todo App',
     date: '29.04.22',
     description:
-      'I have build Todo App in order to get better with React and Redux and practise CRUD operations.You can add tasks, delete and edit. Each task can be edited using a pop-up modal window. Tasks can be filtered based on status using a selector. I have also implemented local storage for this project.',
+      'I have build Todo App in order to get better with React and Redux and practise CRUD operations. You can add tasks, delete and edit. Each task can be edited using a pop-up modal window. Tasks can be filtered based on status using a selector. I have also implemented local storage for this project.',
     tech: [
       'React.js',
       'Redux Toolkit',
