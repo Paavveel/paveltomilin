@@ -198,6 +198,9 @@ export const socials = [
   { name: 'mail', href: 'mailto:pa.tomilin@gmail.com' },
   { name: 'telegram', href: 'https://t.me/paul_tm' },
   { name: 'github', href: 'https://github.com/Paavveel' },
-  { name: 'linkedin', href: '#' },
+  {
+    name: 'linkedin',
+    href: 'https://www.linkedin.com/in/павел-томилин-a05961239/',
+  },
   { name: 'cv', href: '#' },
 ];
