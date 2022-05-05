@@ -6,10 +6,16 @@ import html4 from '../src/assets/serts/html4.jpg';
 
 // Works Img
 
-import work21 from '../src/assets/works/1.png';
-import work22 from '../src/assets/works/2.png';
 import todo1 from '../src/assets/works/todo1.jpg';
 import todo2 from '../src/assets/works/todo2.jpg';
+import form1 from '../src/assets/works/form1.jpg';
+import form2 from '../src/assets/works/form2.jpg';
+import food1 from '../src/assets/works/food1.jpg';
+import food2 from '../src/assets/works/food2.jpg';
+import fortnite1 from '../src/assets/works/fortnite1.jpg';
+import fortnite2 from '../src/assets/works/fortnite2.jpg';
+import movie1 from '../src/assets/works/movie1.jpg';
+import movie2 from '../src/assets/works/movie2.jpg';
 import timer1 from '../src/assets/works/timer1.jpg';
 import timer2 from '../src/assets/works/timer2.jpg';
 import mishka1 from '../src/assets/works/mishka1.jpg';
@@ -20,30 +26,6 @@ import sedona2 from '../src/assets/works/sedona2.jpg';
 export const works = [
   {
     id: '01',
-    name: 'Name1',
-    date: '01.01.22',
-    description:
-      'An individual effort creating a social travel app consuming TFLs public API and allows users to plan journeys as well as check for live travel updates. The app will include a social feature where users can post pictures and statuses mimicking a social media platform.',
-    tech: [
-      'React.js',
-      'JavaScript (ES6)',
-      'HTML5/SASS',
-      'Axios',
-      'JSON',
-      'React.js',
-      'JavaScript (ES6)',
-      'HTML5/SASS',
-      'Axios',
-      'JSON',
-      'JSON',
-    ],
-    linkRepo: '#',
-    linkDemo: '#',
-    firstImg: work21,
-    secondImg: work22,
-  },
-  {
-    id: '02',
     name: 'Todo App',
     date: '29.04.22',
     description:
@@ -61,7 +43,84 @@ export const works = [
     secondImg: todo2,
   },
   {
+    id: '02',
+    name: 'Ultimate Form',
+    date: '01.03.22',
+    description:
+      'Ultimate form containing all the most basic and common forms with validation. Using Redux to save form fields and React Router to move between forms. On the result page, you can view all the completed data and submit the form, or go back and correct the necessary fields.',
+    tech: [
+      'React.js',
+      'Redux Toolkit',
+      'React Router',
+      'React Hook Form',
+      'Yup',
+      'JavaScript (ES6)',
+      'HTML5/CSS',
+      'Material UI',
+    ],
+    linkRepo: 'https://github.com/Paavveel/ultimate-react-hook-form',
+    linkDemo: 'https://paavveel.github.io/ultimate-react-hook-form/',
+    firstImg: form1,
+    secondImg: form2,
+  },
+  {
     id: '03',
+    name: 'Food App',
+    date: '15.01.22',
+    description:
+      'SPA recipe search application using TheMealDB API. Categories with their descriptions are available on the main page, so there is a search bar for categories, you can go inside the category and see the available dishes, you can also get to the page with the recipe itself.',
+    tech: [
+      'React.js',
+      'React Router',
+      'JavaScript (ES6)',
+      'HTML5/CSS',
+      'Materialize',
+      'TheMealDB API',
+    ],
+    linkRepo: 'https://github.com/Paavveel/react-food-project',
+    linkDemo: 'https://paavveel.github.io/react-food-project/',
+    firstImg: food1,
+    secondImg: food2,
+  },
+  {
+    id: '04',
+    name: 'Fortine Shop',
+    date: '15.12.21',
+    description:
+      'Fortnite item store using the Fortnite API. Items in the store are updated daily. When you click the buy button, an item is added to the basket, you can delete, increase and decrease the number of items in the basket.',
+    tech: [
+      'React.js',
+      'Redux',
+      'JavaScript (ES6)',
+      'HTML5/CSS',
+      'Materialize',
+      'Fortnite API',
+    ],
+    linkRepo: 'https://github.com/Paavveel/react-shop-project',
+    linkDemo: 'https://paavveel.github.io/react-shop-project/',
+    firstImg: fortnite1,
+    secondImg: fortnite2,
+  },
+  {
+    id: '05',
+    name: 'Movie',
+    date: '06.12.21',
+    description:
+      'An application for searching movies and series using the MovieDB API. This is my first project using the API. Functionality: search can be done using the search bar. The search can be filtered by movies, series and all.',
+    tech: [
+      'React.js',
+      'JavaScript (ES6)',
+      'HTML5/CSS',
+      'Materialize',
+      'MovieDB API',
+    ],
+    linkRepo: 'https://github.com/Paavveel/React-movies',
+    linkDemo: 'https://paavveel.github.io/React-movies/',
+    firstImg: movie1,
+    secondImg: movie2,
+  },
+  {
+    id: '06',
     name: 'Timer',
     date: '30.11.21',
     description:
@@ -73,7 +132,7 @@ export const works = [
     secondImg: timer2,
   },
   {
-    id: '04',
+    id: '07',
     name: 'Mishka',
     date: '30.08.20',
     description:
@@ -93,7 +152,7 @@ export const works = [
     secondImg: mishka2,
   },
   {
-    id: '05',
+    id: '08',
     name: 'Sedona',
     date: '07.07.20',
     description:
