@@ -200,7 +200,7 @@ export const socials = [
   { name: 'github', href: 'https://github.com/Paavveel' },
   {
     name: 'linkedin',
-    href: 'https://www.linkedin.com/in/павел-томилин-a05961239/',
+    href: 'www.linkedin.com/in/pavel-tomilin',
   },
   { name: 'cv', href: '#' },
 ];
