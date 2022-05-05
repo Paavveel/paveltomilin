@@ -23,6 +23,9 @@ import mishka2 from '../src/assets/works/mishka2.jpg';
 import sedona1 from '../src/assets/works/sedona1.jpg';
 import sedona2 from '../src/assets/works/sedona2.jpg';
 
+// CV
+import cv from '../src/assets/Tomilin_Pavel_CV.pdf';
+
 export const works = [
   {
     id: '01',
@@ -200,7 +203,7 @@ export const socials = [
   { name: 'github', href: 'https://github.com/Paavveel' },
   {
     name: 'linkedin',
-    href: 'www.linkedin.com/in/pavel-tomilin',
+    href: 'https://linkedin.com/in/pavel-tomilin',
   },
-  { name: 'cv', href: '#' },
+  { name: 'cv', href: cv },
 ];
