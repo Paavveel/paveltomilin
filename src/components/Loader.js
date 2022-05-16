@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import { toggleNoScroll } from '../utils/utils';
 
 const LoaderContainer = styled(motion.div)`
   height: 100vh;
@@ -92,6 +93,10 @@ const progressVariant = {
 };
 
 const Loader = ({ setLoading }) => {
+  useEffect(() => {
+    toggleNoScroll();
+  }, []);
+
   return (
     <LoaderContainer animate='animate'>
       <Loading variants={loadingVariant}>
@@ -111,6 +116,7 @@ const Loader = ({ setLoading }) => {
       <LoaderSpread
         variants={spreadVariant}
         onAnimationComplete={() => {
+          toggleNoScroll();
           setLoading(false);
         }}
       ></LoaderSpread>

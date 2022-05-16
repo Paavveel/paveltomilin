@@ -228,16 +228,16 @@ const rocketVariants = {
 const Work = ({ scrollYProgress }) => {
   const xOnScroll = useTransform(
     scrollYProgress,
-    [0.45, 0.66],
-    ['-110%', '0%']
+    [0.28, 0.56],
+    ['-130%', '0%']
   );
-  const yOnScroll = useTransform(scrollYProgress, [0.45, 0.66], ['-30%', '0%']);
+  const yOnScroll = useTransform(scrollYProgress, [0.28, 0.56], ['-30%', '0%']);
 
   return (
     <StyledWork
       initial='offscreen'
       whileInView='onscreen'
-      viewport={{ amount: 0.66 }}
+      viewport={{ amount: 0.68 }}
     >
       <WorkCard style={{ x: xOnScroll, y: yOnScroll }}>
         <WorkCardTitle>

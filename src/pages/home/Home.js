@@ -5,7 +5,7 @@ import { scrollToTop, toggleNoScroll } from '../../utils/utils';
 
 // Components
 import Hero from './Hero';
-import Web from './Web';
+import Dev from './Dev';
 import Work from './Work';
 import Contacts from './Contacts';
 
@@ -40,12 +40,8 @@ const Home = () => {
       <StyledSection>
         <Hero />
       </StyledSection>
-      <StyledSection>
-        <Web scrollYProgress={scrollYProgress} />
-      </StyledSection>
-      <StyledSection>
-        <Work scrollYProgress={scrollYProgress} />
-      </StyledSection>
+      <Dev scrollYProgress={scrollYProgress} />
+      <Work scrollYProgress={scrollYProgress} />
       <StyledSection>
         <Contacts />
       </StyledSection>
