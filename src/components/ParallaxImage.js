@@ -13,7 +13,7 @@ const StyledImageBox = styled(motion.div)`
   div:first-child {
     position: relative;
     background-attachment: fixed;
-    background-position: center;
+    /* background-position: center; */
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;

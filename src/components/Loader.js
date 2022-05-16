@@ -22,6 +22,10 @@ const Loading = styled(motion.div)`
     color: #fafafa;
     font-family: 'Poppins', sans-serif;
   }
+
+  @media (max-width: 960px) {
+    font-size: 2rem;
+  }
 `;
 const LoaderFollow = styled(motion.div)`
   position: absolute;

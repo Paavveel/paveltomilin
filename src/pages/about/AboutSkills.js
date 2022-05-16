@@ -63,20 +63,20 @@ const AboutSkills = () => {
     <StyledAboutSkillsInner>
       <StyledSkills>
         <h2>Languages</h2>
-        <p>JavaScript(ES6+), HTML, CSS/Scss/Sass</p>
+        <p>JavaScript(ES6+), TypeScript, HTML, CSS/Scss/Sass</p>
         <h2>Frameworks/Libraries/Others</h2>
         <p>
-          React.js, React Router, Redux, Redux Toolkit, Styled Components, REST
-          API, Axios, NPM, Webpack, Git, React Hook Form, Framer Motion,
-          GreenSock
+          React.js, Redux Toolkit, React-router-dom, css-in-js (Styled
+          Components, CSS-modules), CSS Frameworks (Material UI, Tailwind,
+          Bootstrap), HTTP, REST API, Axios, Git, React Hook Form, Framer Motion
         </p>
         <h2>UI/UX</h2>
         <p>
-          Semantics, Responsive/Adaptive Design, Figma, Photoshop, Usability
-          Testing
+          Semantics, Responsive, Adaptive, Cross-browser development, Figma,
+          Usability Testing
         </p>
         <h2>Learning</h2>
-        <p>TypeScript, Node.js</p>
+        <p>Node.js, WebSocket</p>
         <h2>Other Skills</h2>
         <p>Content Creation, Media Management</p>
         <h2>Education</h2>

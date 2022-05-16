@@ -59,6 +59,10 @@ body, html {
   position: relative;
 }
 
+body::-webkit-scrollbar, html::-webkit-scrollbar {
+    display: none;
+}
+
 
 h1,
 h2,
