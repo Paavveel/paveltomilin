@@ -184,6 +184,7 @@ const Hero = () => {
           </StyledSpan>
 
           <StyledVideo
+            preload='metadata'
             autoPlay
             loop
             muted
