@@ -1,3 +1,14 @@
+const preventDefault = e => e.preventDefault();
+
+export const disableTouchScroll = () => {
+  document.body.addEventListener('touchmove', preventDefault, {
+    passive: false,
+  });
+};
+export const enableTouchScroll = () => {
+  document.body.removeEventListener('touchmove', preventDefault);
+};
+
 export const toggleNoScroll = () => {
   const html = document.documentElement;
 

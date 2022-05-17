@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from 'styled-components';
@@ -15,11 +15,26 @@ import Works from './pages/works/Works';
 import About from './pages/about/About';
 import Layout from './pages/Layout';
 import NotFound from './pages/NotFound';
+import {
+  disableTouchScroll,
+  enableTouchScroll,
+  scrollToTop,
+} from './utils/utils';
 
 function App() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [theme, toggleTheme] = useDarkMode();
   const location = useLocation();
+
+  useEffect(() => {
+    if (loading) {
+      disableTouchScroll();
+      console.log('no scroll');
+    } else {
+      enableTouchScroll();
+      console.log('scroll');
+    }
+  }, [loading]);
 
   if (loading) return <Loader setLoading={setLoading} />;
 

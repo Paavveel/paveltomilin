@@ -10,7 +10,7 @@ const StyledWeb = styled.div`
   flex-direction: column;
 
   @media ${media.small} {
-    padding: 8rem 0 14rem;
+    padding: 8rem 0 12rem;
   }
 `;
 
