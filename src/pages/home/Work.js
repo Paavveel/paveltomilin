@@ -242,7 +242,7 @@ const Work = ({ scrollYProgress }) => {
     <StyledWork
       initial='offscreen'
       whileInView='onscreen'
-      viewport={{ amount: 0.66 }}
+      viewport={{ amount: 0.72 }}
     >
       <WorkCard style={{ x: xOnScroll, y: yOnScroll }}>
         <WorkCardTitle>

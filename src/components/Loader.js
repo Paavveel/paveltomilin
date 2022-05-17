@@ -102,9 +102,6 @@ const Loader = ({ setLoading }) => {
         <span>I</span>
         <span>N</span>
         <span>G</span>
-        <span>.</span>
-        <span>.</span>
-        <span>.</span>
       </Loading>
       <LoaderProgress variants={progressVariant}></LoaderProgress>
       <LoaderFollow variants={followVariant}></LoaderFollow>

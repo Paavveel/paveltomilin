@@ -122,7 +122,7 @@ const Web = ({ scrollYProgress }) => {
       <StyledDevDiv
         initial='offscreen'
         whileInView='onscreen'
-        viewport={{ amount: 0.5 }}
+        viewport={{ amount: 0.4 }}
       >
         <motion.p
           variants={devVariants}
