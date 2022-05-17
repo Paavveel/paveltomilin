@@ -229,22 +229,6 @@ const StyledLink = styled(motion.a)`
   }
 `;
 
-const schema = yup.object().shape({
-  name: yup
-    .string()
-    .matches(/^([^0-9]*)$/, 'Name should not contain numbers')
-    .max(20, 'Name should be less then 20 letters')
-    .required('Name is a required field'),
-  email: yup
-    .string()
-    .email('Email should have correct format')
-    .required('Email is a required field'),
-  message: yup
-    .string()
-    .max(500, 'Message should be less then 500 letters')
-    .required('Write your message'),
-});
-
 const titleVariants = {
   offscreen: {
     y: '30%',
@@ -271,6 +255,22 @@ const formVariants = {
     },
   },
 };
+
+const schema = yup.object().shape({
+  name: yup
+    .string()
+    .matches(/^([^0-9]*)$/, 'Name should not contain numbers')
+    .max(20, 'Name should be less then 20 letters')
+    .required('Name is a required field'),
+  email: yup
+    .string()
+    .email('Email should have correct format')
+    .required('Email is a required field'),
+  message: yup
+    .string()
+    .max(500, 'Message should be less then 500 letters')
+    .required('Write your message'),
+});
 
 const Contacts = () => {
   const [isSending, setIsSending] = useState(false);
@@ -334,12 +334,22 @@ const Contacts = () => {
           <div>
             <p>
               <label htmlFor='name'>my name is</label>
-              <input id='name' autoComplete='off' {...register('name')} />
+              <input
+                id='name'
+                autoComplete='off'
+                type='text'
+                {...register('name')}
+              />
               {errors.name && <span>{errors.name?.message}</span>}
             </p>
             <p>
               <label htmlFor='email'>here is my email</label>
-              <input id='email' autoComplete='off' {...register('email')} />
+              <input
+                id='email'
+                autoComplete='off'
+                type='email'
+                {...register('email')}
+              />
               {errors.email && <span>{errors.email?.message}</span>}
             </p>
           </div>
