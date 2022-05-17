@@ -48,7 +48,7 @@ const StyledAboutDescription = styled.div`
     padding: 1.5vw 0;
 
     @media ${media.small} {
-      font-size: 1.8vmax;
+      font-size: 2.1vmax;
       line-height: normal;
       padding: 1.5vw 0;
     }

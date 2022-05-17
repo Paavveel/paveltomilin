@@ -49,7 +49,7 @@ const StyledSkills = styled.div`
     }
 
     @media ${media.small} {
-      font-size: 1.8vmax;
+      font-size: 2.1vmax;
       margin-bottom: 3vw;
     }
     @media ${media.xsmall} {

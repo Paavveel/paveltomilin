@@ -22,8 +22,10 @@ const StyledAboutHero = styled(motion.div)`
     font-size: 15.5vmax;
     line-height: 13vw;
     font-weight: 800;
+    background-clip: text;
+    background: linear-gradient(85deg, #ba39f7, #4992f8, #64c0d3);
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 0.12vw ${props => props.theme.text};
     text-transform: uppercase;
 
     @media ${media.small} {
@@ -33,7 +35,6 @@ const StyledAboutHero = styled(motion.div)`
     @media ${media.xsmall} {
       font-size: 8.5vmax;
       line-height: 21vw;
-      -webkit-text-stroke: 0.1vw ${props => props.theme.text};
     }
   }
   h1:last-of-type {
@@ -69,7 +70,7 @@ const waveAnimation = keyframes`
 `;
 
 const StyledAboutTextHello = styled(motion.p)`
-  font-size: 3.3vmax;
+  font-size: 3.7vmax;
   font-weight: 800;
   padding: 7px 0;
   transition: all 100ms ease;
@@ -82,7 +83,7 @@ const StyledAboutTextHello = styled(motion.p)`
     font-size: 3vmax;
   }
   @media ${media.xsmall} {
-    font-size: 2.9vmax;
+    font-size: 3.2vmax;
   }
 
   span:nth-child(1) {
@@ -126,8 +127,8 @@ const devVariants = {
 };
 
 const AboutHero = ({ scrollYProgress }) => {
-  const hiOnScroll = useTransform(scrollYProgress, [0, 0.13], [0, 700]);
-  const devOnScroll = useTransform(scrollYProgress, [0, 0.13], [170, -700]);
+  const hiOnScroll = useTransform(scrollYProgress, [0, 0.33], [0, 700]);
+  const devOnScroll = useTransform(scrollYProgress, [0, 0.33], [170, -700]);
 
   return (
     <StyledAboutHero initial='initial' animate='animate'>
