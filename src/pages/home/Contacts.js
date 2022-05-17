@@ -110,16 +110,15 @@ const StyledForm = styled(motion.form)`
     width: 100%;
     min-height: 30vh;
     background: transparent;
-    user-select: none;
     outline: none;
     border: 1px grey solid;
     font-size: 2vw;
-    color: var(--purple);
+    color: var(--blue);
     padding: 1rem;
     resize: vertical;
 
     &:focus {
-      border: 1px var(--purple) solid;
+      border: 1px var(--blue) solid;
     }
 
     @media ${media.small} {
@@ -385,10 +384,24 @@ const Contacts = () => {
             <h3>stalk me</h3>
             <div>
               {socials.map((social, i) => {
+                if (social.name === 'phone' || social.name === 'mail') {
+                  return (
+                    <StyledLink
+                      key={i}
+                      href={social.href}
+                      whileHover={{
+                        scale: 1.1,
+                      }}
+                    >
+                      {social.name}
+                    </StyledLink>
+                  );
+                }
                 return (
                   <StyledLink
                     key={i}
                     href={social.href}
+                    target='_blank'
                     whileHover={{
                       scale: 1.1,
                     }}

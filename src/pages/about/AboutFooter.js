@@ -177,17 +177,33 @@ const AboutFooter = () => {
           </p>
         </StyledThanks>
         <StyledSocialLinks>
-          {socials.map((item, i) => (
-            <StyledSocialLink
-              key={i}
-              href={item.href}
-              whileHover={{
-                scale: 1.1,
-              }}
-            >
-              {item.name}
-            </StyledSocialLink>
-          ))}
+          {socials.map((social, i) => {
+            if (social.name === 'phone' || social.name === 'mail') {
+              return (
+                <StyledSocialLink
+                  key={i}
+                  href={social.href}
+                  whileHover={{
+                    scale: 1.1,
+                  }}
+                >
+                  {social.name}
+                </StyledSocialLink>
+              );
+            }
+            return (
+              <StyledSocialLink
+                key={i}
+                href={social.href}
+                target='_blank'
+                whileHover={{
+                  scale: 1.1,
+                }}
+              >
+                {social.name}
+              </StyledSocialLink>
+            );
+          })}
         </StyledSocialLinks>
       </StyledFooterBottom>
     </StyledAboutFooter>
