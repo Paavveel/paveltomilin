@@ -162,7 +162,6 @@ const Hero = () => {
           onAnimationComplete={() => {
             setPlayTilt(true);
             controls.start('enter');
-            toggleNoScroll();
           }}
         >
           <StyledName
@@ -191,6 +190,7 @@ const Hero = () => {
             variants={videoVariats}
             initial='initial'
             animate={controls}
+            onAnimationComplete={toggleNoScroll}
           >
             <source src={keyboard} type='video/mp4' />
           </StyledVideo>

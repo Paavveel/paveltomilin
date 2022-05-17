@@ -84,16 +84,16 @@ const StyledForm = styled(motion.form)`
   input {
     width: 70%;
     background: transparent;
-    user-select: none;
+    /* user-select: none; */
     outline: none;
     border: none;
     border-bottom: 1px grey solid;
     font-size: 2.7vw;
-    color: var(--purple);
+    color: var(--blue);
     padding: 0;
 
     &:focus {
-      border-bottom: 1px var(--purple) solid;
+      border-bottom: 1px var(--blue) solid;
     }
 
     @media ${media.small} {
