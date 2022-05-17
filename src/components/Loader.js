@@ -108,7 +108,9 @@ const Loader = ({ setLoading }) => {
       <LoaderSpread
         variants={spreadVariant}
         onAnimationComplete={() => {
-          setLoading(false);
+          setTimeout(() => {
+            setLoading(false);
+          }, 200);
         }}
       ></LoaderSpread>
     </LoaderContainer>
