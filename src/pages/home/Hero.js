@@ -187,12 +187,12 @@ const Hero = () => {
             preload='metadata'
             autoPlay
             loop
-            muted
-            playsinline
-            // variants={videoVariats}
-            // initial='initial'
-            // animate={controls}
-            // onAnimationComplete={toggleNoScroll}
+            muted='muted'
+            playsinline='playsinline'
+            variants={videoVariats}
+            initial='initial'
+            animate={controls}
+            onAnimationComplete={toggleNoScroll}
           >
             <source src={keyboard} type='video/mp4' />
           </StyledVideo>
