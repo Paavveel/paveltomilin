@@ -189,10 +189,10 @@ const Hero = () => {
             loop
             muted
             playsinline
-            variants={videoVariats}
-            initial='initial'
-            animate={controls}
-            onAnimationComplete={toggleNoScroll}
+            // variants={videoVariats}
+            // initial='initial'
+            // animate={controls}
+            // onAnimationComplete={toggleNoScroll}
           >
             <source src={keyboard} type='video/mp4' />
           </StyledVideo>
