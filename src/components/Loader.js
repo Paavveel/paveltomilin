@@ -37,7 +37,7 @@ const LoaderFollow = styled(motion.div)`
 const LoaderSpread = styled(motion.div)`
   position: absolute;
   background: linear-gradient(230deg, #ba39f7, #4992f8, #64c0d3);
-  width: 100%;
+  width: 100vw;
   left: 0;
   z-index: 3;
 `;
@@ -73,7 +73,7 @@ const followVariant = {
 
 const spreadVariant = {
   animate: {
-    height: '100%',
+    height: '100vh',
     transition: {
       delay: 4.7,
       duration: 0.7,
@@ -108,9 +108,7 @@ const Loader = ({ setLoading }) => {
       <LoaderSpread
         variants={spreadVariant}
         onAnimationComplete={() => {
-          setTimeout(() => {
-            setLoading(false);
-          }, 200);
+          setLoading(false);
         }}
       ></LoaderSpread>
     </LoaderContainer>
