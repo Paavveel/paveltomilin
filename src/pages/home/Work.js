@@ -37,10 +37,10 @@ const WorkCard = styled(motion.div)`
     min-height: 800px;
     width: 400px;
     padding: 4rem 5rem;
-    margin-right: 1rem;
+    margin-right: 2rem;
   }
   @media ${media.xsmall} {
-    min-height: 700px;
+    min-height: 680px;
     width: 300px;
     padding: 3rem 2rem;
   }
@@ -242,23 +242,23 @@ const Work = ({ scrollYProgress }) => {
     <StyledWork
       initial='offscreen'
       whileInView='onscreen'
-      viewport={{ amount: 0.76 }}
+      viewport={{ amount: 0.66 }}
     >
       <WorkCard style={{ x: xOnScroll, y: yOnScroll }}>
         <WorkCardTitle>
           <motion.p variants={textVariants}>
-            Welcome! I am passionate about everything related to a web
-            technologies.
+            Welcome! I am Pavel Tomilin.
           </motion.p>
           <motion.span variants={rocketVariants}>🚀</motion.span>
         </WorkCardTitle>
         <WorkCardSubTitle variants={textVariants}>
           <p>
-            I am a self taught Frontend developer and i have currently learn.
-            One of my aim when i create aplications is coding clean and
-            effective. I rely on the most outstanding open source libraries{' '}
-            <b>React</b> & <b>Redux</b> being these my tools to be able to solve
-            any challenge.
+            Experience in Frontend about two years. I am looking for a team with
+            which I can develop a product and receive professional development.
+            I am constantly learning. I try to stay on top of my stack, take
+            courses, read articles, and work on PET projects. I rely on the most
+            outstanding open source libraries <b>React</b> & <b>Redux</b> being
+            these my tools to be able to solve any challenge.
           </p>
           <p>This page is an example of my skills as a developer.</p>
           <p>Check bellow:</p>
