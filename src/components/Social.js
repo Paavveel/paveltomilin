@@ -17,7 +17,7 @@ const StyledSocial = styled(motion.div)`
 
   @media ${media.small} {
     left: 8%;
-    bottom: 4%;
+    bottom: 12%;
   }
 `;
 
@@ -30,7 +30,7 @@ const StyledLink = styled(motion.a)`
 const socialVariants = {
   animate: {
     transition: {
-      delayChildren: 2.7,
+      delayChildren: 2,
       staggerChildren: 0.4,
       type: 'spring',
     },
