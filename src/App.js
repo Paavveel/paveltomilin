@@ -4,7 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from 'styled-components';
 import { useDarkMode } from './hooks/useDarkMode';
 import { GlobalStyle, darkTheme, lightTheme } from './styles/GlobalStyles';
-
+import { disableTouchScroll, enableTouchScroll } from './utils/utils';
 import './sass/main.scss';
 
 // Components
@@ -15,11 +15,6 @@ import Works from './pages/works/Works';
 import About from './pages/about/About';
 import Layout from './pages/Layout';
 import NotFound from './pages/NotFound';
-import {
-  disableTouchScroll,
-  enableTouchScroll,
-  scrollToTop,
-} from './utils/utils';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -29,10 +24,8 @@ function App() {
   useEffect(() => {
     if (loading) {
       disableTouchScroll();
-      console.log('no scroll');
     } else {
       enableTouchScroll();
-      console.log('scroll');
     }
   }, [loading]);
 

@@ -9,11 +9,11 @@ const StyledWork = styled(motion.div)`
   position: relative;
   display: flex;
   justify-content: flex-end;
-  padding: 14rem 1rem 14rem;
+  padding: 14rem 0 14rem;
   color: var(--white);
 
   @media ${media.small} {
-    padding: 8rem 1rem 8rem;
+    padding: 8rem 0 8rem;
   }
 `;
 const WorkCard = styled(motion.div)`
@@ -28,10 +28,10 @@ const WorkCard = styled(motion.div)`
   border-radius: 10px;
 
   @media ${media.medium} {
-    min-height: 1000px;
-    width: 700px;
-    padding: 5rem 8rem;
-    margin-right: 4rem;
+    min-height: 600px;
+    width: 550px;
+    padding: 4rem 6rem;
+    margin-right: 3rem;
   }
   @media ${media.small} {
     min-height: 800px;
@@ -52,7 +52,7 @@ const WorkCardTitle = styled.div`
   line-height: 1.1;
 
   @media ${media.medium} {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
   }
   @media ${media.small} {
     font-size: 1.8rem;
@@ -67,6 +67,11 @@ const WorkCardTitle = styled.div`
     top: -50px;
     left: -80px;
 
+    @media ${media.medium} {
+      font-size: 5rem;
+      top: -42px;
+      left: -73px;
+    }
     @media ${media.small} {
       font-size: 4rem;
       top: -30px;
@@ -84,7 +89,7 @@ const WorkCardSubTitle = styled(motion.div)`
   }
 
   @media ${media.medium} {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
   @media ${media.small} {
     font-size: 1rem;
@@ -147,7 +152,7 @@ const FirsrMarquee = styled(Marquee)`
     }
 
     @media ${media.medium} {
-      font-size: 12rem;
+      font-size: 8rem;
     }
     @media ${media.small} {
       font-size: 10rem;
@@ -187,7 +192,7 @@ const SecondMarquee = styled(Marquee)`
     }
 
     @media ${media.medium} {
-      font-size: 12rem;
+      font-size: 8rem;
     }
     @media ${media.small} {
       font-size: 10rem;
@@ -228,16 +233,16 @@ const rocketVariants = {
 const Work = ({ scrollYProgress }) => {
   const xOnScroll = useTransform(
     scrollYProgress,
-    [0.28, 0.56],
-    ['-130%', '0%']
+    [0.23, 0.56],
+    ['-140%', '0%']
   );
-  const yOnScroll = useTransform(scrollYProgress, [0.28, 0.56], ['-30%', '0%']);
+  const yOnScroll = useTransform(scrollYProgress, [0.23, 0.56], ['-30%', '0%']);
 
   return (
     <StyledWork
       initial='offscreen'
       whileInView='onscreen'
-      viewport={{ amount: 0.68 }}
+      viewport={{ amount: 0.76 }}
     >
       <WorkCard style={{ x: xOnScroll, y: yOnScroll }}>
         <WorkCardTitle>

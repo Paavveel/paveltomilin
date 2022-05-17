@@ -10,7 +10,7 @@ const StyledWeb = styled.div`
   flex-direction: column;
 
   @media ${media.small} {
-    padding: 8rem 0 12rem;
+    padding: 8rem 0 8rem;
   }
 `;
 
@@ -92,10 +92,6 @@ const devVariants = {
   onscreen: {
     x: '0%',
     opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: 'easeInOut',
-    },
   },
 };
 const withVariants = {
@@ -106,10 +102,6 @@ const withVariants = {
   onscreen: {
     scale: 1,
     opacity: 1,
-    transition: {
-      duration: 0.7,
-      ease: [0.6, 0.01, -0.05, 0.95],
-    },
   },
 };
 
@@ -130,10 +122,20 @@ const Web = ({ scrollYProgress }) => {
       <StyledDevDiv
         initial='offscreen'
         whileInView='onscreen'
-        viewport={{ once: true, amount: 0.5 }}
+        viewport={{ amount: 0.5 }}
       >
-        <motion.p variants={devVariants}>developed</motion.p>
-        <motion.p variants={withVariants}>with</motion.p>
+        <motion.p
+          variants={devVariants}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
+        >
+          developed
+        </motion.p>
+        <motion.p
+          variants={withVariants}
+          transition={{ duration: 0.7, ease: [0.6, 0.01, -0.05, 0.95] }}
+        >
+          with
+        </motion.p>
         <motion.p style={{ color: reactColorOnScroll }}>react</motion.p>
         <StyledJsLogo style={{ rotate: jsRotateOnScroll }}>
           <span>js</span>
