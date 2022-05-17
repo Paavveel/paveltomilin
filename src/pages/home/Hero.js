@@ -187,6 +187,7 @@ const Hero = () => {
             autoPlay
             loop
             muted
+            playsinline
             variants={videoVariats}
             initial='initial'
             animate={controls}
