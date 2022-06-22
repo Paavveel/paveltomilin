@@ -20,45 +20,55 @@ const WorkCard = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 1100px;
-  width: 900px;
-  padding: 5rem 10rem;
+  height: 80vh;
+  width: 33vw;
+  padding: 5rem 7rem;
   margin-right: 20vw;
   background: linear-gradient(185deg, #ba39f7, #4992f8, #64c0d3);
   border-radius: 10px;
 
+  @media ${media.large} {
+    padding: 5rem 6rem;
+  }
   @media ${media.medium} {
-    min-height: 600px;
-    width: 550px;
     padding: 4rem 6rem;
     margin-right: 3rem;
   }
   @media ${media.small} {
-    min-height: 800px;
-    width: 400px;
+    height: 80vh;
+    width: 70vw;
     padding: 4rem 5rem;
     margin-right: 2rem;
   }
   @media ${media.xsmall} {
-    min-height: 680px;
-    width: 300px;
+    height: 80vh;
+    width: 80vw;
     padding: 3rem 2rem;
+  }
+  @media (max-width: 400px) {
+    padding: 2rem 2rem;
   }
 `;
 const WorkCardTitle = styled.div`
   position: relative;
-  font-size: 3rem;
+  font-size: 2.6rem;
   font-weight: 700;
   line-height: 1.1;
 
+  @media ${media.large} {
+    font-size: 2rem;
+  }
   @media ${media.medium} {
     font-size: 1.8rem;
   }
   @media ${media.small} {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
   }
   @media ${media.xsmall} {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+  }
+  @media (max-width: 400px) {
+    font-size: 1.4rem;
   }
 
   span {
@@ -67,20 +77,24 @@ const WorkCardTitle = styled.div`
     top: -50px;
     left: -80px;
 
+    @media ${media.large} {
+      font-size: 5.5rem;
+      left: -60px;
+    }
     @media ${media.medium} {
       font-size: 5rem;
       top: -42px;
       left: -73px;
     }
     @media ${media.small} {
-      font-size: 4rem;
-      top: -30px;
+      font-size: 5rem;
+      top: -40px;
       left: -60px;
     }
   }
 `;
 const WorkCardSubTitle = styled(motion.div)`
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   font-weight: normal;
   line-height: 1.5;
 
@@ -88,28 +102,43 @@ const WorkCardSubTitle = styled(motion.div)`
     font-weight: bold;
   }
 
+  @media ${media.large} {
+    font-size: 1.2rem;
+  }
   @media ${media.medium} {
     font-size: 1.1rem;
   }
   @media ${media.small} {
-    font-size: 1rem;
+    font-size: 1.2rem;
+  }
+  @media ${media.xsmall} {
+    font-size: 1.07rem;
+  }
+  @media (max-width: 400px) {
+    font-size: 0.9rem;
   }
 `;
 
 const WorkCardLink = styled(motion(Link))`
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 600;
   text-transform: uppercase;
   color: var(--white);
   width: fit-content;
 
+  @media ${media.large} {
+    font-size: 2rem;
+  }
   @media ${media.medium} {
     font-size: 2rem;
   }
   @media ${media.small} {
+    font-size: 1.8rem;
+  }
+  @media ${media.xsmall} {
     font-size: 1.5rem;
   }
-  @media ${media.small} {
+  @media (max-width: 400px) {
     font-size: 1.2rem;
   }
 `;
@@ -203,20 +232,6 @@ const SecondMarquee = styled(Marquee)`
   }
 `;
 
-const textVariants = {
-  offscreen: {
-    opacity: 0,
-    pointerEvents: 'none',
-  },
-  onscreen: {
-    opacity: 1,
-    pointerEvents: 'auto',
-    transition: {
-      duration: 0.4,
-      ease: 'easeInOut',
-    },
-  },
-};
 const rocketVariants = {
   offscreen: {
     scale: 0,
@@ -246,12 +261,10 @@ const Work = ({ scrollYProgress }) => {
     >
       <WorkCard style={{ x: xOnScroll, y: yOnScroll }}>
         <WorkCardTitle>
-          <motion.p variants={textVariants}>
-            Welcome! I am Pavel Tomilin.
-          </motion.p>
+          <motion.p>Welcome! I am Pavel Tomilin.</motion.p>
           <motion.span variants={rocketVariants}>🚀</motion.span>
         </WorkCardTitle>
-        <WorkCardSubTitle variants={textVariants}>
+        <WorkCardSubTitle>
           <p>
             Experience in Frontend about two years. I am looking for a team with
             which I can develop a product and receive professional development.
@@ -268,7 +281,6 @@ const Work = ({ scrollYProgress }) => {
           whileHover={{
             scale: 1.1,
           }}
-          variants={textVariants}
         >
           My works <span>💻</span>
         </WorkCardLink>
